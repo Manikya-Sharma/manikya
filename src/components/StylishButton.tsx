@@ -19,6 +19,7 @@ interface StylishButtonProps {
   variant?: "outline" | "ghost" | "default";
   size?: "sm" | "md";
   isLink?: boolean;
+  href?: string;
 }
 
 const StylishButton = ({
