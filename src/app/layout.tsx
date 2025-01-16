@@ -1,6 +1,7 @@
 import Navbar from "@/components/Navbar";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import { MotionConfig } from "motion/react";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -26,11 +27,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased h-screen min-h-screen flex flex-col`}
       >
-        <Navbar className="bg-black text-white py-5 px-7" />
-
-        <div>{children}</div>
+        <MotionConfig reducedMotion="user">
+          <Navbar className="bg-black text-white py-5 px-7" />
+          <div className="h-full">{children}</div>
+        </MotionConfig>
       </body>
     </html>
   );
