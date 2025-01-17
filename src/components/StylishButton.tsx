@@ -1,12 +1,8 @@
 "use client";
 import { cn } from "@/lib/utils";
 import { motion } from "motion/react";
-import { Electrolize } from "next/font/google";
-
-const font = Electrolize({
-  weight: "400",
-  subsets: ["latin"],
-});
+import { electrolize as font } from "@/lib/fonts";
+import { useRouter } from "next/navigation";
 
 const transition = {
   type: "spring",
@@ -20,6 +16,7 @@ interface StylishButtonProps {
   size?: "sm" | "md";
   isLink?: boolean;
   href?: string;
+  onButtonClick?: () => void;
 }
 
 const StylishButton = ({
@@ -28,12 +25,38 @@ const StylishButton = ({
   variant = "default",
   size = "md",
   isLink,
+  onButtonClick = () => {},
   ...props
 }: StylishButtonProps) => {
+  const router = useRouter();
+
   return isLink ? (
     <a
       {...props}
       className="block focus:outline-none focus:ring-2 focus:ring-black rounded-xl"
+      onClick={(e) => {
+        e.preventDefault();
+        // Note: We should always pass `href` with `isLink` prop
+        const href = props.href ?? "/";
+        if (href[0] == "#") {
+          // Smooth scroll for same page
+          const target = href.substring(1);
+          const element = document.getElementById(target);
+          window.scrollTo({
+            top: element?.offsetTop,
+            behavior: "smooth",
+          });
+        } else {
+          router.push(href);
+        }
+        // SetTimeout is needed to prevent re-render during any transition
+        // triggered by the button
+        // E.g. for smooth scroll with navbar, we want navbar to hide
+        // but it will cause problems in scrolling if called immediately
+        setTimeout(() => {
+          onButtonClick();
+        }, 450);
+      }}
     >
       <motion.div
         initial="initial"
@@ -81,6 +104,7 @@ const StylishButton = ({
     <button
       {...props}
       className="block focus:outline-none focus:ring-2 focus:ring-black rounded-xl"
+      onClick={() => onButtonClick()}
     >
       <motion.div
         initial="initial"

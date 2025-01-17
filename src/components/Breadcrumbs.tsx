@@ -1,5 +1,7 @@
 "use client";
 
+import { firacode } from "@/lib/fonts";
+import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
@@ -8,7 +10,7 @@ const Breadcrumbs = (): React.ReactNode => {
   const parts = pathName.split("/");
   const others = parts.slice(1);
   return (
-    <span className="flex">
+    <span className={cn("flex", firacode.className)}>
       <span className="cursor-default">~</span>
       <span className="mx-1 font-normal">/</span>
       <Link className="font-semibold transition-colors" href="/">

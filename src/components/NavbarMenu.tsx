@@ -6,7 +6,7 @@ import { AnimatePresence, motion } from "motion/react";
 import StylishButton from "./StylishButton";
 import { useState } from "react";
 import { usePathname } from "next/navigation";
-import { pathMapping } from "@/data/pathMapping";
+import { pathMapping } from "@/lib/pathMapping";
 
 const NavbarMenu = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -55,7 +55,7 @@ const NavbarMenu = () => {
         variants={variants}
         animate={isMenuOpen ? "open" : "closed"}
         initial="closed"
-        className="px-7 absolute right-5 rounded-lg bg-black text-white w-fit top-[4.5rem] overflow-hidden border-white/30"
+        className="px-5 absolute right-5 rounded-lg bg-black text-white w-fit top-[4.5rem] overflow-hidden border-white/30"
         transition={{
           duration: 0.15,
         }}
@@ -63,7 +63,11 @@ const NavbarMenu = () => {
         <ul className="flex flex-col gap-2">
           {options.map((option) => (
             <li key={option.label}>
-              <StylishButton isLink href={option.href}>
+              <StylishButton
+                isLink
+                href={option.href}
+                onButtonClick={() => setIsMenuOpen(false)}
+              >
                 <div className="flex items-center gap-2">
                   <div>{option.icon}</div>
                   <div>{option.label}</div>

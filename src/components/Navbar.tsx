@@ -41,7 +41,7 @@ const Navbar = ({
       variants={variants}
       animate={isAtTop ? "top" : "notTop"}
       initial={false}
-      className={cn("z-[50] mx-auto sticky top-0", className)}
+      className={cn("z-[50] mx-auto fixed inset-x-0 top-0", className)}
       layout
     >
       <div className="flex items-center justify-between">

@@ -1,5 +1,11 @@
+import Heading from "@/components/Heading";
+
 const Page = () => {
-  return <div>Page</div>;
+  return (
+    <div>
+      <Heading>Skills</Heading>
+    </div>
+  );
 };
 
 export default Page;

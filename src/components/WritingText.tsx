@@ -1,11 +1,18 @@
 "use client";
 
+import { cn } from "@/lib/utils";
 import { motion } from "motion/react";
 
-const WritingText = ({ children }: { children: string }) => {
+const WritingText = ({
+  children,
+  className,
+}: {
+  children: string;
+  className?: string;
+}) => {
   return (
     <motion.span
-      className="text-5xl"
+      className={cn("text-5xl", className)}
       initial="hidden"
       animate="visible"
       variants={{

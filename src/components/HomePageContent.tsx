@@ -5,10 +5,17 @@ import { getMenuOptions } from "@/data/sections";
 import { ArrowRight } from "lucide-react";
 import { motion } from "motion/react";
 import WritingText from "./WritingText";
+import { cn } from "@/lib/utils";
+import { electrolize } from "@/lib/fonts";
 
 const HomePageContent = () => {
   return (
-    <div className="h-full w-full grid grid-cols-2 grid-rows-2 place-items-center text-2xl md:text-5xl gap-0.5">
+    <div
+      className={cn(
+        "h-full w-full grid grid-cols-2 grid-rows-2 place-items-center text-2xl md:text-5xl gap-0.5",
+        electrolize.className
+      )}
+    >
       {getMenuOptions({ size: "md:size-10", location: "hero" })
         .slice(1)
         .map((section) => (
@@ -28,7 +35,9 @@ const HomePageContent = () => {
               <span className="group-hover:rotate-12 transition-transform">
                 {section.icon}
               </span>
-              <WritingText>{section.label}</WritingText>
+              <WritingText className="text-2xl md:text-5xl">
+                {section.label}
+              </WritingText>
               <motion.span
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}

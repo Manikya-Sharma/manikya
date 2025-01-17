@@ -1,4 +1,14 @@
-import { Hammer, House, NotebookText, Signature, Swords } from "lucide-react";
+import {
+  Code,
+  GraduationCap,
+  Hammer,
+  Heart,
+  House,
+  NotebookText,
+  Pen,
+  Signature,
+  Swords,
+} from "lucide-react";
 
 export const getMenuOptions = ({
   location,
@@ -36,6 +46,30 @@ export const getMenuOptions = ({
         icon: <Signature className={size ? size : "size-4"} />,
         label: "Contact",
         href: "/contact",
+      },
+    ];
+  }
+  if (location === "about") {
+    return [
+      {
+        icon: <Pen className={size ? size : "size-4"} />,
+        label: "Intro",
+        href: "#intro",
+      },
+      {
+        icon: <GraduationCap className={size ? size : "size-4"} />,
+        label: "Education",
+        href: "#education",
+      },
+      {
+        icon: <Code className={size ? size : "size-4"} />,
+        label: "Experience",
+        href: "#experience",
+      },
+      {
+        icon: <Heart className={size ? size : "size-4"} />,
+        label: "Interests",
+        href: "#interests",
       },
     ];
   }
