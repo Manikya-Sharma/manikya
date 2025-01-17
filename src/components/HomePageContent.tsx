@@ -4,6 +4,7 @@ import Link from "next/link";
 import { getMenuOptions } from "@/data/sections";
 import { ArrowRight } from "lucide-react";
 import { motion } from "motion/react";
+import WritingText from "./WritingText";
 
 const HomePageContent = () => {
   return (
@@ -27,8 +28,16 @@ const HomePageContent = () => {
               <span className="group-hover:rotate-12 transition-transform">
                 {section.icon}
               </span>
-              {section.label}
-              <ArrowRight className="size-6 md:size-10 group-hover:translate-x-2 md:group-hover:translate-x-5 transition-transform" />
+              <WritingText>{section.label}</WritingText>
+              <motion.span
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{
+                  duration: 2,
+                }}
+              >
+                <ArrowRight className="size-6 md:size-10 group-hover:translate-x-2 md:group-hover:translate-x-5 transition-transform" />
+              </motion.span>
             </motion.span>
           </Link>
         ))}

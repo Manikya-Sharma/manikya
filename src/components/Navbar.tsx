@@ -74,8 +74,6 @@ const Navbar = ({
     open: {
       opacity: 1,
       height: "auto",
-      paddingLeft: "1.25rem",
-      paddingRight: "1.25rem",
       paddingTop: "0.75rem",
       paddingBottom: "0.75rem",
       borderWidth: "1px",
@@ -133,7 +131,7 @@ const Navbar = ({
           variants={variants}
           animate={isMenuOpen ? "open" : "closed"}
           initial="closed"
-          className="absolute right-5 rounded-lg bg-black text-white w-fit top-[4.5rem] overflow-hidden border-white/30"
+          className="px-7 absolute right-5 rounded-lg bg-black text-white w-fit top-[4.5rem] overflow-hidden border-white/30"
           transition={{
             duration: 0.15,
           }}
