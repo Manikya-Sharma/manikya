@@ -9,7 +9,7 @@ import WritingText from "./WritingText";
 const HomePageContent = () => {
   return (
     <div className="h-full w-full grid grid-cols-2 grid-rows-2 place-items-center text-2xl md:text-5xl gap-0.5">
-      {getMenuOptions("md:size-10")
+      {getMenuOptions({ size: "md:size-10", location: "hero" })
         .slice(1)
         .map((section) => (
           <Link
