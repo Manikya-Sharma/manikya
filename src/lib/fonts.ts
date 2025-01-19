@@ -1,4 +1,9 @@
-import { Electrolize, Fira_Code, Space_Grotesk } from "next/font/google";
+import {
+  Electrolize,
+  Figtree,
+  Fira_Code,
+  Space_Grotesk,
+} from "next/font/google";
 
 export const electrolize = Electrolize({
   weight: "400",
@@ -12,5 +17,10 @@ export const firacode = Fira_Code({
 
 export const space = Space_Grotesk({
   weight: ["400", "600"],
+  subsets: ["latin"],
+});
+
+export const figtree = Figtree({
+  weight: "400",
   subsets: ["latin"],
 });
