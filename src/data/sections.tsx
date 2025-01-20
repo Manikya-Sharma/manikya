@@ -1,5 +1,9 @@
 import {
+  BrainCircuit,
   Code,
+  CodeXml,
+  Cpu,
+  Globe,
   GraduationCap,
   Hammer,
   Heart,
@@ -70,6 +74,35 @@ export const getMenuOptions = ({
         icon: <Heart className={size ? size : "size-4"} />,
         label: "Interests",
         href: "#interests",
+      },
+    ];
+  }
+  if (location === "skills") {
+    return [
+      {
+        icon: <Pen className={size ? size : "size-4"} />,
+        label: "Intro",
+        href: "#intro",
+      },
+      {
+        icon: <Globe className={size ? size : "size-4"} />,
+        label: "Web Development",
+        href: "#web",
+      },
+      {
+        icon: <BrainCircuit className={size ? size : "size-4"} />,
+        label: "Machine Learning",
+        href: "#ml",
+      },
+      {
+        icon: <Cpu className={size ? size : "size-4"} />,
+        label: "Software Engineering",
+        href: "#se",
+      },
+      {
+        icon: <CodeXml className={size ? size : "size-4"} />,
+        label: "Competitive Programming",
+        href: "#cp",
       },
     ];
   }
