@@ -1,7 +1,6 @@
 import GotoLink from "@/components/GotoLink";
 import Heading from "@/components/Heading";
 import SmallHeading from "@/components/SmallHeading";
-import ViewPhotos from "@/components/ViewPhotos";
 import { figtree } from "@/lib/fonts";
 import { cn } from "@/lib/utils";
 import { ArrowLeft, ArrowRight } from "lucide-react";
