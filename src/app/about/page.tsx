@@ -20,14 +20,16 @@ Sections
 const Page = () => {
   return (
     <div>
-      <Heading className="text-center">About me</Heading>
+      <Heading className="text-center text-6xl sm:text-8xl md:text-9xl">
+        About me
+      </Heading>
       <div
         className={cn(
           "max-w-prose px-14 md:px-20 mx-auto text-2xl leading-relaxed",
           figtree.className
         )}
       >
-        <section id="intro" className="mb-52">
+        <section id="intro" className="mb-24 sm:mb-52">
           <p className="text-pretty">
             Hi, I am a{" "}
             <strong className="text-gradient">full stack developer</strong> with
@@ -36,7 +38,7 @@ const Page = () => {
             learning new technologies.
           </p>
         </section>
-        <section id="education" className="mb-44">
+        <section id="education" className="mb-24 sm:mb-44">
           <SmallHeading>
             Education
             <ViewPhotos
@@ -45,7 +47,7 @@ const Page = () => {
               title="My institution"
             />
           </SmallHeading>
-          <p className="text-pretty mt-20">
+          <p className="text-pretty mt-16 sm:mt-20 text-xl/9 md:text-2xl/7">
             I am a student of{" "}
             <strong className="text-gradient">
               Delhi Technological University
@@ -56,7 +58,7 @@ const Page = () => {
             intelligence, web development and software engineering.
           </p>
         </section>
-        <section id="experience" className="mb-44">
+        <section id="experience" className="mb-24 sm:mb-44">
           <SmallHeading>
             Experience
             <ViewPhotos
@@ -65,7 +67,7 @@ const Page = () => {
               title="Some hackathons"
             />
           </SmallHeading>
-          <p className="text-pretty mt-20">
+          <p className="text-pretty mt-16 sm:mt-20 text-xl/9 md:text-2xl/7">
             I have participated in several{" "}
             <strong className="text-gradient">hackathons</strong> and have
             worked on a variety of projects. I have experience with several{" "}
@@ -76,7 +78,7 @@ const Page = () => {
             etc.
           </p>
         </section>
-        <section id="interests" className="mb-44">
+        <section id="interests" className="mb-24 sm:mb-44">
           <SmallHeading>
             Interests
             <ViewPhotos
@@ -85,7 +87,7 @@ const Page = () => {
               title="Traveling"
             />
           </SmallHeading>
-          <p className="text-pretty mt-20">
+          <p className="text-pretty mt-16 sm:mt-20 text-xl/9 md:text-2xl/7">
             In my free time,{" "}
             <strong className="text-gradient">I enjoy reading</strong>, and
             learning about new technologies and{" "}
@@ -96,16 +98,22 @@ const Page = () => {
         </section>
       </div>
       <div className="px-16 md:px-40 flex flex-col md:flex-row md:items-center justify-between gap-10 pb-20">
-        <GotoLink className="w-fit mr-auto" href="/contact">
+        <GotoLink
+          className="text-2xl xs:text-5xl w-full xs:w-fit mr-auto"
+          href="/contact"
+        >
           <div className="flex items-center gap-1.5 tracking-tight">
-            <ArrowLeft className="size-10 inline-block" />
+            <ArrowLeft className="size-7 xs:size-9 sm:size-10 inline-block" />
             Contact
           </div>
         </GotoLink>
-        <GotoLink className="w-fit ml-auto" href="/skills">
-          <div className="flex items-center gap-1.5 tracking-tight">
+        <GotoLink
+          className="text-2xl xs:text-5xl w-full xs:w-fit ml-auto"
+          href="/skills"
+        >
+          <div className="flex items-center gap-1.5 tracking-tight justify-end xs:justify-start">
             Skills
-            <ArrowRight className="size-10 inline-block" />
+            <ArrowRight className="size-7 xs:size-9 sm:size-10 inline-block" />
           </div>
         </GotoLink>
       </div>

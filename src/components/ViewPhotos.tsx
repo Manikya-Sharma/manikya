@@ -72,9 +72,9 @@ const ViewPhotos = ({
                     },
                   }}
                   transition={{ duration: 0.1 }}
-                  className="p-2 rounded-md border border-black/30 bg-white transition-colors"
+                  className="p-1 md:p-2 rounded-md border border-black/30 bg-white transition-colors"
                 >
-                  <Images />
+                  <Images className="size-5 md:size-7" />
                 </motion.div>
               </motion.button>
             </TooltipTrigger>

@@ -18,7 +18,7 @@ const SmallHeading = ({
       viewport={{ once: true, amount: 1 }}
       transition={{ duration: 0.4 }}
       className={cn(
-        "text-5xl md:text-7xl uppercase tracking-tighter font-bold",
+        "text-3xl sm:text-5xl md:text-7xl uppercase tracking-tighter font-bold",
         space.className,
         className
       )}

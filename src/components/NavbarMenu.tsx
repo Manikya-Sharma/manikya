@@ -63,11 +63,7 @@ const NavbarMenu = () => {
         <ul className="flex flex-col gap-2">
           {options.map((option) => (
             <li key={option.label}>
-              <StylishButton
-                isLink
-                href={option.href}
-                onButtonClick={() => setIsMenuOpen(false)}
-              >
+              <StylishButton isLink href={option.href}>
                 <div className="flex items-center gap-2">
                   <div>{option.icon}</div>
                   <div>{option.label}</div>
