@@ -1,6 +1,7 @@
 import GotoLink from "@/components/GotoLink";
 import Heading from "@/components/Heading";
 import SmallHeading from "@/components/SmallHeading";
+import TagGroup from "@/components/TagGroup";
 import { figtree } from "@/lib/fonts";
 import { cn } from "@/lib/utils";
 import { ArrowLeft, ArrowRight } from "lucide-react";
@@ -43,26 +44,83 @@ const Page = () => {
         </section>
         <section id="web" className="mb-24 sm:mb-44">
           <SmallHeading>Web Development</SmallHeading>
-          <p className="text-pretty mt-16 sm:mt-20 text-xl/9 md:text-2xl/7">
-            {/* // TODO */}
+          <TagGroup
+            className="scale-90 md:scale-100 text-xs md:text-base mt-1"
+            tags={[
+              "html",
+              "css",
+              "tailwindcss",
+              "javascript",
+              "typescript",
+              "react",
+              "nextjs",
+            ]}
+          />
+          <p className="text-pretty mt-5 sm:mt-18 md:mt-20 text-xl/9 md:text-2xl/7">
+            I have experience building websites using modern web development
+            technologies. I have experience in{" "}
+            <strong className="text-gradient">front end development</strong>,
+            bringing life to designs and creating interactive user interfaces. I
+            have also experience in{" "}
+            <strong className="text-gradient">backend development</strong>,
+            creating APIs and server-side logic.
           </p>
         </section>
         <section id="ml" className="mb-24 sm:mb-44">
           <SmallHeading>Machine Learning</SmallHeading>
-          <p className="text-pretty mt-16 sm:mt-20 text-xl/9 md:text-2xl/7">
-            {/* // TODO */}
+          <TagGroup
+            className="scale-90 md:scale-100 text-xs md:text-base mt-1"
+            tags={[
+              "python",
+              "tensorflow",
+              "pytorch",
+              "scikit-learn",
+              "jupyter",
+            ]}
+          />
+          <p className="text-pretty mt-5 sm:mt-18 md:mt-20 text-xl/9 md:text-2xl/7">
+            I have been building machine learning models and deploying them. I
+            have experience in{" "}
+            <strong className="text-gradient">deep learning</strong> and{" "}
+            <strong className="text-gradient">computer vision</strong>. I also
+            find{" "}
+            <strong className="text-gradient">
+              natural language processing
+            </strong>{" "}
+            very interesting.
           </p>
         </section>
         <section id="se" className="mb-24 sm:mb-44">
           <SmallHeading>Software Engineering</SmallHeading>
-          <p className="text-pretty mt-16 sm:mt-20 text-xl/9 md:text-2xl/7">
-            {/* // TODO */}
+          <TagGroup
+            className="scale-90 md:scale-100 text-xs md:text-base mt-1"
+            tags={["java", "cpp", "c", "rust", "docker"]}
+          />
+          <p className="text-pretty mt-5 sm:mt-18 md:mt-20 text-xl/9 md:text-2xl/7">
+            Having done my degree in information technology and having worked on
+            several <strong className="text-gradient">team projects</strong> and{" "}
+            <strong className="text-gradient">open source</strong>, I have
+            knowledge about the{" "}
+            <strong className="text-gradient">
+              software development process
+            </strong>
+            .
           </p>
         </section>
         <section id="cp" className="mb-24 sm:mb-44">
           <SmallHeading>Competitive Programming</SmallHeading>
-          <p className="text-pretty mt-16 sm:mt-20 text-xl/9 md:text-2xl/7">
-            {/* // TODO */}
+          <TagGroup
+            className="scale-90 md:scale-100 text-xs md:text-base mt-1"
+            tags={["algorithms", "data-structures", "problem-solving"]}
+          />
+          <p className="text-pretty mt-5 sm:mt-18 md:mt-20 text-xl/9 md:text-2xl/7">
+            I love solving problems and have been participating in{" "}
+            <strong className="text-gradient">
+              competitive programming contests
+            </strong>{" "}
+            on Codeforces, Leetcode, AtCoder and CodeChef. I have experience in
+            solving algorithmic problems and have a good understanding of data
+            structures.
           </p>
         </section>
       </div>
