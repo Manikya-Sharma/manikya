@@ -8,5 +8,8 @@ export const pathMapping = (path: string) => {
   if (path === "/skills") {
     return "skills";
   }
+  if (path === "/projects") {
+    return "projects";
+  }
   return "";
 };

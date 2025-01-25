@@ -1,28 +1,11 @@
-"use client";
-
-import TagGroup from "@/components/TagGroup";
+import ClickLink from "@/components/ClickLink";
 
 const Page = () => {
   return (
-    <div className="h-[150vh] w-full flex items-center justify-center px-10">
-      <div className="flex flex-wrap gap-3">
-        <TagGroup
-          tags={[
-            "html",
-            "css",
-            "tailwindcss",
-            "javascript",
-            "typescript",
-            "react",
-            "python",
-            "rust",
-            "docker",
-            "algorithms",
-            "data-structures",
-            "problem-solving",
-          ]}
-        />
-      </div>
+    <div className="h-full w-full flex items-center justify-center">
+      <ClickLink href="/dummy">
+        <div className="w-[60vw] aspect-video rounded-lg bg-zinc-300"></div>
+      </ClickLink>
     </div>
   );
 };
