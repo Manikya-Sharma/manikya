@@ -1,9 +1,12 @@
+import ClickLink from "@/components/ClickLink";
 import GotoLink from "@/components/GotoLink";
 import Heading from "@/components/Heading";
+import RaisedButton from "@/components/RaisedButton";
+import SmallGoto from "@/components/SmallGoto";
 import SmallHeading from "@/components/SmallHeading";
 import { figtree } from "@/lib/fonts";
 import { cn } from "@/lib/utils";
-import { ArrowLeft, ArrowRight } from "lucide-react";
+import { ArrowLeft, ArrowRight, MoveUpRight } from "lucide-react";
 
 /*
 
@@ -39,11 +42,31 @@ const Page = () => {
         </section>
         <section id="stusome" className="mb-24 sm:mb-44">
           <SmallHeading>Stusome</SmallHeading>
-          <p className="text-pretty mt-16 sm:mt-20 text-xl/9 md:text-2xl/7"></p>
+          <p className="text-pretty mt-16 sm:mt-20 text-xl/9 md:text-2xl/7">
+            Work in progress
+          </p>
         </section>
         <section id="storyphilia" className="mb-24 sm:mb-44">
-          <SmallHeading>Storyphilia</SmallHeading>
-          <p className="text-pretty mt-16 sm:mt-20 text-xl/9 md:text-2xl/7"></p>
+          <div className="flex items-center gap-4">
+            <SmallHeading className="inline-block">
+              <span>Storyphilia</span>
+            </SmallHeading>
+            <SmallGoto
+              className="text-base tracking-wide inline-block"
+              to="/projects/storyphilia"
+            >
+              Learn more
+              <MoveUpRight className="inline-block size-4 ml-1.5" />
+            </SmallGoto>
+          </div>
+          <ClickLink href="/projects/storyphilia">
+            <video className="mt-7 rounded-lg shadow-lg" autoPlay muted loop>
+              <source
+                src="/project-videos/storyphilia-generation.mp4"
+                type="video/mp4"
+              />
+            </video>
+          </ClickLink>
         </section>
         <section id="fashion-ai" className="mb-24 sm:mb-44">
           <SmallHeading>Fashion AI</SmallHeading>
