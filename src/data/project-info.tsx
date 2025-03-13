@@ -17,7 +17,7 @@ export const projectData = {
       "react",
       "nextjs",
       "tailwindcss",
-      "gpt-3",
+      "gpt",
       "prisma",
       "postgresql",
       "vercel",

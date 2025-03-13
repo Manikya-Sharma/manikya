@@ -62,6 +62,9 @@ const tagColorMap = {
   algorithms: "bg-red-50 border-red-300 text-red-700",
   "data-structures": "bg-blue-50 border-blue-300 text-blue-700",
   "problem-solving": "bg-green-50 border-green-300 text-green-700",
+  prisma: "bg-blue-50 border-blue-300 text-blue-700",
+  vercel: "bg-zinc-50 border-zinc-300 text-zinc-700",
+  "react-query": "bg-amber-50 border-amber-300 text-amber-700",
 } as { [key: string]: string };
 
 const bgMap = {
@@ -85,6 +88,9 @@ const bgMap = {
   algorithms: "bg-red-100",
   "data-structures": "bg-blue-100",
   "problem-solving": "bg-green-100",
+  prisma: "bg-blue-100",
+  vercel: "bg-zinc-100",
+  "react-query": "bg-amber-100",
 } as { [key: string]: string };
 
 const getTagText = (tagName: string) => {
@@ -113,6 +119,12 @@ const getTagText = (tagName: string) => {
       return "HTML";
     case "css":
       return "CSS";
+    case "gpt":
+      return "GPT";
+    case "postgresql":
+      return "PostgreSQL";
+    case "react-query":
+      return "React Query";
     default:
       return tagName.charAt(0).toUpperCase() + tagName.slice(1);
   }

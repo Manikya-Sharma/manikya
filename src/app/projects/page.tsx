@@ -1,7 +1,6 @@
 import ClickLink from "@/components/ClickLink";
 import GotoLink from "@/components/GotoLink";
 import Heading from "@/components/Heading";
-import RaisedButton from "@/components/RaisedButton";
 import SmallGoto from "@/components/SmallGoto";
 import SmallHeading from "@/components/SmallHeading";
 import { figtree } from "@/lib/fonts";

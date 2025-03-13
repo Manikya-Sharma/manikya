@@ -1,5 +1,11 @@
+import ProjectDescription from "./ProjectDescription";
+
 const Page = () => {
-  return <div>Page</div>;
+  return (
+    <main className="mt-20">
+      <ProjectDescription />
+    </main>
+  );
 };
 
 export default Page;
