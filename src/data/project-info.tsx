@@ -26,4 +26,34 @@ export const projectData = {
     github: "https://github.com/Manikya-Sharma/storyphilia",
     liveLink: "https://storyphilia.vercel.app/",
   },
+  stusome: {
+    media: [
+      {
+        type: "video",
+        src: "/project-videos/stusome.mp4",
+        mime: "video/mp4",
+      },
+    ],
+    about:
+      "Stusome is an online social media platform for students. \
+      It offers various unique features like creating and joining\
+      clubs, posting and sharing content, and much more. It also \
+      offers essential features like authentication and utility\
+      features like real time chat.",
+    techStack: [
+      "react",
+      "nextjs",
+      "tailwindcss",
+      "prisma",
+      "mongodb",
+      "redis",
+      "postgresql",
+      "vercel",
+      "react-query",
+      "trpc",
+    ],
+    github: "https://github.com/Manikya-Sharma/stusome-v3",
+    liveLink: "https://stusome-v3.vercel.app",
+  },
+  // TODO: Add more
 };

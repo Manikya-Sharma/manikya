@@ -10,7 +10,12 @@ const Breadcrumbs = (): React.ReactNode => {
   const parts = pathName.split("/");
   const others = parts.slice(1);
   return (
-    <span className={cn("flex", firacode.className)}>
+    <span
+      className={cn(
+        "flex text-sm md:text-base line-clamp-1",
+        firacode.className
+      )}
+    >
       <span className="cursor-default">~</span>
       <span className="mx-1 font-normal">/</span>
       <Link className="font-semibold transition-colors" href="/">

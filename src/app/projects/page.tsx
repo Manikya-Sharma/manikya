@@ -3,6 +3,7 @@ import GotoLink from "@/components/GotoLink";
 import Heading from "@/components/Heading";
 import SmallGoto from "@/components/SmallGoto";
 import SmallHeading from "@/components/SmallHeading";
+import { projectData } from "@/data/project-info";
 import { figtree } from "@/lib/fonts";
 import { cn } from "@/lib/utils";
 import { ArrowLeft, ArrowRight, MoveUpRight } from "lucide-react";
@@ -39,50 +40,46 @@ const Page = () => {
             learning new technologies.
           </p>
         </section>
-        <section id="stusome" className="mb-24 sm:mb-44">
-          <SmallHeading>Stusome</SmallHeading>
-          <p className="text-pretty mt-16 sm:mt-20 text-xl/9 md:text-2xl/7">
-            Work in progress
-          </p>
-        </section>
-        <section id="storyphilia" className="mb-24 sm:mb-44">
-          <div className="flex items-center gap-4">
-            <SmallHeading className="inline-block">
-              <span>Storyphilia</span>
-            </SmallHeading>
-            <SmallGoto
-              className="text-base tracking-wide inline-block"
-              to="/projects/storyphilia"
-            >
-              Learn more
-              <MoveUpRight className="inline-block size-4 ml-1.5" />
-            </SmallGoto>
-          </div>
-          <ClickLink href="/projects/storyphilia">
-            <video className="mt-7 rounded-lg shadow-lg" autoPlay muted loop>
-              <source
-                src="/project-videos/storyphilia-generation.mp4"
-                type="video/mp4"
-              />
-            </video>
-          </ClickLink>
-        </section>
-        <section id="fashion-ai" className="mb-24 sm:mb-44">
-          <SmallHeading>Fashion AI</SmallHeading>
-          <p className="text-pretty mt-16 sm:mt-20 text-xl/9 md:text-2xl/7"></p>
-        </section>
-        <section id="todo-cli" className="mb-24 sm:mb-44">
-          <SmallHeading>Todo CLI</SmallHeading>
-          <p className="text-pretty mt-16 sm:mt-20 text-xl/9 md:text-2xl/7"></p>
-        </section>
-        <section id="mini-vim" className="mb-24 sm:mb-44">
-          <SmallHeading>Mini VIM</SmallHeading>
-          <p className="text-pretty mt-16 sm:mt-20 text-xl/9 md:text-2xl/7"></p>
-        </section>
-        <section id="flappy-bird" className="mb-24 sm:mb-44">
-          <SmallHeading>Flappy Bird</SmallHeading>
-          <p className="text-pretty mt-16 sm:mt-20 text-xl/9 md:text-2xl/7"></p>
-        </section>
+        {(Object.keys(projectData) as Array<keyof typeof projectData>).map(
+          (project) => {
+            const name = project;
+            const data = projectData[project];
+            return (
+              <section key={name} id={name} className="mb-24 sm:mb-44">
+                <div className="flex items-center gap-4">
+                  <SmallHeading className="inline-block">
+                    <span>{name}</span>
+                  </SmallHeading>
+                  <SmallGoto
+                    className="text-base tracking-wide inline-block"
+                    to={`/projects/${name}`}
+                  >
+                    <div className="flex items-center gap-1.5">
+                      <div className="hidden sm:block">Learn more</div>
+                      <MoveUpRight className="block size-5 sm:size-4" />
+                    </div>
+                  </SmallGoto>
+                </div>
+                <ClickLink href="/projects/storyphilia">
+                  {data.media[0].type === "video" ? (
+                    <video
+                      className="mt-7 rounded-lg shadow-lg"
+                      autoPlay
+                      muted
+                      loop
+                    >
+                      <source
+                        src={data.media[0].src}
+                        type={data.media[0].mime}
+                      />
+                    </video>
+                  ) : // TODO: Add option for image
+                  null}
+                </ClickLink>
+              </section>
+            );
+          }
+        )}
       </div>
       <div className="px-16 md:px-40 flex flex-col md:flex-row md:items-center justify-between gap-10 pb-20">
         <GotoLink
