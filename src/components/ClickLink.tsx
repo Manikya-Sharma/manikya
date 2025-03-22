@@ -1,11 +1,10 @@
 "use client";
 
-import Link from "next/link";
-import { motion } from "motion/react";
+import { useMouse } from "@/app/hooks/useMouse";
 import { cn } from "@/lib/utils";
-import { useEffect, useRef, useState } from "react";
-import { throttle } from "lodash";
 import { ArrowRight } from "lucide-react";
+import { motion } from "motion/react";
+import Link from "next/link";
 
 const ClickLink = ({
   children,
@@ -16,32 +15,7 @@ const ClickLink = ({
   className?: string;
   href: string;
 }) => {
-  const [x, setX] = useState<number>(0);
-  const [y, setY] = useState<number>(0);
-  const containerRef = useRef<HTMLDivElement>(null);
-  const cursorRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const handleMouseMove = throttle((e: MouseEvent) => {
-      if (containerRef.current === null || cursorRef.current === null) return;
-      setX(
-        e.clientX -
-          containerRef.current.getBoundingClientRect().left -
-          cursorRef.current.clientWidth / 2
-      );
-      setY(
-        e.clientY -
-          containerRef.current.getBoundingClientRect().top -
-          cursorRef.current.clientHeight / 2
-      );
-    }, 1000 / 60);
-
-    window.addEventListener("mousemove", handleMouseMove);
-
-    return () => {
-      window.removeEventListener("mousemove", handleMouseMove);
-    };
-  }, []);
+  const { containerRef, cursorRef, x, y } = useMouse();
 
   return (
     <motion.div

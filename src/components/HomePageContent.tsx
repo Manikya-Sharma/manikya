@@ -12,7 +12,7 @@ const HomePageContent = () => {
   return (
     <div
       className={cn(
-        "h-full w-full grid grid-cols-2 grid-rows-2 place-items-center text-2xl md:text-5xl gap-0.5",
+        "h-full w-full grid grid-cols-2 grid-rows-2 place-items-center text-2xl md:text-5xl gap-2",
         electrolize.className
       )}
     >
@@ -21,8 +21,15 @@ const HomePageContent = () => {
         .map((section) => (
           <Link
             href={section.href}
-            className="group bg-black h-full w-full text-white hover:bg-black/70 transition-colors"
+            className="group h-full w-full"
             key={section.label}
+            style={{
+              background: "rgba(255, 255, 255, 0.28)",
+              borderRadius: "16px",
+              boxShadow: "0 4px 30px rgba(0, 0, 0, 0.1)",
+              backdropFilter: "blur(5.3px)",
+              border: "1px solid rgba(255, 255, 255, 0.24)",
+            }}
           >
             <motion.span
               initial={{ opacity: 0 }}

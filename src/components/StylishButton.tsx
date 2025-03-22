@@ -43,7 +43,7 @@ const StylishButton = ({
           const target = href.substring(1);
           const element = document.getElementById(target);
           window.scrollTo({
-            top: element?.offsetTop,
+            top: (element?.offsetTop ?? 0) - 100,
             behavior: "smooth",
           });
         } else {
