@@ -1,5 +1,6 @@
 "use client";
 
+import { useIsMobile } from "@/app/hooks/useIsMobile";
 import {
   MAX_RADIUS,
   MAX_SPEED,
@@ -27,6 +28,16 @@ export const RandomBubblesMotion = ({
   bubbleCount: number;
   className?: string;
 }) => {
+  const isMobile = useIsMobile();
+
+  // We want max performance on mobile devices
+  const count = isMobile ? 10 : bubbleCount;
+  const max_radius = isMobile ? 20 : MAX_RADIUS;
+  const min_radius = isMobile ? 10 : MIN_RADIUS;
+  // Question: does it affect performance?
+  const max_speed = MAX_SPEED;
+  const min_speed = MIN_SPEED;
+
   const [randomDirections, setRandomDirections] = useState<
     Array<{ dx: number; dy: number; speed: number }>
   >([]);
@@ -49,13 +60,13 @@ export const RandomBubblesMotion = ({
     return bubbleRefs.current;
   };
   useEffect(() => {
-    for (let i = 0; i < bubbleCount; i++) {
+    for (let i = 0; i < count; i++) {
       setBubbles((prev) => [
         ...prev,
         {
-          x: Math.random() * (window.innerWidth - 2 * MAX_RADIUS) + MAX_RADIUS,
-          y: Math.random() * (window.innerHeight - 2 * MAX_RADIUS) + MAX_RADIUS,
-          r: Math.random() * (MAX_RADIUS - MIN_RADIUS) + MIN_RADIUS,
+          x: Math.random() * (window.innerWidth - 2 * max_radius) + max_radius,
+          y: Math.random() * (window.innerHeight - 2 * max_radius) + max_radius,
+          r: Math.random() * (max_radius - min_radius) + min_radius,
           color: COLORS[Math.floor(Math.random() * COLORS.length)],
         },
       ]);
@@ -64,17 +75,17 @@ export const RandomBubblesMotion = ({
         {
           dx: Math.random() * 2 - 1,
           dy: Math.random() * 2 - 1,
-          speed: Math.random() * (MAX_SPEED - MIN_SPEED) + MIN_SPEED,
+          speed: Math.random() * (max_speed - min_speed) + min_speed,
         },
       ]);
     }
-  }, [bubbleCount]);
+  }, [count]);
 
   useEffect(() => {
     const width = window.innerWidth;
     const height = window.innerHeight;
     const moveBubbles = () => {
-      for (let i = 0; i < bubbleCount; i++) {
+      for (let i = 0; i < count; i++) {
         if (!bubbles[i]) continue;
         const { r } = bubbles[i];
         const bubble = bubbleRefs.current?.get(bubbles[i]);
@@ -102,9 +113,9 @@ export const RandomBubblesMotion = ({
         bubble.style.left = `${new_x}px`;
       }
     };
-    const interval = setInterval(moveBubbles, 1000 / 30);
+    const interval = setInterval(moveBubbles, isMobile ? 1000 / 17 : 1000 / 30);
     return () => clearInterval(interval);
-  }, [bubbleRefs, bubbles, bubbleCount, randomDirections]);
+  }, [bubbleRefs, bubbles, count, randomDirections]);
 
   return (
     <div className={cn("-z-[1000] overflow-hidden", className)}>
