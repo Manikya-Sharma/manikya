@@ -27,7 +27,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased h-screen min-h-screen flex flex-col`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased h-screen min-h-screen flex flex-col selection:bg-emerald-200 selection:text-emerald-700`}
       >
         <MotionConfig reducedMotion="user">
           <Navbar className="bg-black text-white py-5 px-7" />

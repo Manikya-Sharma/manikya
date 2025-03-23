@@ -4,7 +4,7 @@ import { getMenuOptions } from "@/data/sections";
 import { Menu, X } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
 import StylishButton from "./StylishButton";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
 import { pathMapping } from "@/lib/pathMapping";
 
@@ -26,6 +26,22 @@ const NavbarMenu = () => {
   };
 
   const options = getMenuOptions({ location: pathMapping(pathName) });
+
+  // handle click outside the menu
+  const menuRef = useRef<HTMLDivElement | null>(null);
+  useEffect(() => {
+    const handleClick = (e: MouseEvent) => {
+      if (
+        menuRef.current &&
+        !menuRef.current.contains(e.target as Node) &&
+        isMenuOpen
+      ) {
+        setIsMenuOpen(false);
+      }
+    };
+    document.addEventListener("click", handleClick);
+    return () => document.removeEventListener("click", handleClick);
+  }, [isMenuOpen, setIsMenuOpen]);
 
   return options.length === 0 ? null : (
     <>
@@ -59,6 +75,7 @@ const NavbarMenu = () => {
         transition={{
           duration: 0.15,
         }}
+        ref={menuRef}
       >
         <ul className="flex flex-col gap-2">
           {options.map((option) => (

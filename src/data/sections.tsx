@@ -11,7 +11,6 @@ import {
   Hammer,
   Heart,
   House,
-  MessageCircleHeart,
   NotebookText,
   Pen,
   ScrollText,
@@ -113,11 +112,11 @@ export const getMenuOptions = ({
   }
   if (location === "projects") {
     return [
-      {
-        icon: <MessageCircleHeart className={size ? size : "size-4"} />,
-        label: "Stusome",
-        href: "#stusome",
-      },
+      // {
+      //   icon: <MessageCircleHeart className={size ? size : "size-4"} />,
+      //   label: "Stusome",
+      //   href: "#stusome",
+      // },
       {
         icon: <ScrollText className={size ? size : "size-4"} />,
         label: "Storyphilia",
@@ -145,6 +144,11 @@ export const getMenuOptions = ({
         href: "#fashion-ai",
       },
       {
+        icon: <Bird className={size ? size : "size-4"} />,
+        label: "Flappy Bird",
+        href: "#flappy-bird",
+      },
+      {
         icon: <CheckCheck className={size ? size : "size-4"} />,
         label: "Todo CLI",
         href: "#todo-cli",
@@ -153,11 +157,6 @@ export const getMenuOptions = ({
         icon: <FilePenLine className={size ? size : "size-4"} />,
         label: "Mini VIM",
         href: "#mini-vim",
-      },
-      {
-        icon: <Bird className={size ? size : "size-4"} />,
-        label: "Flappy Bird",
-        href: "#flappy-bird",
       },
     ];
   }

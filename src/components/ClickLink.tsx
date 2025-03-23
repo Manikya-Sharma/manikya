@@ -29,15 +29,15 @@ const ClickLink = ({
         ref={cursorRef}
         variants={{
           initial: {
-            scale: 0,
             opacity: 0,
+            rotate: -45,
           },
           hover: {
-            scale: 1,
             opacity: 1,
+            rotate: 0,
           },
         }}
-        className="absolute pointer-events-none size-16 md:size-20 rounded-full bg-black text-white flex items-center justify-center"
+        className="absolute pointer-events-none size-16 md:size-20 rounded-full bg-black text-white flex items-center justify-center ring-2 ring-white ring-opacity-50"
       >
         <ArrowRight className="size-6 group-active:translate-x-2 transition-transform" />
       </motion.div>

@@ -3,6 +3,7 @@ import GotoLink from "@/components/GotoLink";
 import Heading from "@/components/Heading";
 import SmallGoto from "@/components/SmallGoto";
 import SmallHeading from "@/components/SmallHeading";
+import { ViewportVideo } from "@/components/ViewportVideo";
 import { projectData } from "@/data/project-info";
 import { figtree } from "@/lib/fonts";
 import { cn } from "@/lib/utils";
@@ -31,15 +32,6 @@ const Page = () => {
           figtree.className
         )}
       >
-        <section id="intro" className="mb-24 sm:mb-52">
-          <p className="text-pretty">
-            Hi, I am a{" "}
-            <strong className="text-gradient">full stack developer</strong> with
-            a passion for building web applications that are both{" "}
-            <em>functional and beautiful</em>. I love solving problems and
-            learning new technologies.
-          </p>
-        </section>
         {(Object.keys(projectData) as Array<keyof typeof projectData>).map(
           (project) => {
             const name = project;
@@ -60,22 +52,19 @@ const Page = () => {
                     </div>
                   </SmallGoto>
                 </div>
-                <ClickLink href="/projects/storyphilia">
-                  {data.media[0].type === "video" ? (
-                    <video
-                      className="mt-7 rounded-lg shadow-lg"
-                      autoPlay
-                      muted
-                      loop
-                    >
-                      <source
-                        src={data.media[0].src}
-                        type={data.media[0].mime}
-                      />
-                    </video>
-                  ) : // TODO: Add option for image
-                  null}
-                </ClickLink>
+                <div className="mt-7">
+                  <ClickLink href={`/projects/${name}`}>
+                    {data.media[0].type === "video" ? (
+                      <ViewportVideo autoPlay muted loop>
+                        <source
+                          src={data.media[0].src}
+                          type={data.media[0].mime}
+                        />
+                      </ViewportVideo>
+                    ) : // TODO: Add option for image
+                    null}
+                  </ClickLink>
+                </div>
               </section>
             );
           }
