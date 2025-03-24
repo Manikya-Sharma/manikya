@@ -65,6 +65,9 @@ const tagColorMap = {
   prisma: "bg-blue-50 border-blue-300 text-blue-700",
   vercel: "bg-zinc-50 border-zinc-300 text-zinc-700",
   "react-query": "bg-amber-50 border-amber-300 text-amber-700",
+  pygame: "bg-green-50 border-green-300 text-green-700",
+  crossterm: "bg-zinc-50 border-zinc-300 text-zinc-700",
+  ratatui: "bg-zinc-50 border-zinc-300 text-zinc-700",
 } as { [key: string]: string };
 
 const bgMap = {
@@ -91,6 +94,9 @@ const bgMap = {
   prisma: "bg-blue-100",
   vercel: "bg-zinc-100",
   "react-query": "bg-amber-100",
+  pygame: "bg-green-100",
+  crossterm: "bg-zinc-100",
+  ratatui: "bg-zinc-100",
 } as { [key: string]: string };
 
 const getTagText = (tagName: string) => {
@@ -171,7 +177,11 @@ const SkillTag = ({
           className
         )}
       >
-        <img src={`/logos/${tagName}-logo.svg`} className="block size-5" />
+        <img
+          src={`/logos/${tagName}-logo.svg`}
+          className="block size-5"
+          alt={tagName}
+        />
         {getTagText(tagName)}
       </motion.div>
     </motion.div>

@@ -5,6 +5,7 @@ import { figtree } from "@/lib/fonts";
 import { ExternalLink } from "lucide-react";
 import { buttonVariants } from "./ui/button";
 import TagGroup from "./TagGroup";
+import { ProjectCarousel } from "./ProjectCarousel";
 
 const ProjectView = ({
   projectName,
@@ -56,9 +57,7 @@ const ProjectView = ({
             />
           </div>
         </div>
-        <div className="h-72 lg:flex-grow lg:h-auto mt-10 lg:mt-0">
-          <div className="bg-black w-full h-full rounded-lg" />
-        </div>
+        <ProjectCarousel project={details} />
       </div>
     </main>
   );

@@ -1,6 +1,5 @@
 "use client";
 
-import { cn } from "@/lib/utils";
 import { Loader2 } from "lucide-react";
 import { useInView } from "motion/react";
 import { useEffect, useRef, useState } from "react";
@@ -20,16 +19,10 @@ export const ViewportVideo = ({
     if (isInView) {
       setHasVisited(true);
     }
-  }, [isInView]);
+  }, [isInView, hasVisited]);
 
   return (
-    <div
-      className={cn(
-        "ring-black ring-2 ring-opacity-25 rounded-lg ring-offset-2",
-        className
-      )}
-      ref={videoRef}
-    >
+    <div className={className} ref={videoRef}>
       {hasVisited ? (
         <video className="rounded-lg" {...props}>
           {children}

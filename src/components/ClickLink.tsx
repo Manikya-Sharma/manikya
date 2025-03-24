@@ -30,10 +30,12 @@ const ClickLink = ({
         variants={{
           initial: {
             opacity: 0,
+            scale: 0,
             rotate: -45,
           },
           hover: {
             opacity: 1,
+            scale: 1,
             rotate: 0,
           },
         }}

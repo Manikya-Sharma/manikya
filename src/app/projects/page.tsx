@@ -3,7 +3,6 @@ import GotoLink from "@/components/GotoLink";
 import Heading from "@/components/Heading";
 import SmallGoto from "@/components/SmallGoto";
 import SmallHeading from "@/components/SmallHeading";
-import { ViewportVideo } from "@/components/ViewportVideo";
 import { projectData } from "@/data/project-info";
 import { figtree } from "@/lib/fonts";
 import { cn } from "@/lib/utils";
@@ -54,15 +53,11 @@ const Page = () => {
                 </div>
                 <div className="mt-7">
                   <ClickLink href={`/projects/${name}`}>
-                    {data.media[0].type === "video" ? (
-                      <ViewportVideo autoPlay muted loop>
-                        <source
-                          src={data.media[0].src}
-                          type={data.media[0].mime}
-                        />
-                      </ViewportVideo>
-                    ) : // TODO: Add option for image
-                    null}
+                    <img
+                      src={data.images[0].src}
+                      alt={data.images[0].alt}
+                      className="ring-black ring-2 ring-opacity-25 rounded-lg ring-offset-2 w-full aspect-video object-contain"
+                    />
                   </ClickLink>
                 </div>
               </section>

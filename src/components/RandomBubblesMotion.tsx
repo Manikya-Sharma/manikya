@@ -79,7 +79,7 @@ export const RandomBubblesMotion = ({
         },
       ]);
     }
-  }, [count]);
+  }, [count, max_radius, max_speed, min_radius, min_speed]);
 
   useEffect(() => {
     const width = window.innerWidth;
@@ -115,7 +115,7 @@ export const RandomBubblesMotion = ({
     };
     const interval = setInterval(moveBubbles, isMobile ? 1000 / 17 : 1000 / 30);
     return () => clearInterval(interval);
-  }, [bubbleRefs, bubbles, count, randomDirections]);
+  }, [bubbleRefs, bubbles, count, randomDirections, isMobile]);
 
   return (
     <div className={cn("-z-[1000] overflow-hidden", className)}>

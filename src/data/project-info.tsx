@@ -1,10 +1,27 @@
 export const projectData = {
   storyphilia: {
-    media: [
+    video: [
       {
-        type: "video",
         src: "/project-videos/storyphilia-generation.mp4",
         mime: "video/mp4",
+      },
+    ],
+    images: [
+      {
+        src: "/project-images/storyphilia-1.png",
+        alt: "Storyphilia 1",
+      },
+      {
+        src: "/project-images/storyphilia-2.png",
+        alt: "Storyphilia 2",
+      },
+      {
+        src: "/project-images/storyphilia-3.png",
+        alt: "Storyphilia 3",
+      },
+      {
+        src: "/project-images/storyphilia-4.png",
+        alt: "Storyphilia 4",
       },
     ],
     about:
@@ -27,12 +44,26 @@ export const projectData = {
     liveLink: "https://storyphilia.vercel.app/",
   },
   "fashion-ai": {
-    media: [
+    video: [
       {
-        type: "video",
         src: "/project-videos/fashion-ai.mp4",
         mime: "video/mp4",
       },
+    ],
+    images: [
+      {
+        src: "/project-images/fashion-ai-1.png",
+        alt: "Fashion AI 1",
+      },
+      {
+        src: "/project-images/fashion-ai-2.png",
+        alt: "Fashion AI 2",
+      },
+      // TODO: Add the 3rd image after solving issue with varying dimensions
+      // {
+      //   src: "/project-images/fashion-ai-3.png",
+      //   alt: "Fashion AI 3",
+      // },
     ],
     about:
       "Fashion AI is an AI based web application which\
@@ -52,11 +83,24 @@ export const projectData = {
     liveLink: "https://fashion-ai-three.vercel.app/",
   },
   "flappy-bird": {
-    media: [
+    video: [
       {
-        type: "video",
         src: "/project-videos/flappy-bird.mp4",
         mime: "video/mp4",
+      },
+    ],
+    images: [
+      {
+        src: "/project-images/flappy-bird-1.png",
+        alt: "Flappy Bird 1",
+      },
+      {
+        src: "/project-images/flappy-bird-2.png",
+        alt: "Flappy Bird 2",
+      },
+      {
+        src: "/project-images/flappy-bird-3.png",
+        alt: "Flappy Bird 3",
       },
     ],
     about:
@@ -68,11 +112,24 @@ export const projectData = {
     liveLink: "https://github.com/Manikya-Sharma/Flappy-Bird-Pygame",
   },
   "todo-cli": {
-    media: [
+    video: [
       {
-        type: "video",
         src: "/project-videos/todo-cli.mp4",
         mime: "video/mp4",
+      },
+    ],
+    images: [
+      {
+        src: "/project-images/todo-cli-1.png",
+        alt: "Todo CLI 1",
+      },
+      {
+        src: "/project-images/todo-cli-2.png",
+        alt: "Todo CLI 2",
+      },
+      {
+        src: "/project-images/todo-cli-3.png",
+        alt: "Todo CLI 3",
       },
     ],
     about:
@@ -80,16 +137,25 @@ export const projectData = {
       which allows users to add, delete, update and list todos.\
       It has been built using rust and has a simple and\
       intuitive UI.",
-    techStack: ["rust", "crossterm", "ratatui", "clap"],
+    techStack: ["rust", "crossterm", "ratatui"],
     github: "https://github.com/Manikya-Sharma/todo-cli",
     liveLink: "https://crates.io/crates/todo-cli-manikya",
   },
   "mini-vim": {
-    media: [
+    video: [
       {
-        type: "video",
         src: "/project-videos/mini-vim.mp4",
         mime: "video/mp4",
+      },
+    ],
+    images: [
+      {
+        src: "/project-images/mini-vim-1.png",
+        alt: "Mini Vim 1",
+      },
+      {
+        src: "/project-images/mini-vim-2.png",
+        alt: "Mini Vim 2",
       },
     ],
     about:
