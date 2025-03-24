@@ -19,14 +19,14 @@ const ProjectView = ({
       <div className="lg:flex min-h-[70vh] items-stretch gap-5">
         <div className="max-w-prose my-auto md:mx-auto md:w-fit">
           <SmallHeading>{projectName}</SmallHeading>
-          <div className={cn("flex items-center", figtree.className)}>
+          <div className={cn("flex items-center gap-4", figtree.className)}>
             <a
               href={details.github}
               className={cn(
                 buttonVariants({
                   variant: "link",
                   className:
-                    "text-lg text-blue-700 underline hover:no-underline",
+                    "text-lg text-blue-700 underline hover:no-underline px-0",
                 }),
                 "text-pretty flex items-center gap-0.5"
               )}
@@ -39,7 +39,7 @@ const ProjectView = ({
                 buttonVariants({
                   variant: "link",
                   className:
-                    "text-lg text-blue-700 underline hover:no-underline",
+                    "text-lg text-blue-700 underline hover:no-underline px-0",
                 }),
                 "text-pretty flex items-center gap-0.5"
               )}
@@ -47,9 +47,14 @@ const ProjectView = ({
               Deployed Link <ExternalLink />
             </a>
           </div>
-          <p className="text-base md:text-xl mt-2 text-pretty">
+          <div
+            className={cn(
+              "text-base md:text-xl mt-2 text-pretty",
+              figtree.className
+            )}
+          >
             {details.about}
-          </p>
+          </div>
           <div className="mt-5">
             <TagGroup
               className="scale-90 md:scale-100 text-xs md:text-base mt-1"
