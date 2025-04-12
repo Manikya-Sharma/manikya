@@ -7,6 +7,7 @@ import StylishButton from "./StylishButton";
 import { useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
 import { pathMapping } from "@/lib/pathMapping";
+import { ContactItems } from "./ContactItems";
 
 const NavbarMenu = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -43,7 +44,11 @@ const NavbarMenu = () => {
     return () => document.removeEventListener("click", handleClick);
   }, [isMenuOpen, setIsMenuOpen]);
 
-  return options.length === 0 ? null : (
+  return options.length === 0 ? (
+    pathName === "/" ? (
+      <ContactItems />
+    ) : null
+  ) : (
     <>
       <AnimatePresence initial={false}>
         <button onClick={() => setIsMenuOpen(!isMenuOpen)}>

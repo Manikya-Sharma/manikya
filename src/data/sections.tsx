@@ -9,12 +9,12 @@ import {
   Globe,
   GraduationCap,
   Hammer,
+  Hash,
   Heart,
   House,
   NotebookText,
   Pen,
   ScrollText,
-  Signature,
   Swords,
 } from "lucide-react";
 
@@ -51,8 +51,8 @@ export const getMenuOptions = ({
         href: "/projects",
       },
       {
-        icon: <Signature className={size ? size : "size-4"} />,
-        label: "Contact",
+        icon: <Hash className={size ? size : "size-4"} />,
+        label: "Socials",
         href: "/contact",
       },
     ];

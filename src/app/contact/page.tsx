@@ -1,10 +1,19 @@
-import Heading from "@/components/Heading";
+/*
+
+- Linkedin
+- GitHub
+- Email
+- Codeforces
+- Leetcode
+- Atcoder
+- Twitter
+- Discord
+
+*/
 
 const Page = () => {
   return (
-    <div>
-      <Heading className="text-8xl md:text-9xl">Contact</Heading>
-    </div>
+    <div className="grid grid-cols-2 h-screen w-screen items-center justify-center"></div>
   );
 };
 
