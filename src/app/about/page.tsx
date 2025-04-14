@@ -52,9 +52,9 @@ const Page = () => {
             <strong className="text-gradient">
               Delhi Technological University
             </strong>{" "}
-            with a bachelor&apos;s degree in{" "}
+            pursuing a bachelor&apos;s degree in{" "}
             <strong className="text-gradient">Information Technology</strong>. I
-            have also completed several online courses in artificial
+            have also completed multiple online courses in artificial
             intelligence, web development and software engineering.
           </p>
         </section>
@@ -68,7 +68,7 @@ const Page = () => {
             />
           </SmallHeading>
           <p className="text-pretty mt-16 sm:mt-20 text-xl/9 md:text-2xl/7">
-            I have participated in several{" "}
+            I have participated in various{" "}
             <strong className="text-gradient">hackathons</strong> and have
             worked on a variety of projects. I have experience with several{" "}
             <strong className="text-gradient">
@@ -104,7 +104,7 @@ const Page = () => {
         >
           <div className="flex items-center gap-1.5 tracking-tight">
             <ArrowLeft className="size-7 xs:size-9 sm:size-10 inline-block" />
-            Contact
+            Socials
           </div>
         </GotoLink>
         <GotoLink

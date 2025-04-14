@@ -80,7 +80,7 @@ const Page = () => {
           href="/contact"
         >
           <div className="flex items-center gap-1.5 tracking-tight justify-end xs:justify-start">
-            Contact
+            Socials
             <ArrowRight className="size-7 xs:size-9 sm:size-10 inline-block" />
           </div>
         </GotoLink>

@@ -112,7 +112,7 @@ const StylishButton = ({
           scale: 0.9,
         }}
         className={cn(
-          "bg-black text-white rounded-xl text-lg",
+          "bg-black text-white rounded-xl text-lg px-6 py-3",
           {
             "text-sm px-3 py-2": size === "sm",
             "bg-transparent hover:bg-black hover:text-white transition-colors duration-200 text-black border border-black":

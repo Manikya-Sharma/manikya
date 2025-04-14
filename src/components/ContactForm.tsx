@@ -124,29 +124,29 @@ export const ContactForm = () => {
         />
       </Form>
       <div className="mt-5 ml-auto mr-auto md:mr-5 w-fit">
-        <StylishButton className="flex items-center gap-1.5" size="md">
-          <button
-            className="block px-6 py-3"
-            onClick={() => {
-              if (!form.formState.isValid) {
-                form.handleSubmit(onSubmit)();
-                return;
-              }
-              toast.promise(form.handleSubmit(onSubmit)(), {
-                loading: "Sending message...",
-                success:
-                  "Message sent successfully! I will get back to you soon.",
-                error: "Failed to send message. Please try again.",
-              });
-            }}
-            type="submit"
-          >
+        <button
+          className="block"
+          onClick={() => {
+            if (!form.formState.isValid) {
+              form.handleSubmit(onSubmit)();
+              return;
+            }
+            toast.promise(form.handleSubmit(onSubmit)(), {
+              loading: "Sending message...",
+              success:
+                "Message sent successfully! I will get back to you soon.",
+              error: "Failed to send message. Please try again.",
+            });
+          }}
+          type="submit"
+        >
+          <StylishButton className="flex items-center gap-1.5" size="md">
             <div className="flex items-center gap-1.5">
               <div>Send</div>
               <Send className="size-5" />
             </div>
-          </button>
-        </StylishButton>
+          </StylishButton>
+        </button>
       </div>
     </div>
   );
