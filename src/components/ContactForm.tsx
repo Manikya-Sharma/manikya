@@ -18,6 +18,7 @@ import {
 } from "./ui/form";
 import { Input } from "./ui/input";
 import { Textarea } from "./ui/textarea";
+import toast, { Toaster } from "react-hot-toast";
 
 const formSchema = z.object({
   name: z.string().min(1, { message: "Name is required" }),
@@ -36,6 +37,23 @@ export const ContactForm = () => {
       message: "",
     },
   });
+
+  const onSubmit = async (data: FormSchema) => {
+    const response = await fetch("/api/send-message", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
+    if (response.ok) {
+      form.reset();
+    }
+    if (response.status === 500) {
+      throw new Error("Failed to send message. Please try again later.");
+    }
+  };
+
   return (
     <div
       className={cn(
@@ -43,6 +61,7 @@ export const ContactForm = () => {
         figtree.className
       )}
     >
+      <Toaster />
       <SmallHeading className="text-lg sm:text-xl md:text-3xl text-center mb-5">
         Start a conversation
       </SmallHeading>
@@ -106,10 +125,23 @@ export const ContactForm = () => {
       </Form>
       <div className="mt-5 ml-auto mr-auto md:mr-5 w-fit">
         <StylishButton className="flex items-center gap-1.5" size="md">
-          <div className="flex items-center gap-1.5">
-            <div>Send</div>
-            <Send className="size-5" />
-          </div>
+          <button
+            className="block px-6 py-3"
+            onClick={() =>
+              toast.promise(form.handleSubmit(onSubmit)(), {
+                loading: "Sending message...",
+                success:
+                  "Message sent successfully! I will get back to you soon.",
+                error: "Failed to send message. Please try again.",
+              })
+            }
+            type="submit"
+          >
+            <div className="flex items-center gap-1.5">
+              <div>Send</div>
+              <Send className="size-5" />
+            </div>
+          </button>
         </StylishButton>
       </div>
     </div>

@@ -101,10 +101,9 @@ const StylishButton = ({
       </motion.div>
     </a>
   ) : (
-    <button
+    <div
       {...props}
       className="block focus:outline-none focus:ring-2 focus:ring-black rounded-xl"
-      onClick={() => onButtonClick()}
     >
       <motion.div
         initial="initial"
@@ -113,7 +112,7 @@ const StylishButton = ({
           scale: 0.9,
         }}
         className={cn(
-          "px-6 py-3 bg-black text-white rounded-xl text-lg",
+          "bg-black text-white rounded-xl text-lg",
           {
             "text-sm px-3 py-2": size === "sm",
             "bg-transparent hover:bg-black hover:text-white transition-colors duration-200 text-black border border-black":
@@ -147,7 +146,7 @@ const StylishButton = ({
           </motion.div>
         </div>
       </motion.div>
-    </button>
+    </div>
   );
 };
 

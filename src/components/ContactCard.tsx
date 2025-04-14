@@ -8,13 +8,16 @@ export const ContactCard = ({
   className,
   text,
   image,
+  href,
 }: {
   className?: string;
   text: string;
   image: string;
+  href: string;
 }) => {
   return (
-    <motion.button
+    <motion.a
+      href={href}
       transition={{
         duration: 0.2,
       }}
@@ -35,7 +38,10 @@ export const ContactCard = ({
           paddingRight: 18,
         },
       }}
-      className={cn("relative flex items-center gap-2", className)}
+      className={cn(
+        "relative cursor-pointer flex items-center gap-2",
+        className
+      )}
     >
       <motion.div
         className="absolute left-3"
@@ -94,6 +100,6 @@ export const ContactCard = ({
       >
         <ExternalLink className="inline-block size-4" />
       </motion.div>
-    </motion.button>
+    </motion.a>
   );
 };
