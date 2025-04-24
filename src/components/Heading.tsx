@@ -8,7 +8,7 @@ import { useState } from "react";
 const Heading = ({
   children,
   className,
-  hasScroll,
+  hasScroll = true,
 }: {
   children: React.ReactNode;
   className?: string;
