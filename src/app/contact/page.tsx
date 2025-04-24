@@ -19,7 +19,10 @@ const Page = () => {
   return (
     <main className="flex flex-col md:flex-row h-screen w-screen px-5 md:px-10 md:gap-6">
       <div className="flex-1 mt-20 md:mt-0 h-full flex flex-col justify-center gap-10">
-        <Heading className="h-auto text-5xl md:text-7xl md:place-items-start text-center md:text-start">
+        <Heading
+          hasScroll={false}
+          className="h-auto text-5xl md:text-7xl md:place-items-start text-center md:text-start"
+        >
           Get In Touch
         </Heading>
         <div

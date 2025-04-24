@@ -1,3 +1,4 @@
+import { ExternLink } from "@/components/ExternLink";
 import GotoLink from "@/components/GotoLink";
 import Heading from "@/components/Heading";
 import SmallHeading from "@/components/SmallHeading";
@@ -32,8 +33,8 @@ const Page = () => {
       >
         <section id="intro" className="mb-24 sm:mb-52">
           <p className="text-pretty">
-            I am experienced in several programming languages and frameworks. I
-            have experience with{" "}
+            I am well versed with several programming languages and frameworks.
+            I have experience with technologies related to the fields of{" "}
             <strong className="text-gradient">web development</strong>,{" "}
             <strong className="text-gradient">machine learning</strong>,{" "}
             <strong className="text-gradient">software engineering</strong> and{" "}
@@ -56,14 +57,13 @@ const Page = () => {
               "nextjs",
             ]}
           />
-          <p className="text-pretty mt-5 sm:mt-18 md:mt-20 text-xl/9 md:text-2xl/7">
+          <p className="text-pretty mt-5 sm:mt-18 md:mt-20 text-xl/9 md:text-2xl/9">
             I have experience building websites using modern web development
-            technologies. I have experience in{" "}
+            technologies. They include{" "}
             <strong className="text-gradient">front end development</strong>,
-            bringing life to designs and creating interactive user interfaces. I
-            have also experience in{" "}
+            creating quality experiences with easy to use interfaces, and,{" "}
             <strong className="text-gradient">backend development</strong>,
-            creating APIs and server-side logic.
+            managing databases, APIs and handling authentication and payments.
           </p>
         </section>
         <section id="ml" className="mb-24 sm:mb-44">
@@ -78,16 +78,17 @@ const Page = () => {
               "jupyter",
             ]}
           />
-          <p className="text-pretty mt-5 sm:mt-18 md:mt-20 text-xl/9 md:text-2xl/7">
-            I have been building machine learning models and deploying them. I
-            have experience in{" "}
-            <strong className="text-gradient">deep learning</strong> and{" "}
-            <strong className="text-gradient">computer vision</strong>. I also
-            find{" "}
-            <strong className="text-gradient">
-              natural language processing
-            </strong>{" "}
-            very interesting.
+          <p className="text-pretty mt-5 sm:mt-18 md:mt-20 text-xl/9 md:text-2xl/9">
+            I have been building{" "}
+            <strong className="text-gradient">machine learning models</strong>{" "}
+            and deploying them, which include core technologies like Python and
+            Scikit-learn. I have also been learning about{" "}
+            <strong className="text-gradient">neural networks</strong> and have
+            implemented various{" "}
+            <ExternLink href="https://www.kaggle.com/manikyasharma04">
+              research papers
+            </ExternLink>
+            .
           </p>
         </section>
         <section id="se" className="mb-24 sm:mb-44">
@@ -96,11 +97,13 @@ const Page = () => {
             className="scale-90 md:scale-100 text-xs md:text-base mt-1"
             tags={["java", "cpp", "c", "rust", "docker"]}
           />
-          <p className="text-pretty mt-5 sm:mt-18 md:mt-20 text-xl/9 md:text-2xl/7">
+          <p className="text-pretty mt-5 sm:mt-18 md:mt-20 text-xl/9 md:text-2xl/9">
             Having done my degree in information technology and having worked on
             several <strong className="text-gradient">team projects</strong> and{" "}
-            <strong className="text-gradient">open source</strong>, I have
-            knowledge about the{" "}
+            <ExternLink href="https://github.com/Manikya-Sharma">
+              open source
+            </ExternLink>
+            , I have knowledge about the{" "}
             <strong className="text-gradient">
               software development process
             </strong>
@@ -113,14 +116,26 @@ const Page = () => {
             className="scale-90 md:scale-100 text-xs md:text-base mt-1"
             tags={["algorithms", "data-structures", "problem-solving"]}
           />
-          <p className="text-pretty mt-5 sm:mt-18 md:mt-20 text-xl/9 md:text-2xl/7">
-            I love solving problems and have been participating in{" "}
-            <strong className="text-gradient">
-              competitive programming contests
-            </strong>{" "}
-            on Codeforces, Leetcode, AtCoder and CodeChef. I have experience in
-            solving algorithmic problems and have a good understanding of data
-            structures.
+          <p className="text-pretty mt-5 sm:mt-18 md:mt-20 text-xl/9 md:text-2xl/9">
+            I love solving problems and have been participating in competitive
+            programming contests on{" "}
+            <ExternLink href="https://codeforces.com/profile/manikya_sharma">
+              Codeforces
+            </ExternLink>
+            ,{" "}
+            <ExternLink href="https://leetcode.com/u/ManikyaSharma/">
+              Leetcode
+            </ExternLink>
+            ,{" "}
+            <ExternLink href="https://atcoder.jp/users/manikyasharma">
+              AtCoder
+            </ExternLink>{" "}
+            and{" "}
+            <ExternLink href="https://www.codechef.com/users/manikyasharma">
+              CodeChef
+            </ExternLink>
+            . I have experience in solving algorithmic problems and have a good
+            understanding of data structures.
           </p>
         </section>
       </div>

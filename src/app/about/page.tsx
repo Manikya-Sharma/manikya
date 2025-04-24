@@ -1,3 +1,4 @@
+import { ExternLink } from "@/components/ExternLink";
 import GotoLink from "@/components/GotoLink";
 import Heading from "@/components/Heading";
 import SmallHeading from "@/components/SmallHeading";
@@ -35,7 +36,7 @@ const Page = () => {
             <strong className="text-gradient">full stack developer</strong> with
             a passion for building web applications that are both{" "}
             <em>functional and beautiful</em>. I love solving problems and
-            learning new technologies.
+            learning about new technologies.
           </p>
         </section>
         <section id="education" className="mb-24 sm:mb-44">
@@ -47,14 +48,14 @@ const Page = () => {
               title="My institution"
             />
           </SmallHeading>
-          <p className="text-pretty mt-16 sm:mt-20 text-xl/9 md:text-2xl/7">
+          <p className="text-pretty mt-16 sm:mt-20 text-xl/9 md:text-2xl/9">
             I am a student of{" "}
-            <strong className="text-gradient">
+            <ExternLink href="https://dtu.ac.in/">
               Delhi Technological University
-            </strong>{" "}
+            </ExternLink>{" "}
             pursuing a bachelor&apos;s degree in{" "}
             <strong className="text-gradient">Information Technology</strong>. I
-            have also completed multiple online courses in artificial
+            have also completed various online courses in artificial
             intelligence, web development and software engineering.
           </p>
         </section>
@@ -67,10 +68,13 @@ const Page = () => {
               title="Some hackathons"
             />
           </SmallHeading>
-          <p className="text-pretty mt-16 sm:mt-20 text-xl/9 md:text-2xl/7">
+          <p className="text-pretty mt-16 sm:mt-20 text-xl/9 md:text-2xl/9">
             I have participated in various{" "}
-            <strong className="text-gradient">hackathons</strong> and have
-            worked on a variety of projects. I have experience with several{" "}
+            <ExternLink href="https://devfolio.co/@Manikya_Sharma">
+              hackathons
+            </ExternLink>{" "}
+            and have worked on a variety of projects. I have experience with
+            several{" "}
             <strong className="text-gradient">
               programming languages and frameworks
             </strong>{" "}
@@ -87,7 +91,7 @@ const Page = () => {
               title="Traveling"
             />
           </SmallHeading>
-          <p className="text-pretty mt-16 sm:mt-20 text-xl/9 md:text-2xl/7">
+          <p className="text-pretty mt-16 sm:mt-20 text-xl/9 md:text-2xl/9">
             In my free time,{" "}
             <strong className="text-gradient">I enjoy reading</strong>, and
             learning about new technologies and{" "}
