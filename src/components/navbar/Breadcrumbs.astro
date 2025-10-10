@@ -1,0 +1,25 @@
+---
+interface Props {
+    pathname: string;
+}
+const { pathname } = Astro.props;
+const options = pathname.split("/").slice(1);
+const linkClass =
+    "inline-block hover:text-teal-400 transition-colors font-semibold";
+---
+
+<span class="flex gap-2 tracking-tight">
+    <a class={linkClass} href="/">~</a>
+    /
+    <a class={linkClass} href="/">manikya</a>
+    {
+        options.map((path, idx) => (
+            <>
+                /
+                <a class={linkClass} href={options.slice(0, idx + 2).join("/")}>
+                    {path}
+                </a>
+            </>
+        ))
+    }
+</span>
