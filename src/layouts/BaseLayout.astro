@@ -12,8 +12,10 @@ import Navbar from "@/components/navbar/Navbar.astro";
         <meta name="generator" content={Astro.generator} />
         <title>Manikya Sharma</title>
     </head>
-    <body>
+    <body class="min-h-screen flex flex-col">
         <Navbar />
-        <slot />
+        <div class="grow bg-white">
+            <slot />
+        </div>
     </body>
 </html>
