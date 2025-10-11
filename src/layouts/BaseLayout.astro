@@ -1,6 +1,7 @@
 ---
 import "@/globals.css";
 import "@fontsource-variable/fira-code";
+import '@fontsource/electrolize';
 import Navbar from "@/components/navbar/Navbar.astro";
 ---
 
@@ -14,7 +15,7 @@ import Navbar from "@/components/navbar/Navbar.astro";
     </head>
     <body class="min-h-screen flex flex-col">
         <Navbar />
-        <div class="grow bg-white">
+        <div class="grow flex bg-white text-black">
             <slot />
         </div>
     </body>
