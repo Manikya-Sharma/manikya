@@ -5,9 +5,9 @@ const pathname = Astro.url.pathname;
 ---
 
 <nav
-    class="font-fira w-screen px-7 py-5 bg-black text-white flex items-center justify-between"
+  class="font-fira w-screen px-7 py-5 bg-black text-white flex items-center justify-between"
 >
-    <Breadcrumbs pathname={pathname} />
-    {/* TODO: Dynamically add menu on other paths */}
-    {pathname == "/" && <ContactsBar />}
+  <Breadcrumbs pathname={pathname} />
+  {/* TODO: Dynamically add menu on other paths */}
+  {pathname == "/" && <ContactsBar />}
 </nav>

@@ -1,40 +1,36 @@
 ---
 import { Hash, Mail } from "@lucide/astro";
 const options = [
-    {
-        icon: "/linkedin-logo.png",
-        tooltip: "Linkedin",
-        href: "https://www.linkedin.com/in/manikya-sharma-84615125a/",
-    },
-    {
-        icon: "/github-logo.svg",
-        tooltip: "GitHub",
-        href: "https://github.com/Manikya-Sharma",
-    },
-    { icon: Mail, tooltip: "Email", href: "mailto:manikyasharma.ms@gmail.com" },
-    { icon: Hash, tooltip: "More", href: "/contact" },
+  {
+    icon: "/linkedin-logo.png",
+    tooltip: "Linkedin",
+    href: "https://www.linkedin.com/in/manikya-sharma-84615125a/",
+  },
+  {
+    icon: "/github-logo.svg",
+    tooltip: "GitHub",
+    href: "https://github.com/Manikya-Sharma",
+  },
+  { icon: Mail, tooltip: "Email", href: "mailto:manikyasharma.ms@gmail.com" },
+  { icon: Hash, tooltip: "More", href: "/contact" },
 ];
 ---
 
 <ul class="flex gap-8">
-    {
-        options.map((option) => (
-            <li
-                class="px-2 tooltip tooltip-bottom tooltip-primary"
-                data-tip={option.tooltip}
-            >
-                <a href={option.href}>
-                    {typeof option.icon === "string" ? (
-                        <img
-                            src={option.icon}
-                            alt={option.tooltip}
-                            class="size-5"
-                        />
-                    ) : (
-                        <option.icon class="size-5" />
-                    )}
-                </a>
-            </li>
-        ))
-    }
+  {
+    options.map((option) => (
+      <li
+        class="px-2 tooltip tooltip-bottom tooltip-primary"
+        data-tip={option.tooltip}
+      >
+        <a href={option.href}>
+          {typeof option.icon === "string" ? (
+            <img src={option.icon} alt={option.tooltip} class="size-5" />
+          ) : (
+            <option.icon class="size-5" />
+          )}
+        </a>
+      </li>
+    ))
+  }
 </ul>
