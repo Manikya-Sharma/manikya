@@ -20,15 +20,16 @@ const options = [
           class="h-full w-full grid place-items-center bg-white/30 backdrop-blur-md border border-white/40 rounded-md group"
           style={{ boxShadow: "0 4px 30px rgba(0, 0, 0, 0.1)" }}
         >
+          {/* PERF: is client:only good here? It is needed to ensure animations start as soon as page opens */}
           <li class="flex items-center gap-4">
-            <DelayOpacity id={option.text} client:load>
+            <DelayOpacity client:only="svelte" id={option.text}>
               <option.icon class="size-10 group-hover:rotate-12 transition-transform" />
             </DelayOpacity>
-            <StaggeredText client:load text={option.text} />
+            <StaggeredText client:only="svelte" text={option.text} />
             <DelayOpacity
+              client:only="svelte"
               id={`${option.text}-arrow`}
               startTime={300}
-              client:load
             >
               <ArrowRight class="size-10 group-hover:translate-x-3 transition-transform" />
             </DelayOpacity>
