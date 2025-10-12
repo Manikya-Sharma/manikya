@@ -23,7 +23,7 @@ const options = [
         class="px-2 tooltip tooltip-bottom tooltip-primary"
         data-tip={option.tooltip}
       >
-        <a href={option.href}>
+        <a aria-label={option.tooltip} href={option.href}>
           {typeof option.icon === "string" ? (
             <img src={option.icon} alt={option.tooltip} class="size-5" />
           ) : (
