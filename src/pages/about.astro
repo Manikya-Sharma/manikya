@@ -1,5 +1,12 @@
 ---
 import BaseLayout from "@/layouts/BaseLayout.astro";
+import FadeInText from "@/components/page/FadeInText.svelte";
 ---
 
-<BaseLayout />
+<BaseLayout>
+  <div class="uppercase h-[90vh] w-full grid place-items-center">
+    <FadeInText client:only id="h1">
+      <h1 class="text-9xl font-space font-semibold tracking-tighter">About Me</h1>
+    </FadeInText>
+  </div>
+</BaseLayout>
