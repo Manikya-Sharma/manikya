@@ -2,12 +2,13 @@
 import Breadcrumbs from "./Breadcrumbs.astro";
 import ContactsBar from "./ContactsBar.astro";
 import Hamburger from "./Hamburger.astro";
+import ScrollShorten from "./ScrollShorten.svelte";
 const pathname = Astro.url.pathname;
 ---
 
-<nav
-  class="relative font-fira w-screen px-7 py-5 bg-black text-white flex items-center justify-between"
->
-  <Breadcrumbs pathname={pathname} />
-  {pathname == "/" ? <ContactsBar /> : <Hamburger />}
-</nav>
+<ScrollShorten client:load>
+  <nav class="font-fira px-7 py-5 text-white flex items-center justify-between">
+    <Breadcrumbs pathname={pathname} />
+    {pathname == "/" ? <ContactsBar /> : <Hamburger />}
+  </nav>
+</ScrollShorten>

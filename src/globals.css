@@ -5,4 +5,14 @@
     --font-fira: 'Fira Code Variable', monospace;
     --font-electrolize: 'Electrolize', sans-serif;
     --font-space: 'Space Grotesk Variable', sans-serif;
+    --font-figtree: 'Figtree variable', sans-serif;
+}
+
+.text-gradient {
+    @apply bg-gradient-to-r from-blue-600 to-green-500 inline text-transparent bg-clip-text;
+}
+
+/* FIX: Is this the best way to implement smooth scroll?  */
+html {
+    scroll-behavior: smooth;
 }

@@ -2,7 +2,8 @@
 import "@/globals.css";
 import "@fontsource-variable/fira-code";
 import "@fontsource/electrolize";
-import '@fontsource-variable/space-grotesk';
+import "@fontsource-variable/space-grotesk";
+import "@fontsource-variable/figtree";
 import Navbar from "@/components/navbar/Navbar.astro";
 ---
 
@@ -14,9 +15,9 @@ import Navbar from "@/components/navbar/Navbar.astro";
     <meta name="generator" content={Astro.generator} />
     <title>Manikya Sharma</title>
   </head>
-  <body class="min-h-screen flex flex-col">
+  <body class="min-h-screen flex flex-col bg-white text-black">
     <Navbar />
-    <div class="grow flex bg-white text-black">
+    <div class="grow">
       <slot />
     </div>
   </body>

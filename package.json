@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@astrojs/svelte": "^7.2.0",
+    "@fontsource-variable/figtree": "^5.2.10",
     "@fontsource-variable/fira-code": "^5.2.7",
     "@fontsource-variable/space-grotesk": "^5.2.10",
     "@fontsource/electrolize": "^5.2.8",
