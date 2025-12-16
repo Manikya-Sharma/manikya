@@ -1,9 +1,10 @@
 ---
-import { Images } from "@lucide/astro";
+import { ExternalLink, Images } from "@lucide/astro";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import DetailPageLayout from "@/layouts/DetailPageLayout.astro";
 import FadeInText from "@/components/page/FadeInText.svelte";
 import PushButton from "@/components/page/PushButton.svelte";
+import StyleLink from "@/components/page/StyleLink.svelte";
 ---
 
 <BaseLayout>
@@ -24,17 +25,32 @@ import PushButton from "@/components/page/PushButton.svelte";
         >functional and beautiful</span
       >. I love solving problems and learning about new technologies.
     </section>
-    <FadeInText onScroll client:only="svelte" id="education">
-      <div class="flex gap-2.5 mt-52 items-center">
-        <h2
-          class="uppercase text-7xl font-space font-semibold tracking-tighter"
-        >
-          Education
-        </h2>
-        <PushButton client:load id="intro">
-          <Images class="size-7" />
-        </PushButton>
-      </div>
-    </FadeInText>
+    <section id="education">
+      <FadeInText onScroll client:only="svelte" id="education">
+        <div class="flex gap-2.5 mt-52 items-center">
+          <h2
+            class="uppercase text-7xl font-space font-semibold tracking-tighter"
+          >
+            Education
+          </h2>
+          <PushButton client:load id="intro">
+            <Images class="size-7" />
+          </PushButton>
+        </div>
+      </FadeInText>
+      <p>
+        I am a student of <StyleLink client:load href="https://dtu.ac.in">
+          <span>
+            Delhi Technological University<ExternalLink
+              class="inline-block ml-1.5 text-green-500 size-4"
+            />
+          </span>
+        </StyleLink>
+      </p>
+      pursuing a bachelor's degree in <span class="text-gradient"
+        >Information Technology</span
+      >. I have also completed various online courses in artificial
+      intelligence, web development and software engineering.
+    </section>
   </DetailPageLayout>
 </BaseLayout>
