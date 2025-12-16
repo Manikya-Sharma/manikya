@@ -24,7 +24,11 @@ const options = [
         >
           {/* PERF: is client:only good here? It is needed to ensure animations start as soon as page opens */}
           <li class="flex items-center gap-4">
-            <DelayOpacity client:only="svelte" id={option.text}>
+            <DelayOpacity
+              startTime={undefined}
+              client:only="svelte"
+              id={option.text}
+            >
               <option.icon class="size-10 group-hover:rotate-12 transition-transform" />
             </DelayOpacity>
             <StaggeredText client:only="svelte" text={option.text} />

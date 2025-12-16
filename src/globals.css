@@ -9,11 +9,11 @@
 }
 
 .bg-gradient {
-    @apply bg-gradient-to-r from-blue-600 to-green-500;
+    @apply bg-linear-to-r from-blue-600 to-green-500;
 }
 
 .text-gradient {
-    @apply bg-gradient-to-r from-blue-600 to-green-500 inline text-transparent bg-clip-text;
+    @apply bg-linear-to-r from-blue-600 to-green-500 inline text-transparent bg-clip-text;
 }
 
 /* FIX: Is this the best way to implement smooth scroll?  */

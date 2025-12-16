@@ -6,7 +6,9 @@
   // length is the number of options
   const { length }: { length: number } = $props();
   // 12 is the padding
-  const height = `${MENU_OPTION_HEIGHT * length + 12 * 2 + 8 * 2 * length}px`;
+  const height = $derived(
+    () => `${MENU_OPTION_HEIGHT * length + 12 * 2 + 8 * 2 * length}px`,
+  );
 
   const toggleState = () => {
     open = !open;

@@ -1,9 +1,10 @@
 <script lang="ts">
   import { animate, spring } from "animejs";
+  import type { Snippet } from "svelte";
 
   const TRANSLATE = 5;
 
-  const { id } = $props<{ id: string }>();
+  const { id, children }: { id: string; children: Snippet } = $props();
   const onhover = () => {
     animate(`#push-button-${id}`, {
       translateX: TRANSLATE,
@@ -37,12 +38,12 @@
     class="absolute -z-10 bg-black inset-0 opacity-0 group-hover:opacity-100 transition-colors rounded-md"
     role="presentation"
   >
-    <slot />
+    {@render children()}
   </div>
   <div
     id={`push-button-${id}`}
     class="bg-white rounded-md border border-[#b2b2b2] p-1.5"
   >
-    <slot />
+    {@render children()}
   </div>
 </button>

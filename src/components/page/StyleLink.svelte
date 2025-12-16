@@ -31,6 +31,6 @@
   </a>
   <span
     id={`underline-${id}`}
-    class="absolute block -bottom-[2px] h-[2px] w-[calc(100%-7px)] bg-gradient rounded-sm"
+    class="absolute block -bottom-0.5 h-0.5 w-[calc(100%-7px)] bg-gradient rounded-sm"
   ></span>
 </span>
