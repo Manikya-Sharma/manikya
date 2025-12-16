@@ -1,7 +1,9 @@
 ---
+import { Images } from "@lucide/astro";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import DetailPageLayout from "@/layouts/DetailPageLayout.astro";
 import FadeInText from "@/components/page/FadeInText.svelte";
+import PushButton from "@/components/page/PushButton.svelte";
 ---
 
 <BaseLayout>
@@ -22,12 +24,17 @@ import FadeInText from "@/components/page/FadeInText.svelte";
         >functional and beautiful</span
       >. I love solving problems and learning about new technologies.
     </section>
-    <FadeInText onScroll client:only id="education">
-      <h2
-        class="uppercase text-7xl font-space font-semibold tracking-tighter mt-52"
-      >
-        Education
-      </h2>
+    <FadeInText onScroll client:only="svelte" id="education">
+      <div class="flex gap-2.5 mt-52 items-center">
+        <h2
+          class="uppercase text-7xl font-space font-semibold tracking-tighter"
+        >
+          Education
+        </h2>
+        <PushButton client:load id="intro">
+          <Images class="size-7" />
+        </PushButton>
+      </div>
     </FadeInText>
   </DetailPageLayout>
 </BaseLayout>
