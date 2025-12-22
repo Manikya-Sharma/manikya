@@ -5,6 +5,7 @@ import DetailPageLayout from "@/layouts/DetailPageLayout.astro";
 import FadeInText from "@/components/page/FadeInText.svelte";
 import StyleLink from "@/components/page/StyleLink.svelte";
 import FadeSection from "@/components/page/FadeSection.astro";
+import BottomNav from "@/components/navbar/BottomNav.astro";
 ---
 
 <BaseLayout>
@@ -65,4 +66,8 @@ import FadeSection from "@/components/page/FadeSection.astro";
       for new opportunities to learn and grow as a developer.
     </FadeSection>
   </DetailPageLayout>
+  <BottomNav
+    prev={{ href: "/contact", name: "Socials" }}
+    next={{ href: "/skills", name: "Skills" }}
+  />
 </BaseLayout>

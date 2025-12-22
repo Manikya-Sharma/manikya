@@ -35,7 +35,7 @@
   onmouseup={onhover}
 >
   <div
-    class="absolute -z-10 bg-black inset-0 opacity-0 group-hover:opacity-100 transition-colors rounded-md"
+    class="absolute -z-10 bg-black inset-0 opacity-0 group-hover:opacity-100 transition-opacity rounded-md"
     role="presentation"
   >
     {@render children()}

@@ -1,0 +1,32 @@
+---
+import PushLink from "@/components/page/PushLink.svelte";
+import { ArrowLeft, ArrowRight } from "@lucide/astro";
+
+interface Props {
+  prev: {
+    href: string;
+    name: string;
+  };
+  next: {
+    href: string;
+    name: string;
+  };
+}
+
+const { prev, next } = Astro.props;
+---
+
+<nav class="flex w-[70%] mx-auto items-center justify-between">
+  <PushLink client:load id={prev.name} href={prev.href}>
+    <span class="flex gap-1.5 items-center">
+      <ArrowLeft class="inline-block size-10" />
+      {prev.name}
+    </span>
+  </PushLink>
+  <PushLink client:load id={next.name} href={next.href}>
+    <span class="flex gap-1.5 items-center">
+      {next.name}
+      <ArrowRight class="inline-block size-10" />
+    </span>
+  </PushLink>
+</nav>
