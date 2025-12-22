@@ -1,10 +1,10 @@
 ---
-import { ExternalLink, Images } from "@lucide/astro";
+import { ExternalLink } from "@lucide/astro";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import DetailPageLayout from "@/layouts/DetailPageLayout.astro";
 import FadeInText from "@/components/page/FadeInText.svelte";
-import PushButton from "@/components/page/PushButton.svelte";
 import StyleLink from "@/components/page/StyleLink.svelte";
+import FadeSection from "@/components/page/FadeSection.astro";
 ---
 
 <BaseLayout>
@@ -19,41 +19,50 @@ import StyleLink from "@/components/page/StyleLink.svelte";
       </div>
     </section>
 
-    <section id="intro">
+    <FadeSection id="intro">
       Hi, I am a <span class="text-gradient">full stack developer</span> with a passion
       for building web applications that are both<span class="italic"
         >functional and beautiful</span
       >. I love solving problems and learning about new technologies.
-    </section>
-    <section id="education">
-      <FadeInText onScroll client:only="svelte" id="education">
-        <div class="flex gap-2.5 mt-52 items-center">
-          <h2
-            class="uppercase text-7xl font-space font-semibold tracking-tighter"
-          >
-            Education
-          </h2>
-          <PushButton client:load id="intro">
-            <Images class="size-7" />
-          </PushButton>
-        </div>
-      </FadeInText>
-      <p>
-        {
-          /* FIX: if we use client:load, then the link does not come at correct place on fresh page load */
-        }
-        I am a student of <StyleLink client:only href="https://dtu.ac.in">
-          <span>
-            Delhi Technological University<ExternalLink
-              class="inline-block ml-1.5 text-green-500 size-4"
-            />
-          </span>
-        </StyleLink>
-        pursuing a bachelor's degree in <span class="text-gradient"
-          >Information Technology</span
-        >. I have also completed various online courses in artificial
-        intelligence, web development and software engineering.
-      </p>
-    </section>
+    </FadeSection>
+    <FadeSection id="education" title="Education">
+      {
+        /* FIX: if we use client:load, then the link does not come at correct place on fresh page load */
+      }
+      I am a student of <StyleLink client:only href="https://dtu.ac.in">
+        <span>
+          Delhi Technological University<ExternalLink
+            class="inline-block ml-1.5 text-green-500 size-4"
+          />
+        </span>
+      </StyleLink>
+      pursuing a bachelor's degree in <span class="text-gradient"
+        >Information Technology</span
+      >. I have also completed various online courses in artificial
+      intelligence, web development and software engineering.
+    </FadeSection>
+    <FadeSection id="experience" title="Experience">
+      I have participated in various <StyleLink
+        client:only
+        href="https://devfolio.co/@Manikya_Sharma"
+      >
+        <span>
+          hacakthons<ExternalLink
+            class="inline-block ml-1.5 text-green-500 size-4"
+          />
+        </span>
+      </StyleLink> and have worked on a variety of projects. I have experience with
+      several <span class="text-gradient"
+        >programming languages and frameworks
+      </span>including Python, JavaScript, TypeScript, ReactJS, NextJs Node.js
+      etc.
+    </FadeSection>
+    <FadeSection id="interests" title="interests">
+      In my free time, I <span class="text-gradient">enjoy reading</span>, and
+      learning about new technologies and <span class="text-gradient"
+        >programming languages</span
+      >. I also enjoy traveling and exploring new places. I am always looking
+      for new opportunities to learn and grow as a developer.
+    </FadeSection>
   </DetailPageLayout>
 </BaseLayout>

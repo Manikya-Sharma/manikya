@@ -1,0 +1,32 @@
+---
+import FadeInText from "@/components/page/FadeInText.svelte";
+import PushButton from "./PushButton.svelte";
+import { Images } from "@lucide/astro";
+
+interface Props {
+  id: string;
+  title?: string;
+}
+
+const { title, id } = Astro.props;
+---
+
+<section id={id}>
+  {
+    title && (
+      <FadeInText onScroll client:only="svelte" id={id}>
+        <div class="flex gap-2.5 mt-52 items-center">
+          <h2 class="uppercase text-7xl font-space font-semibold tracking-tighter">
+            {title}
+          </h2>
+          <PushButton client:load id={id}>
+            <Images class="size-7" />
+          </PushButton>
+        </div>
+      </FadeInText>
+    )
+  }
+  <p>
+    <slot />
+  </p>
+</section>
