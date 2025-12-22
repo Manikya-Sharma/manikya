@@ -39,7 +39,10 @@ import StyleLink from "@/components/page/StyleLink.svelte";
         </div>
       </FadeInText>
       <p>
-        I am a student of <StyleLink client:load href="https://dtu.ac.in">
+        {
+          /* FIX: if we use client:load, then the link does not come at correct place on fresh page load */
+        }
+        I am a student of <StyleLink client:only href="https://dtu.ac.in">
           <span>
             Delhi Technological University<ExternalLink
               class="inline-block ml-1.5 text-green-500 size-4"
