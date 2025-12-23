@@ -2,7 +2,7 @@
   import { animate, spring } from "animejs";
   import { MENU_OPTION_HEIGHT } from "@/data/constants";
 
-  const { children, id } = $props();
+  const { children, id, href, className } = $props();
 
   const BOUNCE = 0.3;
   const DURATION = 250;
@@ -41,22 +41,29 @@
   };
 </script>
 
-<div
-  role="presentation"
+<a
+  onfocus={() => onhover()}
+  onblur={() => onleave()}
   onmouseenter={() => onhover()}
   onmouseleave={() => onleave()}
   style:height={`${MENU_OPTION_HEIGHT}px`}
-  class="relative overflow-hidden"
+  {href}
+  class="block relative overflow-hidden"
 >
-  <div id={`flipping-text-${id}-original`}>
+  <div id={`flipping-text-${id}-original`} 
+    style:height={`${MENU_OPTION_HEIGHT}px`}
+
+  class={className}>
     {@render children()}
   </div>
   <div
     role="presentation"
     aria-hidden="true"
     id={`flipping-text-${id}-copy`}
-    class="absolute inset-0"
+    class={`absolute inset-0 ${className}`}
+    style:height={`${MENU_OPTION_HEIGHT}px`}
+    tabindex="-1"
   >
     {@render children()}
   </div>
-</div>
+</a>

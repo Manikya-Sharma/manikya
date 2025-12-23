@@ -3,7 +3,7 @@ interface Props {
   pathname: string;
 }
 const { pathname } = Astro.props;
-const options = pathname.split("/").slice(1);
+const options = pathname.split("/").filter((elem) => elem.trim().length !== 0);
 const linkClass =
   "inline-block hover:text-teal-400 transition-colors font-semibold";
 ---

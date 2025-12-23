@@ -1,10 +1,9 @@
 ---
-// TODO:  The menu should not be tabbable when collapsed
+// TODO: Create go to main content for tabbing
 // TODO: Close the menu when user clicks on another target
 import { Code, GraduationCap, Heart, Menu, Pen, X } from "@lucide/astro";
 import HamburgerSvelte from "./Hamburger.svelte";
 import FlippingText from "./FlippingText.svelte";
-import { MENU_OPTION_HEIGHT } from "@/data/constants";
 const options = [
   {
     icon: Pen,
@@ -36,14 +35,13 @@ const options = [
     {
       options.map((option) => (
         <li class="py-2">
-          <FlippingText client:load id={option.text}>
-            <a
-              href={option.href}
-              class="font-electrolize sm:text-lg flex gap-2 items-center"
-              style={{ height: `${MENU_OPTION_HEIGHT}px` }}
-            >
-              <option.icon class="size-4" /> {option.text}
-            </a>
+          <FlippingText
+            className="font-electrolize sm:text-lg flex gap-2 items-center"
+            href={option.href}
+            client:load
+            id={option.text}
+          >
+            <option.icon class="size-4" /> {option.text}
           </FlippingText>
         </li>
       ))
