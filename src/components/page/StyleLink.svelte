@@ -26,6 +26,7 @@
   onmouseenter={onhover}
   onmouseleave={onleave}
 >
+  <!-- TODO: if text overflows on multiple lines, then underline doesnt work-->
   <a class="text-gradient" {href}>
     {@render children()}
   </a>

@@ -15,18 +15,18 @@ const { title, id } = Astro.props;
   {
     title && (
       <FadeInText onScroll client:only="svelte" id={id}>
-        <div class="flex gap-2.5 mt-52 items-center">
-          <h2 class="uppercase text-7xl font-space font-semibold tracking-tighter">
+        <div class="flex gap-2.5 mt-28 sm:mt-36 lg:mt-52 items-center">
+          <h2 class="uppercase text-4xl sm:text-7xl font-space font-semibold tracking-tighter">
             {title}
           </h2>
           <PushButton client:load id={id}>
-            <Images class="size-7" />
+            <Images class="size-5 sm:size-7" />
           </PushButton>
         </div>
       </FadeInText>
     )
   }
-  <p class="mt-12 text-pretty">
+  <p class="mt-8 sm:mt-10 lg:mt-12 text-pretty">
     <slot />
   </p>
 </section>

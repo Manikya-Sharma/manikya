@@ -16,17 +16,24 @@ interface Props {
 const { prev, next } = Astro.props;
 ---
 
-<nav class="flex w-[70%] mx-auto items-center justify-between">
-  <PushLink client:load id={prev.name} href={prev.href}>
-    <span class="flex gap-1.5 items-center">
-      <ArrowLeft class="inline-block size-10" />
-      {prev.name}
-    </span>
-  </PushLink>
-  <PushLink client:load id={next.name} href={next.href}>
-    <span class="flex gap-1.5 items-center">
-      {next.name}
-      <ArrowRight class="inline-block size-10" />
-    </span>
-  </PushLink>
+<nav
+  class="flex sm:flex-row flex-col w-[80%] sm:w-[70%] mx-auto gap-5 sm:items-center sm:justify-between"
+>
+  <div class="w-[60%] sm:w-auto">
+    <PushLink client:load id={prev.name} href={prev.href}>
+      <span class="flex gap-1.5 items-center">
+        <ArrowLeft class="inline-block size-7 sm:size-8 lg:size-10" />
+        {prev.name}
+      </span>
+    </PushLink>
+  </div>
+
+  <div class="ml-auto w-[60%] sm:w-auto">
+    <PushLink client:load id={next.name} href={next.href}>
+      <span class="flex gap-1.5 items-center justify-end">
+        {next.name}
+        <ArrowRight class="inline-block size-7 sm:size-8 lg:size-10" />
+      </span>
+    </PushLink>
+  </div>
 </nav>
