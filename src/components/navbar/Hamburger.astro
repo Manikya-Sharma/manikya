@@ -30,8 +30,8 @@ const options = [
 ---
 
 <HamburgerSvelte length={options.length} client:load>
-  <Menu slot="open" class="size-6" />
-  <X slot="close" class="size-6" />
+  <Menu slot="open" class="size-5 sm:size-6" />
+  <X slot="close" class="size-5 sm:size-6" />
   <ul slot="options">
     {
       options.map((option) => (
@@ -39,7 +39,7 @@ const options = [
           <FlippingText client:load id={option.text}>
             <a
               href={option.href}
-              class="font-electrolize text-lg flex gap-2 items-center"
+              class="font-electrolize sm:text-lg flex gap-2 items-center"
               style={{ height: `${MENU_OPTION_HEIGHT}px` }}
             >
               <option.icon class="size-4" /> {option.text}

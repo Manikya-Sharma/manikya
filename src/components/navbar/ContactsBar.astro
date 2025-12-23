@@ -20,14 +20,14 @@ const options = [
   {
     options.map((option) => (
       <li
-        class="px-2 tooltip tooltip-bottom tooltip-primary"
+        class="sm:px-2 tooltip tooltip-bottom tooltip-primary"
         data-tip={option.tooltip}
       >
         <a aria-label={option.tooltip} href={option.href}>
           {typeof option.icon === "string" ? (
-            <img src={option.icon} alt={option.tooltip} class="size-5" />
+          <img src={option.icon} alt={option.tooltip} class="size-4 sm:size-5" />
           ) : (
-            <option.icon class="size-5" />
+            <option.icon class="size-4 sm:size-5" />
           )}
         </a>
       </li>
