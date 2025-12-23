@@ -1,6 +1,5 @@
 ---
 // TODO: Create go to main content for tabbing
-// TODO: Close the menu when user clicks on another target
 import { Code, GraduationCap, Heart, Menu, Pen, X } from "@lucide/astro";
 import HamburgerSvelte from "./Hamburger.svelte";
 import FlippingText from "./FlippingText.svelte";
@@ -29,7 +28,7 @@ const options = [
 ---
 
 <HamburgerSvelte length={options.length} client:load>
-  <Menu slot="open" class="size-5 sm:size-6" />
+  <Menu aria-haspopup="true" slot="open" class="size-5 sm:size-6" />
   <X slot="close" class="size-5 sm:size-6" />
   <ul slot="options">
     {

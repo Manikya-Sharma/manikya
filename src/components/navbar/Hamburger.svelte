@@ -10,6 +10,18 @@
     () => `${MENU_OPTION_HEIGHT * length + 12 * 2 + 8 * 2 * length}px`,
   );
 
+  const on_menu_blur = (e: PointerEvent) => {
+    for (const el of e.composedPath()) {
+      if (
+        (el as HTMLElement).id === "dropdown-animation" ||
+        (el as HTMLElement).id === "dropdown-button"
+      ) {
+        return;
+      }
+    }
+    toggleState();
+  };
+
   const toggleState = () => {
     open = !open;
     if (open) {
@@ -19,6 +31,7 @@
         duration: 300,
         height: ["0px", height],
       });
+      document.addEventListener("click", on_menu_blur);
     } else {
       // leave animation
       animate("#dropdown-animation", {
@@ -26,12 +39,17 @@
         duration: 300,
         height: [height, "0px"],
       });
+      document.removeEventListener("click", on_menu_blur);
     }
   };
 </script>
 
 <!-- Hamburger -->
-<button class="cursor-pointer" onclick={() => toggleState()}>
+<button
+  class="cursor-pointer"
+  id="dropdown-button"
+  onclick={() => toggleState()}
+>
   {#if open}
     <!-- svelte-ignore slot_element_deprecated: no other way to pass named slots-->
     <slot name="close" />
@@ -43,6 +61,7 @@
 
 <!-- Options menu -->
 <div
+  aria-expanded={open}
   class={[
     "absolute top-18 right-5 rounded-md bg-black px-10 py-3 opacity-0",
     !open && "pointer-events-none",
