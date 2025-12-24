@@ -16,6 +16,9 @@ import Navbar from "@/components/navbar/Navbar.astro";
     <title>Manikya Sharma</title>
   </head>
   <body class="min-h-screen flex flex-col bg-white text-black pb-16">
+    <!-- top element to capture is scroll is at top -->
+    <div id="top-element" role="presentation" class="absolute top-0 left-0">
+    </div>
     <Navbar />
     <div class="grow">
       <slot />

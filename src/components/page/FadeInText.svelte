@@ -36,7 +36,7 @@
   $effect(() => {
     const animation = animate(`#fade-in-${id}`, animationOptions);
     if (onScroll) {
-      observeOnScroll(animation);
+      return observeOnScroll(animation);
     } else {
       animation.restart();
     }

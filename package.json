@@ -19,6 +19,7 @@
     "animejs": "^4.2.2",
     "astro": "^5.16.5",
     "daisyui": "^5.5.14",
+    "lottie-web": "^5.13.0",
     "svelte": "^5.46.0",
     "tailwindcss": "^4.1.18",
     "typescript": "^5.9.3"

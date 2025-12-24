@@ -5,6 +5,7 @@ import DetailPageLayout from "@/layouts/DetailPageLayout.astro";
 import FadeInText from "@/components/page/FadeInText.svelte";
 import StyleLink from "@/components/page/StyleLink.svelte";
 import FadeSection from "@/components/page/FadeSection.astro";
+import ScrollDownIndicator from "@/components/page/ScrollDownIndicator.svelte";
 import BottomNav from "@/components/navbar/BottomNav.astro";
 ---
 
@@ -19,6 +20,9 @@ import BottomNav from "@/components/navbar/BottomNav.astro";
             About Me
           </h1>
         </FadeInText>
+        <div class="absolute bottom-7 right-5">
+          <ScrollDownIndicator client:only />
+        </div>
       </div>
     </section>
 
