@@ -50,17 +50,18 @@
   {href}
   class="block relative overflow-hidden"
 >
-  <div id={`flipping-text-${id}-original`} 
+  <div
+    id={`flipping-text-${id}-original`}
     style:height={`${MENU_OPTION_HEIGHT}px`}
-
-  class={className}>
+    class={className}
+  >
     {@render children()}
   </div>
   <div
     role="presentation"
     aria-hidden="true"
     id={`flipping-text-${id}-copy`}
-    class={`absolute inset-0 ${className}`}
+    class={["absolute inset-0", className]}
     style:height={`${MENU_OPTION_HEIGHT}px`}
     tabindex="-1"
   >

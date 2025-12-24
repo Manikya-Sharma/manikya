@@ -28,9 +28,22 @@ import BottomNav from "@/components/navbar/BottomNav.astro";
         >functional and beautiful</span
       >. I love solving problems and learning about new technologies.
     </FadeSection>
-    <FadeSection id="education" title="Education">
+    <FadeSection
+      id="education"
+      title="Education"
+      images={{
+        title: "My institution",
+        items: [
+          { src: "/dtu.jpeg", alt: "Image of DTU" },
+          { src: "/hall.jpg", alt: "Image of Raj Soin Hall" },
+        ],
+      }}
+    >
       {
-        /* FIX: if we use client:load, then the link does not come at correct place on fresh page load */
+        /* FIX: if we use client:load, then the link does not come
+            at correct place on fresh page load.
+            Also, on opening the modal, the link position is spoiled
+         */
       }
       I am a student of <StyleLink client:only href="https://dtu.ac.in">
         <span>
@@ -44,7 +57,17 @@ import BottomNav from "@/components/navbar/BottomNav.astro";
       >. I have also completed various online courses in artificial
       intelligence, web development and software engineering.
     </FadeSection>
-    <FadeSection id="experience" title="Experience">
+    <FadeSection
+      id="experience"
+      title="Experience"
+      images={{
+        title: "Some hackathons",
+        items: [
+          { src: "/iitr.jpg", alt: "Image of IITR" },
+          { src: "/iitr2.jpg", alt: "Another image of IITR" },
+        ],
+      }}
+    >
       I have participated in various <StyleLink
         client:only
         href="https://devfolio.co/@Manikya_Sharma"
@@ -60,7 +83,17 @@ import BottomNav from "@/components/navbar/BottomNav.astro";
       </span>including Python, JavaScript, TypeScript, ReactJS, NextJs Node.js
       etc.
     </FadeSection>
-    <FadeSection id="interests" title="interests">
+    <FadeSection
+      id="interests"
+      title="interests"
+      images={{
+        title: "Travelling",
+        items: [
+          { src: "/peacock.jpg", alt: "peacock" },
+          { src: "ducks.jpg", alt: "Ducks" },
+        ],
+      }}
+    >
       In my free time, I <span class="text-gradient">enjoy reading</span>, and
       learning about new technologies and <span class="text-gradient"
         >programming languages</span

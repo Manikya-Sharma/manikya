@@ -6,9 +6,13 @@ import { Images } from "@lucide/astro";
 interface Props {
   id: string;
   title?: string;
+  images?: {
+    title: string;
+    items: Array<{ src: string; alt: string }>;
+  };
 }
 
-const { title, id } = Astro.props;
+const { title, id, images } = Astro.props;
 ---
 
 <section id={id}>
@@ -19,9 +23,11 @@ const { title, id } = Astro.props;
           <h2 class="uppercase text-4xl sm:text-7xl font-space font-semibold tracking-tighter">
             {title}
           </h2>
-          <PushButton client:load id={id}>
-            <Images class="size-5 sm:size-7" />
-          </PushButton>
+          {images && images.items.length > 0 && (
+            <PushButton client:load id={id} images={images}>
+              <Images class="size-5 sm:size-7" />
+            </PushButton>
+          )}
         </div>
       </FadeInText>
     )
