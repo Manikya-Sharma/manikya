@@ -9,6 +9,6 @@ const pathname = Astro.url.pathname;
 <ScrollShorten client:load>
   <nav class="font-fira px-7 py-5 text-white flex items-center justify-between">
     <Breadcrumbs pathname={pathname} />
-    {pathname == "/" ? <ContactsBar /> : <Hamburger />}
+    {pathname == "/" ? <ContactsBar /> : <Hamburger pathname={pathname} />}
   </nav>
 </ScrollShorten>

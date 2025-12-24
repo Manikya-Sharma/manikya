@@ -15,7 +15,7 @@ import HamburgerSvelte from "./Hamburger.svelte";
 import FlippingText from "./FlippingText.svelte";
 
 const options = {
-  "/about": [
+  about: [
     {
       icon: Pen,
       text: "Intro",
@@ -37,7 +37,7 @@ const options = {
       href: "#interests",
     },
   ],
-  "/skills": [
+  skills: [
     {
       icon: Pen,
       text: "Intro",
@@ -66,31 +66,44 @@ const options = {
   ],
 };
 
-// We perform sanitation, so type inference is correct
-const pathname = Astro.url.pathname as keyof typeof options;
+interface Props {
+  pathname: string;
+}
 
-if (!Object.keys(options).includes(pathname)) {
-  return new Response(null, { status: 404 });
+const { pathname } = Astro.props;
+const pathParts = pathname
+  .split("/")
+  .filter((elem) => elem.trim().length !== 0);
+const lastPath = pathParts[pathParts.length - 1];
+
+let selectedOptions: null | (typeof options)[keyof typeof options];
+
+if (Object.keys(options).includes(lastPath)) {
+  selectedOptions = options[lastPath as keyof typeof options];
+} else {
+  selectedOptions = null;
 }
 ---
 
-<HamburgerSvelte length={options[pathname].length} client:load>
-  <Menu aria-haspopup="true" slot="open" class="size-5 sm:size-6" />
-  <X slot="close" class="size-5 sm:size-6" />
-  <ul slot="options">
-    {
-      options[pathname].map((option) => (
-        <li class="py-2">
-          <FlippingText
-            className="font-electrolize sm:text-lg flex gap-2 items-center"
-            href={option.href}
-            client:load
-            id={option.text.split(" ").join("-")}
-          >
-            <option.icon class="size-4" /> {option.text}
-          </FlippingText>
-        </li>
-      ))
-    }
-  </ul>
-</HamburgerSvelte>
+{
+  selectedOptions && (
+    <HamburgerSvelte length={selectedOptions.length} client:load>
+      <Menu aria-haspopup="true" slot="open" class="size-5 sm:size-6" />
+      <X slot="close" class="size-5 sm:size-6" />
+      <ul slot="options">
+        {selectedOptions.map((option) => (
+          <li class="py-2">
+            <FlippingText
+              className="font-electrolize sm:text-lg flex gap-2 items-center"
+              href={option.href}
+              client:load
+              id={option.text.split(" ").join("-")}
+            >
+              <option.icon class="size-4" /> {option.text}
+            </FlippingText>
+          </li>
+        ))}
+      </ul>
+    </HamburgerSvelte>
+  )
+}
