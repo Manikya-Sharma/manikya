@@ -1,7 +1,9 @@
 ---
 import FadeInText from "@/components/page/FadeInText.svelte";
 import PushButton from "./PushButton.svelte";
+import Tags from "./StaggerTags.svelte";
 import { Images } from "@lucide/astro";
+import { tagColorMap, bgMap, getTagText } from "@/data/constants";
 
 interface Props {
   id: string;
@@ -10,26 +12,36 @@ interface Props {
     title: string;
     items: Array<{ src: string; alt: string }>;
   };
+  tags?: Array<keyof typeof bgMap>;
 }
 
-const { title, id, images } = Astro.props;
+const { title, id, images, tags } = Astro.props;
+
+const bgs = tags?.map((tag) => bgMap[tag]);
+const fgs = tags?.map((tag) => tagColorMap[tag]);
+const tagNames = tags?.map((tag) => getTagText(tag));
 ---
 
 <section id={id}>
   {
     title && (
-      <FadeInText onScroll client:only="svelte" id={id}>
-        <div class="flex gap-2.5 mt-28 sm:mt-36 lg:mt-52 items-center">
-          <h2 class="uppercase text-4xl sm:text-7xl font-space font-semibold tracking-tighter">
-            {title}
-          </h2>
-          {images && images.items.length > 0 && (
-            <PushButton client:load id={id} images={images}>
-              <Images class="size-5 sm:size-7" />
-            </PushButton>
-          )}
+      <div>
+        <FadeInText onScroll client:only="svelte" id={id}>
+          <div class="flex gap-2.5 mt-28 sm:mt-36 lg:mt-52 items-center">
+            <h2 class="uppercase text-4xl sm:text-7xl font-space font-semibold tracking-tighter">
+              {title}
+            </h2>
+            {images && images.items.length > 0 && (
+              <PushButton client:load id={id} images={images}>
+                <Images class="size-5 sm:size-7" />
+              </PushButton>
+            )}
+          </div>
+        </FadeInText>
+        <div class="flex gap-2 flex-wrap">
+          <Tags client:only {fgs} {bgs} {tagNames} {tags} />
         </div>
-      </FadeInText>
+      </div>
     )
   }
   <p class="mt-8 sm:mt-10 lg:mt-12 text-pretty">

@@ -1,44 +1,91 @@
 ---
 // TODO: Create go to main content for tabbing
-import { Code, GraduationCap, Heart, Menu, Pen, X } from "@lucide/astro";
+import {
+  BrainCircuit,
+  Code,
+  Cpu,
+  Globe,
+  GraduationCap,
+  Heart,
+  Menu,
+  Pen,
+  X,
+} from "@lucide/astro";
 import HamburgerSvelte from "./Hamburger.svelte";
 import FlippingText from "./FlippingText.svelte";
-const options = [
-  {
-    icon: Pen,
-    text: "Intro",
-    href: "#intro",
-  },
-  {
-    icon: GraduationCap,
-    text: "Education",
-    href: "#education",
-  },
-  {
-    icon: Code,
-    text: "Experience",
-    href: "#experience",
-  },
-  {
-    icon: Heart,
-    text: "Interests",
-    href: "#interests",
-  },
-];
+
+const options = {
+  "/about": [
+    {
+      icon: Pen,
+      text: "Intro",
+      href: "#intro",
+    },
+    {
+      icon: GraduationCap,
+      text: "Education",
+      href: "#education",
+    },
+    {
+      icon: Code,
+      text: "Experience",
+      href: "#experience",
+    },
+    {
+      icon: Heart,
+      text: "Interests",
+      href: "#interests",
+    },
+  ],
+  "/skills": [
+    {
+      icon: Pen,
+      text: "Intro",
+      href: "#intro",
+    },
+    {
+      icon: Globe,
+      text: "Web Dev",
+      href: "#web",
+    },
+    {
+      icon: BrainCircuit,
+      text: "ML",
+      href: "#ml",
+    },
+    {
+      icon: Cpu,
+      text: "Development",
+      href: "#se",
+    },
+    {
+      icon: Code,
+      text: "CP",
+      href: "#cp",
+    },
+  ],
+};
+
+// We perform sanitation, so type inference is correct
+const pathname = Astro.url.pathname as keyof typeof options;
+
+if (!Object.keys(options).includes(pathname)) {
+  return new Response(null, { status: 404 });
+}
 ---
 
-<HamburgerSvelte length={options.length} client:load>
+<HamburgerSvelte length={options[pathname].length} client:load>
   <Menu aria-haspopup="true" slot="open" class="size-5 sm:size-6" />
   <X slot="close" class="size-5 sm:size-6" />
   <ul slot="options">
     {
-      options.map((option) => (
+      options[pathname].map((option) => (
         <li class="py-2">
           <FlippingText
             className="font-electrolize sm:text-lg flex gap-2 items-center"
             href={option.href}
             client:load
-            id={option.text}
+            id={option.text.split(" ").join("-")}
           >
             <option.icon class="size-4" /> {option.text}
           </FlippingText>

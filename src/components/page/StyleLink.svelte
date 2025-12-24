@@ -1,3 +1,4 @@
+<!-- FIX: Something is seriously wrong with this component -->
 <script lang="ts">
   import { animate } from "animejs";
   import type { Snippet } from "svelte";

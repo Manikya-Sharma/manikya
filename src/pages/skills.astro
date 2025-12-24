@@ -1,0 +1,135 @@
+---
+import { ExternalLink } from "@lucide/astro";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import DetailPageLayout from "@/layouts/DetailPageLayout.astro";
+import FadeInText from "@/components/page/FadeInText.svelte";
+import StyleLink from "@/components/page/StyleLink.svelte";
+import FadeSection from "@/components/page/FadeSection.astro";
+import ScrollDownIndicator from "@/components/page/ScrollDownIndicator.svelte";
+import BottomNav from "@/components/navbar/BottomNav.astro";
+---
+
+<BaseLayout>
+  <DetailPageLayout>
+    <section>
+      <div class="uppercase h-screen w-full grid place-items-center">
+        <FadeInText client:only id="h1">
+          <h1
+            class="text-6xl sm:text-9xl font-space font-semibold tracking-tighter"
+          >
+            Skills
+          </h1>
+        </FadeInText>
+        <div class="absolute bottom-7 right-5">
+          <ScrollDownIndicator client:only />
+        </div>
+      </div>
+    </section>
+
+    <FadeSection id="intro">
+      I am well versed with several programming languages and frameworks. I have
+      experience with technologies related to the fields of <span
+        class="text-gradient">web development</span
+      >, <span class="text-gradient">machine learning</span>, <span
+        class="text-gradient">software engineering</span
+      > and <span class="text-gradient">competitive programming</span>. I am
+      always looking for new opportunities to learn and grow as a developer.
+    </FadeSection>
+    <FadeSection
+      id="web"
+      title="Web Development"
+      tags={[
+        "html",
+        "css",
+        "tailwindcss",
+        "javascript",
+        "typescript",
+        "react",
+        "nextjs",
+      ]}
+    >
+      I have experience building websites using modern web development
+      technologies. They include <span class="text-gradient"
+        >front end development</span
+      >, creating quality experiences with easy to use interfaces, and, <span
+        class="text-gradient">backend</span
+      >
+      development, managing databases, APIs and handling authentication and payments.
+    </FadeSection>
+    <FadeSection
+      id="ml"
+      title="Machine Learning"
+      tags={["python", "tensorflow", "pytorch", "scikit-learn", "jupyter"]}
+    >
+      I have been building <span class="text-gradient"
+        >machine learning models</span
+      > and deploying them, which include core technologies like Python and Scikit-learn.
+      I have also been learning about <span class="text-gradient"
+        >neural networks</span
+      > have implemented various <StyleLink
+        href="https://www.kaggle.com/manikyasharma04"
+        ><span
+          >research papers<ExternalLink
+            class="inline-block ml-1.5 text-green-500 size-4"
+          />
+        </span></StyleLink
+      >.
+    </FadeSection>
+    <FadeSection
+      id="se"
+      title="Software Engineering"
+      tags={["java", "cpp", "c", "rust", "docker"]}
+    >
+      Having done my degree in information technology and having worked on
+      several <span class="text-gradient">team projects</span> and <StyleLink
+        href="https://github.com/Manikya-Sharma"
+        ><span
+          >open source<ExternalLink
+            class="inline-block ml-1.5 text-green-500 size-4"
+          /></span
+        ></StyleLink
+      >, I have knowledge about the <span class="text-gradient"
+        >software development process</span
+      >.
+    </FadeSection>
+    <FadeSection
+      id="cp"
+      title="Competitive Programming"
+      tags={["algorithms", "data-structures", "problem-solving"]}
+    >
+      I love solving problems and have been participating in competitive
+      programming contests on <StyleLink
+        href="https://codeforces.com/profile/manikya_sharma"
+        ><span
+          >Codeforces<ExternalLink
+            class="inline-block ml-1.5 text-green-500 size-4"
+          /></span
+        ></StyleLink
+      >, <StyleLink href="https://leetcode.com/u/ManikyaSharma/"
+        ><span
+          >Leetcode<ExternalLink
+            class="inline-block ml-1.5 text-green-500 size-4"
+          /></span
+        ></StyleLink
+      >, <StyleLink href="https://atcoder.jp/users/manikyasharma"
+        ><span
+          >AtCoder<ExternalLink
+            class="inline-block ml-1.5 text-green-500 size-4"
+          /></span
+        ></StyleLink
+      >and
+      <StyleLink href="https://www.codechef.com/users/manikyasharma"
+        ><span
+          >CodeChef <ExternalLink
+            class="inline-block ml-1.5 text-green-500 size-4"
+          /></span
+        ></StyleLink
+      >. I have experience in solving algorithmic problems and have a good
+      understanding of data structures.
+    </FadeSection>
+  </DetailPageLayout>
+  <BottomNav
+    prev={{ href: "/about", name: "About" }}
+    next={{ href: "/projects", name: "Projects" }}
+  />
+</BaseLayout>
