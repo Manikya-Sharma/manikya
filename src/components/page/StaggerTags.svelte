@@ -7,8 +7,12 @@
     fgs,
     bgs,
     tagNames,
-  }: { tags: string[]; fgs: string[]; bgs: string[]; tagNames: string[] } =
-    $props();
+  }: {
+    tags: string[] | undefined;
+    fgs: string[] | undefined;
+    bgs: string[] | undefined;
+    tagNames: string[] | undefined;
+  } = $props();
 
   const animationOptions = {
     opacity: [0, 1],
@@ -35,20 +39,24 @@
       },
     );
     // element always exists, so type assertion is valid
-    observer.observe(document.getElementById(`${tags[0]}-tag`) as Element);
+    observer.observe(document.getElementById(`${tags?.[0]}-tag`) as Element);
     return () => observer.disconnect();
   };
 
   $effect(() => {
-    const animation = animate(`.${tags[0]}-tag`, animationOptions);
-    return observeOnScroll(animation);
+    if (tags) {
+      const animation = animate(`.${tags[0]}-tag`, animationOptions);
+      return observeOnScroll(animation);
+    }
   });
 </script>
 
-<div class="flex gap-2 flex-wrap" id={`${tags[0]}-tag`}>
-  {#each tags as tag, idx}
-    <span class={`${tags[0]}-tag`}>
-      <TagDiv {tag} bg={bgs[idx]} fg={fgs[idx]} tagName={tagNames[idx]} />
-    </span>
-  {/each}
+<div class="flex gap-2 flex-wrap" id={`${tags?.[0]}-tag`}>
+  {#if tags && bgs && fgs && tagNames}
+    {#each tags as tag, idx}
+      <span class={`${tags[0]}-tag`}>
+        <TagDiv {tag} bg={bgs[idx]} fg={fgs[idx]} tagName={tagNames[idx]} />
+      </span>
+    {/each}
+  {/if}
 </div>

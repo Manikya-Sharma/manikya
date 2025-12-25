@@ -40,9 +40,7 @@
   <div
     role="presentation"
     class="block absolute bg-black text-black inset-0 opacity-0 group-hover:opacity-100 transition-opacity rounded-md"
-  >
-    {@render children()}
-  </div>
+  ></div>
   <div
     id={`push-link-${id}`}
     class="block bg-white p-4 text-3xl sm:text-4xl lg:text-5xl font-space outline-dashed group-hover:outline-solid rounded-md"

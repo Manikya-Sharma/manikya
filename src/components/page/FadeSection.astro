@@ -1,7 +1,7 @@
 ---
 import FadeInText from "@/components/page/FadeInText.svelte";
 import PushButton from "./PushButton.svelte";
-import Tags from "./StaggerTags.svelte";
+import StaggerTags from "./StaggerTags.svelte";
 import { Images } from "@lucide/astro";
 import { tagColorMap, bgMap, getTagText } from "@/data/constants";
 
@@ -39,7 +39,13 @@ const tagNames = tags?.map((tag) => getTagText(tag));
           </div>
         </FadeInText>
         <div class="flex gap-2 flex-wrap">
-          <Tags client:only {fgs} {bgs} {tagNames} {tags} />
+          <StaggerTags
+            client:only
+            fgs={fgs}
+            bgs={bgs}
+            tagNames={tagNames}
+            tags={tags}
+          />
         </div>
       </div>
     )
