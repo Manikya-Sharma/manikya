@@ -1,0 +1,59 @@
+---
+import { ExternalLink } from "@lucide/astro";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import DetailPageLayout from "@/layouts/DetailPageLayout.astro";
+import FadeInText from "@/components/page/FadeInText.svelte";
+import StyleLink from "@/components/page/StyleLink.svelte";
+import FadeSection from "@/components/page/FadeSection.astro";
+import ScrollDownIndicator from "@/components/page/ScrollDownIndicator.svelte";
+import BottomNav from "@/components/navbar/BottomNav.astro";
+---
+
+<BaseLayout>
+  <DetailPageLayout>
+    <section>
+      <div class="uppercase h-screen w-full grid place-items-center">
+        <FadeInText client:only id="h1">
+          <h1
+            class="text-6xl sm:text-9xl font-space font-semibold tracking-tighter"
+          >
+            Projects
+          </h1>
+        </FadeInText>
+        <div class="absolute bottom-7 right-5">
+          <ScrollDownIndicator client:only />
+        </div>
+      </div>
+    </section>
+
+    <FadeSection
+      id="storyphilia"
+      title="Storyphilia"
+      extlink={{ href: "/projects/storyphilia" }}
+    />
+    <FadeSection
+      id="fashion-ai"
+      title="Fashion AI"
+      extlink={{ href: "/projects/fashion-ai" }}
+    />
+    <FadeSection
+      id="flappy-bird"
+      title="Flappy Bird"
+      extlink={{ href: "/projects/flappy-bird" }}
+    />
+    <FadeSection
+      id="todo-cli"
+      title="Todo CLI"
+      extlink={{ href: "/projects/todo-cli" }}
+    />
+    <FadeSection
+      id="mini-vim"
+      title="Mini VIM"
+      extlink={{ href: "/projects/mini-vim" }}
+    />
+  </DetailPageLayout>
+  <BottomNav
+    prev={{ href: "/skills", name: "Skills" }}
+    next={{ href: "/contact", name: "Socials" }}
+  />
+</BaseLayout>

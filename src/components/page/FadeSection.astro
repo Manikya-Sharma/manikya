@@ -1,8 +1,9 @@
 ---
 import FadeInText from "@/components/page/FadeInText.svelte";
 import PushButton from "./PushButton.svelte";
+import SmallPushLink from "./SmallPushLink.svelte";
 import StaggerTags from "./StaggerTags.svelte";
-import { Images } from "@lucide/astro";
+import { Images, ArrowUpRight } from "@lucide/astro";
 import { tagColorMap, bgMap, getTagText } from "@/data/constants";
 
 interface Props {
@@ -13,9 +14,13 @@ interface Props {
     items: Array<{ src: string; alt: string }>;
   };
   tags?: Array<keyof typeof bgMap>;
+  extlink?: {
+    text?: string;
+    href: string;
+  };
 }
 
-const { title, id, images, tags } = Astro.props;
+const { title, id, images, tags, extlink } = Astro.props;
 
 const bgs = tags?.map((tag) => bgMap[tag]);
 const fgs = tags?.map((tag) => tagColorMap[tag]);
@@ -35,6 +40,13 @@ const tagNames = tags?.map((tag) => getTagText(tag));
               <PushButton client:load id={id} images={images}>
                 <Images class="size-5 sm:size-7" />
               </PushButton>
+            )}
+            {extlink && (
+              <SmallPushLink client:load id={id} href={extlink.href}>
+                <span class="flex ml-3 items-center gap-1.5 text-base">
+                  {extlink.text ?? "Learn more"} <ArrowUpRight class="size-5" />
+                </span>
+              </SmallPushLink>
             )}
           </div>
         </FadeInText>
