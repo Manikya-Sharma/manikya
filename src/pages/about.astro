@@ -43,13 +43,11 @@ import BottomNav from "@/components/navbar/BottomNav.astro";
         ],
       }}
     >
-      {
-        /* FIX: if we use client:load, then the link does not come
-            at correct place on fresh page load.
-            Also, on opening the modal, the link position is spoiled
-         */
-      }
-      I am a student of <StyleLink client:only href="https://dtu.ac.in">
+      I am a student of <StyleLink
+        client:only
+        href="https://dtu.ac.in"
+        id="dtu-link"
+      >
         <span>
           Delhi Technological University<ExternalLink
             class="inline-block ml-1.5 text-green-500 size-4"
@@ -75,6 +73,7 @@ import BottomNav from "@/components/navbar/BottomNav.astro";
       I have participated in various <StyleLink
         client:only
         href="https://devfolio.co/@Manikya_Sharma"
+        id="devfolio-link"
       >
         <span>
           hacakthons<ExternalLink

@@ -1,10 +1,12 @@
-<!-- FIX: Something is seriously wrong with this component -->
 <script lang="ts">
   import { animate } from "animejs";
   import type { Snippet } from "svelte";
 
-  const { children, href }: { href: string; children: Snippet } = $props();
-  const id = $derived(new URL(href).host.split(".").join("-"));
+  const {
+    children,
+    href,
+    id,
+  }: { href: string; children: Snippet; id: string } = $props();
 
   const onhover = () => {
     animate(`#underline-${id}`, {
@@ -27,12 +29,11 @@
   onmouseenter={onhover}
   onmouseleave={onleave}
 >
-  <!-- TODO: if text overflows on multiple lines, then underline doesnt work-->
   <a class="text-gradient" {href}>
     {@render children()}
   </a>
   <span
     id={`underline-${id}`}
-    class="absolute block -bottom-0.5 h-0.5 w-[calc(100%-7px)] bg-gradient rounded-sm"
+    class="absolute block -bottom-0.5 h-0.5 left-0 right-2 bg-gradient rounded-sm"
   ></span>
 </span>
