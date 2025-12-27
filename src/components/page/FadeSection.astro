@@ -33,7 +33,7 @@ const tagNames = tags?.map((tag) => getTagText(tag));
       <div>
         <FadeInText onScroll client:only="svelte" id={id}>
           <div class="flex gap-2.5 mt-28 sm:mt-36 lg:mt-52 items-center">
-            <h2 class="uppercase text-4xl sm:text-7xl font-space font-semibold tracking-tighter">
+            <h2 class="uppercase text-4xl sm:text-5xl md:text-7xl font-space font-semibold tracking-tighter">
               {title}
             </h2>
             {images && images.items.length > 0 && (
@@ -43,8 +43,11 @@ const tagNames = tags?.map((tag) => getTagText(tag));
             )}
             {extlink && (
               <SmallPushLink client:load id={id} href={extlink.href}>
-                <span class="flex ml-3 items-center gap-1.5 text-base">
-                  {extlink.text ?? "Learn more"} <ArrowUpRight class="size-5" />
+                <span class="flex items-center sm:gap-1.5 text-[0.65rem] sm:text-base">
+                  <span class="inline-block">
+                    {extlink.text ?? "Learn more"}
+                  </span>
+                  <ArrowUpRight class="size-4 sm:size-5" />
                 </span>
               </SmallPushLink>
             )}

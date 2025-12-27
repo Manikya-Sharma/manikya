@@ -34,7 +34,7 @@
 <div
   role="presentation"
   class={[
-    "relative group cursor-pointer inline-block text-base font-semibold rounded-md",
+    "relative group cursor-pointer inline-block text-sm sm:text-base font-semibold rounded-md",
     bg,
   ]}
   onmouseenter={onhover}

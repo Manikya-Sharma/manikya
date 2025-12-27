@@ -50,7 +50,7 @@
   ></div>
   <div
     id={`small-push-link-${id}`}
-    class="bg-white rounded-md border border-[#b2b2b2] py-2 px-1.5"
+    class="bg-white rounded-md border border-[#b2b2b2] py-1 px-0.5 sm:py-2 sm:px-1.5"
   >
     {@render children()}
   </div>
