@@ -30,6 +30,8 @@ export const tagColorMap = {
 	pygame: "bg-green-50 border-green-300 text-green-700",
 	crossterm: "bg-zinc-50 border-zinc-300 text-zinc-700",
 	ratatui: "bg-zinc-50 border-zinc-300 text-zinc-700",
+	gpt: "bg-zinc-50 border-zinc-300 text-zinc-700",
+	postgresql: "bg-zinc-50 border-zinc-300 text-zinc-700",
 };
 
 export const bgMap = {
@@ -59,6 +61,8 @@ export const bgMap = {
 	pygame: "bg-green-100",
 	crossterm: "bg-zinc-100",
 	ratatui: "bg-zinc-100",
+	gpt: "bg-zinc-100",
+	postgresql: "bg-zinc-100",
 };
 
 export const getTagText = (tagName: keyof typeof bgMap) => {
@@ -87,10 +91,10 @@ export const getTagText = (tagName: keyof typeof bgMap) => {
 			return "HTML";
 		case "css":
 			return "CSS";
-		// case "gpt":
-		// 	return "GPT";
-		// case "postgresql":
-		// 	return "PostgreSQL";
+		case "gpt":
+			return "GPT";
+		case "postgresql":
+			return "PostgreSQL";
 		case "react-query":
 			return "React Query";
 		default:

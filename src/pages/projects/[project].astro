@@ -1,0 +1,106 @@
+---
+import type { GetStaticPaths } from "astro";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import { projectDetails, projects } from "@/data/projects";
+import FadeInText from "@/components/page/FadeInText.svelte";
+import { ExternalLink } from "@lucide/astro";
+import StaggerTags from "@/components/page/StaggerTags.svelte";
+import { bgMap, getTagText, tagColorMap } from "@/data/constants";
+
+export const getStaticPaths = (() => {
+  return projects.map((project) => ({
+    params: { project: project.id },
+  }));
+}) satisfies GetStaticPaths;
+
+const { project } = Astro.params;
+const title = projects.filter(({ id }) => id === project)[0].title;
+
+const allImages = Object.keys(
+  import.meta.glob("../../../public/project-images/*.png", {
+    eager: true,
+  }),
+).map((key) => {
+  const paths = key.split("/").filter((elem) => elem.trim().length > 0);
+  return paths[paths.length - 1];
+});
+const images = allImages
+  .filter((image) => image.includes(project))
+  .map((img, idx) => ({
+    src: `/project-images/${img}`,
+    alt: `${title}-${idx + 1}`,
+  }));
+
+const { description, github, tags, deployed } = projectDetails[project];
+
+const bgs = tags?.map((tag) => bgMap[tag]);
+const fgs = tags?.map((tag) => tagColorMap[tag]);
+const tagNames = tags?.map((tag) => getTagText(tag));
+---
+
+<BaseLayout>
+  <main
+    class="text-xl sm:text-xl px-20 mx-auto font-figtree mb-20 md:mb-36 leading-relaxed"
+  >
+    <div class="flex items-center gap-10 mt-32">
+      <div class="flex-2">
+        <FadeInText client:only id={project}>
+          <h1
+            class="font-space font-semibold tracking-tight uppercase text-7xl"
+          >
+            {title}
+          </h1>
+        </FadeInText>
+        <div class="-mt-2 mb-3 flex gap-2 text-[1.1rem] text-blue-600">
+          <a
+            class="flex items-center gap-0.5 underline underline-offset-4 hover:no-underline"
+            href={github}>GitHub<ExternalLink class="inline-block size-4" /></a
+          >
+          {
+            deployed && (
+              <a
+                class="flex items-center gap-0.5 underline underline-offset-4 hover:no-underline"
+                href={deployed}
+              >
+                Deployed Link
+                <ExternalLink class="inline-block size-4" />
+              </a>
+            )
+          }
+        </div>
+        <div class="text-pretty">
+          <Fragment set:html={description} />
+        </div>
+        <div class="mt-5">
+          <StaggerTags
+            client:only
+            fgs={fgs}
+            bgs={bgs}
+            tagNames={tagNames}
+            tags={tags}
+          />
+        </div>
+      </div>
+      <div
+        class="flex-3 carousel carousel-center space-x-2 mt-3 rounded-md p-2 bg-zinc-800"
+      >
+        <div class="carousel-item w-[95%] rounded-md">
+          <video controls muted>
+            <source src={`/project-videos/${project}.mp4`} type="video/mp4" />
+          </video>
+        </div>
+        {
+          images.map(({ src, alt }) => (
+            <div class="carousel-item w-[95%] rounded-md">
+              <img
+                src={src}
+                alt={alt}
+                class="w-full aspect-video object-contain rounded-md"
+              />
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </main>
+</BaseLayout>

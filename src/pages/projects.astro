@@ -7,29 +7,7 @@ import HoverRound from "@/components/page/HoverRound.svelte";
 import ScrollDownIndicator from "@/components/page/ScrollDownIndicator.svelte";
 import BottomNav from "@/components/navbar/BottomNav.astro";
 import { ArrowRight } from "@lucide/astro";
-
-const projects = [
-  {
-    id: "storyphilia",
-    title: "Storyphilia",
-  },
-  {
-    id: "fashion-ai",
-    title: "Fashion AI",
-  },
-  {
-    id: "flappy-bird",
-    title: "Flappy Bird",
-  },
-  {
-    id: "todo-cli",
-    title: "Todo CLI",
-  },
-  {
-    id: "mini-vim",
-    title: "Mini VIM",
-  },
-];
+import { projects } from "@/data/projects";
 ---
 
 <BaseLayout>
