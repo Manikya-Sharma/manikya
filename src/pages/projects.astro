@@ -1,16 +1,42 @@
 ---
-import { ExternalLink } from "@lucide/astro";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import DetailPageLayout from "@/layouts/DetailPageLayout.astro";
 import FadeInText from "@/components/page/FadeInText.svelte";
-import StyleLink from "@/components/page/StyleLink.svelte";
 import FadeSection from "@/components/page/FadeSection.astro";
+import HoverRound from "@/components/page/HoverRound.svelte";
 import ScrollDownIndicator from "@/components/page/ScrollDownIndicator.svelte";
 import BottomNav from "@/components/navbar/BottomNav.astro";
+import { ArrowRight } from "@lucide/astro";
+
+const projects = [
+  {
+    id: "storyphilia",
+    title: "Storyphilia",
+  },
+  {
+    id: "fashion-ai",
+    title: "Fashion AI",
+  },
+  {
+    id: "flappy-bird",
+    title: "Flappy Bird",
+  },
+  {
+    id: "todo-cli",
+    title: "Todo CLI",
+  },
+  {
+    id: "mini-vim",
+    title: "Mini VIM",
+  },
+];
 ---
 
 <BaseLayout>
   <DetailPageLayout>
+    <HoverRound client:only="svelte">
+      <ArrowRight class="text-white size-7" />
+    </HoverRound>
     <section>
       <div class="uppercase h-screen w-full grid place-items-center">
         <FadeInText client:only id="h1">
@@ -26,31 +52,23 @@ import BottomNav from "@/components/navbar/BottomNav.astro";
       </div>
     </section>
 
-    <FadeSection
-      id="storyphilia"
-      title="Storyphilia"
-      extlink={{ href: "/projects/storyphilia" }}
-    />
-    <FadeSection
-      id="fashion-ai"
-      title="Fashion AI"
-      extlink={{ href: "/projects/fashion-ai" }}
-    />
-    <FadeSection
-      id="flappy-bird"
-      title="Flappy Bird"
-      extlink={{ href: "/projects/flappy-bird" }}
-    />
-    <FadeSection
-      id="todo-cli"
-      title="Todo CLI"
-      extlink={{ href: "/projects/todo-cli" }}
-    />
-    <FadeSection
-      id="mini-vim"
-      title="Mini VIM"
-      extlink={{ href: "/projects/mini-vim" }}
-    />
+    {
+      projects.map(({ id, title }) => (
+        <FadeSection
+          id={id}
+          title={title}
+          extlink={{ href: `/projects/${id}` }}
+        >
+          {/* cursor-none works because we have hover-block */}
+          <a class="cursor-none" href={`/projects/${id}`}>
+            <img
+              class="hover-block w-full block aspect-video object-contain rounded-md ring-2 ring-offset-1 ring-black/40"
+              src={`project-images/${id}-1.png`}
+            />
+          </a>
+        </FadeSection>
+      ))
+    }
   </DetailPageLayout>
   <BottomNav
     prev={{ href: "/skills", name: "Skills" }}

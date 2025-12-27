@@ -19,12 +19,14 @@
     "animejs": "^4.2.2",
     "astro": "^5.16.5",
     "daisyui": "^5.5.14",
+    "lodash": "^4.17.21",
     "lottie-web": "^5.13.0",
     "svelte": "^5.46.0",
     "tailwindcss": "^4.1.18",
     "typescript": "^5.9.3"
   },
   "devDependencies": {
+    "@types/lodash": "^4.17.21",
     "prettier": "^3.7.4",
     "prettier-plugin-astro": "^0.14.1"
   }
