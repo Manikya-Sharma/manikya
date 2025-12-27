@@ -5,7 +5,7 @@ import { projectDetails, projects } from "@/data/projects";
 import FadeInText from "@/components/page/FadeInText.svelte";
 import { ExternalLink } from "@lucide/astro";
 import StaggerTags from "@/components/page/StaggerTags.svelte";
-import { bgMap, getTagText, tagColorMap } from "@/data/constants";
+import { bgMap, getTagText, tagColorMap } from "@/data/tags";
 
 export const getStaticPaths = (() => {
   return projects.map((project) => ({

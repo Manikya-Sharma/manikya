@@ -1,4 +1,4 @@
-import type { bgMap } from "./constants";
+import type { bgMap } from "./tags.ts";
 
 export const projects = [
 	{
