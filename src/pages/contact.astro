@@ -1,15 +1,61 @@
 ---
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import FadeInText from "@/components/page/FadeInText.svelte";
+import HoverStaggerText from "@/components/page/HoverStaggerText.svelte";
 import FlippingButton from "@/components/page/FlippingButton.svelte";
-import { Send } from "@lucide/astro";
+import { ExternalLink, Send } from "@lucide/astro";
+
+const contacts = [
+  {
+    img: "/linkedin-black.png",
+    name: "LinkedIn",
+    className: "border-blue-700 text-blue-700 bg-blue-50",
+    href: "https://www.linkedin.com/in/manikya-sharma-84615125a/",
+    id: "lkd"
+  },
+  {
+    img: "/github-black.png",
+    name: "GitHub",
+    className: "border-slate-700 text-slate-700 bg-slate-50",
+    href: "https://github.com/Manikya-Sharma",
+    id: "gh"
+  },
+  {
+    img: "/mail-logo.svg",
+    name: "Email",
+    className: "border-cyan-700 text-cyan-700 bg-cyan-50",
+    href: "mailto:manikyasharma.ms@gmail.com",
+    id:"ml"
+  },
+  {
+    img: "/cf-logo.png",
+    name: "Codeforces",
+    className: "border-rose-700 text-rose-700 bg-rose-50",
+    href: "https://codeforces.com/profile/manikya_sharma",
+    id: "cf"
+  },
+  {
+    img: "/lc-logo.png",
+    name: "Leetcode",
+    className: "border-yellow-700 text-yellow-700 bg-yellow-50",
+    href: "https://leetcode.com/u/ManikyaSharma/",
+    id: "lc"
+  },
+  {
+    img: "/x-black.png",
+    name: "Twitter (X)",
+    className: "border-zinc-700 text-zinc-700 bg-zinc-50",
+    href: "https://x.com/manikya_sharma_",
+    id: "tw"
+  },
+];
 ---
 
 <BaseLayout>
   <main
     class="min-h-screen flex flex-col justify-center -mt-20 text-lg sm:text-xl px-5 sm:px-20 mx-auto font-space leading-relaxed"
   >
-    <div class="flex flex-col xl:flex-row items-center gap-10 mt-32">
+    <div class="flex flex-col xl:flex-row items-center gap-32 mt-32">
       <div class="flex-3">
         <FadeInText client:only id="touch">
           <h1
@@ -18,7 +64,19 @@ import { Send } from "@lucide/astro";
             Get In Touch
           </h1>
         </FadeInText>
-        <div class="-mt-2 mb-3 flex gap-2 text-[1.1rem] text-blue-600"></div>
+        <ul class="grid grid-cols-3 grid-rows-2 gap-4 font-figtree text-[1.125rem]">
+          {
+          contacts.map(({ className, img, name, href, id }) => (
+              <li>
+                <HoverStaggerText client:load id={id} href={href} className={className} content={name}>
+                    <img slot="pref" class="block size-5" src={img} />
+                    <ExternalLink slot="suff" class="size-5" />
+                  </HoverStaggerText>
+                </a>
+              </li>
+            ))
+          }
+        </ul>
       </div>
       <div
         class="flex-4 max-w-160 aspect-video border border-black/20 rounded-md shadow grid grid-cols-1 place-items-center py-12 px-6"
