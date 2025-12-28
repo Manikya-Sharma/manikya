@@ -53,21 +53,21 @@ const contacts = [
 
 <BaseLayout>
   <main
-    class="min-h-screen flex flex-col justify-center -mt-20 text-lg sm:text-xl px-5 sm:px-20 mx-auto font-space leading-relaxed"
+    class="min-h-screen mt-24 md:mt-0 flex flex-col justify-center text-lg sm:text-xl px-5 sm:px-20 mx-auto font-space leading-relaxed"
   >
-    <div class="flex flex-col xl:flex-row items-center gap-32 mt-32">
+    <div class="flex flex-col md:flex-row items-center gap-14 xl:gap-28 2xl:gap-32">
       <div class="flex-3">
         <FadeInText client:only id="touch">
           <h1
-            class="font-semibold tracking-tight uppercase text-4xl sm:text-7xl"
+            class="font-semibold tracking-tight uppercase text-5xl text-center md:text-left 2xl:text-7xl"
           >
             Get In Touch
           </h1>
         </FadeInText>
-        <ul class="grid grid-cols-3 grid-rows-2 gap-4 font-figtree text-[1.125rem]">
+        <ul class="grid grid-cols-2 sm:grid-cols-2 sm:grid-rows-3 2xl:grid-cols-3 xl:grid-rows-2 gap-4 font-figtree text-[1.125rem]">
           {
           contacts.map(({ className, img, name, href, id }) => (
-              <li>
+              <li class="min-w-32 sm:min-w-42 text-base sm:text-lg">
                 <HoverStaggerText client:load id={id} href={href} className={className} content={name}>
                     <img slot="pref" class="block size-5" src={img} />
                     <ExternalLink slot="suff" class="size-5" />
@@ -79,10 +79,10 @@ const contacts = [
         </ul>
       </div>
       <div
-        class="flex-4 max-w-160 aspect-video border border-black/20 rounded-md shadow grid grid-cols-1 place-items-center py-12 px-6"
+        class="flex-2 xl:flex-4 w-full md:max-w-160 xl:aspect-video border border-black/20 rounded-md shadow grid grid-cols-1 place-items-center py-12 px-6"
       >
         <FadeInText client:only id="convo"
-          ><span class="font-semibold uppercase tracking-tight text-3xl"
+          ><span class="font-semibold uppercase tracking-tight text-2xl xl:text-3xl"
             >Start a Conversation</span
           ></FadeInText
         >

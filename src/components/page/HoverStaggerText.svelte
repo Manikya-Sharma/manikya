@@ -65,7 +65,7 @@
 <a
   {href}
   class={[
-    "flex w-full h-full px-3 py-2 rounded-md border items-center justify-start gap-1.5",
+    "flex w-full h-full px-2 sm:px-3 py-1 sm:py-2 rounded-md border items-center justify-start gap-1.5",
     className,
   ]}
   onfocus={() => {
@@ -92,7 +92,7 @@
   <span id={`pref-${id}`}>
     {@render pref()}
   </span>
-  <span id={`content-${id}`} class="block">{content}</span>
+  <span id={`content-${id}`} class="block min-w-fit">{content}</span>
   <span id={`suff-${id}`} class="ml-auto">
     {@render suff()}
   </span>
