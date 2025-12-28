@@ -6,13 +6,11 @@
   const {
     children,
     id,
-    className,
     height = MENU_OPTION_HEIGHT,
   }: {
     children: Snippet;
     id: string;
     href?: string;
-    className?: string;
     isLink?: boolean;
     height?: number;
   } = $props();

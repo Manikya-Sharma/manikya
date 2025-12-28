@@ -72,6 +72,7 @@ const contacts = [
           {
             contacts.map(({ className, img, name, href, id }) => (
               <li class="min-w-32 sm:min-w-42 text-base sm:text-lg">
+                {/* @ts-expect-error: We have passed slots as children */}
                 <HoverStaggerText
                   client:load
                   id={id}

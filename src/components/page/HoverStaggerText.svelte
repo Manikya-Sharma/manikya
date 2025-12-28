@@ -1,6 +1,6 @@
 <script lang="ts">
-  import { animate, splitText, stagger, type JSAnimation } from "animejs";
   import type { Snippet } from "svelte";
+  import { animate, splitText, stagger, type JSAnimation } from "animejs";
 
   const DURATION = 250;
 

@@ -39,8 +39,10 @@
   {href}
   id={`model-button-${id}`}
   class="relative group cursor-pointer"
-  onmouseenter={onhover}
-  onmouseleave={onleave}
+  onfocus={onhover}
+  onblur={onleave}
+  onmouseover={onhover}
+  onmouseout={onleave}
   onmousedown={onleave}
   onmouseup={onhover}
 >

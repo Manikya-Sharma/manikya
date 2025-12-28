@@ -37,8 +37,10 @@
     "relative group cursor-pointer inline-block text-sm sm:text-base font-semibold rounded-md",
     bg,
   ]}
-  onmouseenter={onhover}
-  onmouseleave={onleave}
+  onmouseover={onhover}
+  onmouseout={onleave}
+  onfocus={onhover}
+  onblur={onleave}
   onmousedown={onleave}
   onmouseup={onhover}
 >

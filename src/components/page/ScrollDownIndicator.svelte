@@ -1,6 +1,8 @@
-<!-- Note: Use this only once per page -->
 <script lang="ts">
+  //  Note: Use this only once per page
   import Lottie, { type AnimationItem } from "lottie-web";
+
+  const {}: {} = $props();
 
   let animation: AnimationItem | null = null;
 

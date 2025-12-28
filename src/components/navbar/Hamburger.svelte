@@ -1,13 +1,19 @@
 <script lang="ts">
   import { MENU_OPTION_HEIGHT } from "@/data/constants";
   import { animate } from "animejs";
+  import type { Snippet } from "svelte";
 
-  let open = $state(false);
-  // length is the number of options
-  const { length }: { length: number } = $props();
+  let isOpen = $state(false);
+  const {
+    length: numOptions,
+    close,
+    open,
+    options,
+  }: { length: number; open: Snippet; close: Snippet; options: Snippet } =
+    $props();
   // 12 is the padding
   const height = $derived(
-    () => `${MENU_OPTION_HEIGHT * length + 12 * 2 + 8 * 2 * length}px`,
+    () => `${MENU_OPTION_HEIGHT * numOptions + 12 * 2 + 8 * 2 * numOptions}px`,
   );
 
   const on_menu_blur = (e: PointerEvent) => {
@@ -23,8 +29,8 @@
   };
 
   const toggleState = () => {
-    open = !open;
-    if (open) {
+    isOpen = !isOpen;
+    if (isOpen) {
       // enter animation
       animate("#dropdown-animation", {
         opacity: [0, 1],
@@ -50,24 +56,21 @@
   id="dropdown-button"
   onclick={() => toggleState()}
 >
-  {#if open}
-    <!-- svelte-ignore slot_element_deprecated: no other way to pass named slots-->
-    <slot name="close" />
+  {#if isOpen}
+    {@render close()}
   {:else}
-    <!-- svelte-ignore slot_element_deprecated-->
-    <slot name="open" />
+    {@render open()}
   {/if}
 </button>
 
 <!-- Options menu -->
 <div
-  aria-expanded={open}
+  aria-expanded={isOpen}
   class={[
     "absolute top-18 right-5 rounded-md bg-black px-10 py-3 opacity-0",
-    !open && "pointer-events-none",
+    !isOpen && "pointer-events-none",
   ]}
   id="dropdown-animation"
 >
-  <!-- svelte-ignore slot_element_deprecated-->
-  <slot name="options" />
+  {@render options()}
 </div>

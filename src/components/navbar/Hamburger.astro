@@ -119,6 +119,7 @@ if (Object.keys(options).includes(lastPath)) {
 
 {
   selectedOptions && (
+    /* @ts-expect-error: We have passed slots as children */
     <HamburgerSvelte length={selectedOptions.length} client:load>
       <Menu aria-haspopup="true" slot="open" class="size-5 sm:size-6" />
       <X slot="close" class="size-5 sm:size-6" />

@@ -34,8 +34,10 @@
 <a
   {href}
   class="block relative group"
-  onmouseenter={onhover}
-  onmouseleave={onleave}
+  onfocus={onhover}
+  onblur={onleave}
+  onmouseover={onhover}
+  onmouseout={onleave}
 >
   <div
     role="presentation"

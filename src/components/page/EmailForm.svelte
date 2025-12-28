@@ -1,7 +1,7 @@
 <script lang="ts">
+  import { z } from "zod";
   import type { Snippet } from "svelte";
   import FadeInText from "./FadeInText.svelte";
-  import { z } from "zod";
   import FlippingButton from "./FlippingButton.svelte";
 
   const { children }: { children: Snippet } = $props();
