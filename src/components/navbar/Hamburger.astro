@@ -125,14 +125,13 @@ if (Object.keys(options).includes(lastPath)) {
       <ul slot="options">
         {selectedOptions.map((option) => (
           <li class="py-2">
-            <FlippingText
-              className="font-electrolize sm:text-lg flex gap-2 items-center"
-              href={option.href}
-              client:load
-              id={option.text.split(" ").join("-")}
-            >
-              <option.icon class="size-4" /> {option.text}
-            </FlippingText>
+            <a href={option.href} class="w-full">
+              <FlippingText client:load id={option.text.split(" ").join("-")}>
+                <span class="font-electrolize sm:text-lg flex gap-2 items-center">
+                  <option.icon class="size-4" /> {option.text}
+                </span>
+              </FlippingText>
+            </a>
           </li>
         ))}
       </ul>

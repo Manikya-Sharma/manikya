@@ -1,0 +1,60 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import FadeInText from "@/components/page/FadeInText.svelte";
+import FlippingButton from "@/components/page/FlippingButton.svelte";
+import { Send } from "@lucide/astro";
+---
+
+<BaseLayout>
+  <main
+    class="min-h-screen flex flex-col justify-center -mt-20 text-lg sm:text-xl px-5 sm:px-20 mx-auto font-space leading-relaxed"
+  >
+    <div class="flex flex-col xl:flex-row items-center gap-10 mt-32">
+      <div class="flex-3">
+        <FadeInText client:only id="touch">
+          <h1
+            class="font-semibold tracking-tight uppercase text-4xl sm:text-7xl"
+          >
+            Get In Touch
+          </h1>
+        </FadeInText>
+        <div class="-mt-2 mb-3 flex gap-2 text-[1.1rem] text-blue-600"></div>
+      </div>
+      <div
+        class="flex-4 max-w-160 aspect-video border border-black/20 rounded-md shadow grid grid-cols-1 place-items-center py-12 px-6"
+      >
+        <FadeInText client:only id="convo"
+          ><span class="font-semibold uppercase tracking-tight text-3xl"
+            >Start a Conversation</span
+          ></FadeInText
+        >
+        <div class="flex flex-col gap-1.5 w-full mb-5">
+          <div class="text-lg">Name</div>
+          <input
+            class="input font-figtree placeholder:text-base text-lg w-full"
+            placeholder="Your name"
+          />
+        </div><div class="flex flex-col gap-1.5 w-full mb-5">
+          <div class="text-lg">Email</div>
+          <input
+            class="input font-figtree placeholder:text-base text-lg w-full"
+            placeholder="your@email.com"
+          />
+        </div><div class="flex flex-col gap-1.5 w-full mb-5">
+          <div class="text-lg">Message</div>
+          <textarea class="textarea font-figtree text-lg w-full"></textarea>
+        </div>
+        <div class="w-full flex items-center justify-end">
+          <FlippingButton client:load id="send-button">
+            <span
+              class="flex text-[1.125rem] gap-1.5 items-center font-electrolize"
+            >
+              Send
+              <Send class="size-5" />
+            </span>
+          </FlippingButton>
+        </div>
+      </div>
+    </div>
+  </main>
+</BaseLayout>
