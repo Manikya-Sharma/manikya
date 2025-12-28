@@ -23,7 +23,8 @@
     "lottie-web": "^5.13.0",
     "svelte": "^5.46.0",
     "tailwindcss": "^4.1.18",
-    "typescript": "^5.9.3"
+    "typescript": "^5.9.3",
+    "zod": "^4.2.1"
   },
   "devDependencies": {
     "@types/lodash": "^4.17.21",
