@@ -8,6 +8,20 @@ import ScrollDownIndicator from "@/components/page/ScrollDownIndicator.svelte";
 import BottomNav from "@/components/navbar/BottomNav.astro";
 import { ArrowRight } from "@lucide/astro";
 import { projects } from "@/data/projects";
+import { Image } from "astro:assets";
+
+const allImages = import.meta.glob<{ default: ImageMetadata }>(
+  "@/images/project-images/*.png",
+);
+
+const images = projects.map(({ id }) => {
+  const filteredImages = Object.entries(allImages).filter(([path]) =>
+    path.includes(id),
+  );
+  return filteredImages.map(([, importer]) => {
+    return importer();
+  });
+});
 ---
 
 <BaseLayout>
@@ -31,7 +45,7 @@ import { projects } from "@/data/projects";
     </section>
 
     {
-      projects.map(({ id, title }) => (
+      projects.map(({ id, title }, index) => (
         <FadeSection
           id={id}
           title={title}
@@ -39,9 +53,10 @@ import { projects } from "@/data/projects";
         >
           {/* cursor-none works because we have hover-block */}
           <a class="cursor-none" href={`/projects/${id}`}>
-            <img
+            <Image
               class="hover-block w-full block aspect-video object-contain rounded-md ring-2 ring-offset-1 ring-black/40"
-              src={`/project-images/${id}-1.png`}
+              src={images[index][0]}
+              alt={`${title}`}
             />
           </a>
         </FadeSection>

@@ -6,6 +6,7 @@ import FadeInText from "@/components/page/FadeInText.svelte";
 import { ExternalLink } from "@lucide/astro";
 import StaggerTags from "@/components/page/StaggerTags.svelte";
 import { bgMap, getTagText, tagColorMap } from "@/data/tags";
+import { Image } from "astro:assets";
 
 export const getStaticPaths = (() => {
   return projects.map((project) => ({
@@ -16,20 +17,12 @@ export const getStaticPaths = (() => {
 const { project } = Astro.params;
 const title = projects.filter(({ id }) => id === project)[0].title;
 
-const allImages = Object.keys(
-  import.meta.glob("../../../public/project-images/*.png", {
-    eager: true,
-  }),
-).map((key) => {
-  const paths = key.split("/").filter((elem) => elem.trim().length > 0);
-  return paths[paths.length - 1];
-});
+const allImages = Object.entries(
+  import.meta.glob<{ default: ImageMetadata }>("@/images/project-images/*.png"),
+);
 const images = allImages
-  .filter((image) => image.includes(project))
-  .map((img, idx) => ({
-    src: `/project-images/${img}`,
-    alt: `${title}-${idx + 1}`,
-  }));
+  .filter(([path]) => path.includes(project))
+  .map(([, img]) => img());
 
 const { description, github, tags, deployed } = projectDetails[project];
 
@@ -90,12 +83,13 @@ const tagNames = tags?.map((tag) => getTagText(tag));
           </video>
         </div>
         {
-          images.map(({ src, alt }) => (
+          images.map((image, index) => (
             <div class="carousel-item w-[95%] rounded-md">
-              <img
-                src={src}
-                alt={alt}
+              <Image
+                src={image}
+                alt={`${title}-${index + 1}`}
                 class="w-full aspect-video object-contain rounded-md"
+                loading="eager"
               />
             </div>
           ))

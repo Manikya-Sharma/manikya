@@ -7,6 +7,13 @@ import StyleLink from "@/components/page/StyleLink.svelte";
 import FadeSection from "@/components/page/FadeSection.astro";
 import ScrollDownIndicator from "@/components/page/ScrollDownIndicator.svelte";
 import BottomNav from "@/components/navbar/BottomNav.astro";
+
+import DtuImage from "@/images/dtu.jpeg";
+import RSHallImage from "@/images/hall.jpg";
+import IITRImage from "@/images/iitr.jpg";
+import IITR2Image from "@/images/iitr2.jpg";
+import PeacockImage from "@/images/peacock.jpg";
+import DucksImage from "@/images/ducks.jpg";
 ---
 
 <BaseLayout>
@@ -38,8 +45,8 @@ import BottomNav from "@/components/navbar/BottomNav.astro";
       images={{
         title: "My institution",
         items: [
-          { src: "/dtu.jpeg", alt: "Image of DTU" },
-          { src: "/hall.jpg", alt: "Image of Raj Soin Hall" },
+          { src: DtuImage, alt: "DTU" },
+          { src: RSHallImage, alt: "Raj Soin Hall" },
         ],
       }}
     >
@@ -65,8 +72,8 @@ import BottomNav from "@/components/navbar/BottomNav.astro";
       images={{
         title: "Some hackathons",
         items: [
-          { src: "/iitr.jpg", alt: "Image of IITR" },
-          { src: "/iitr2.jpg", alt: "Another image of IITR" },
+          { src: IITRImage, alt: "IITR" },
+          { src: IITR2Image, alt: "IITR" },
         ],
       }}
     >
@@ -92,8 +99,8 @@ import BottomNav from "@/components/navbar/BottomNav.astro";
       images={{
         title: "Travelling",
         items: [
-          { src: "/peacock.jpg", alt: "peacock" },
-          { src: "ducks.jpg", alt: "Ducks" },
+          { src: PeacockImage, alt: "Peacock" },
+          { src: DucksImage, alt: "Ducks" },
         ],
       }}
     >

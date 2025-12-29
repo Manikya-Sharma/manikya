@@ -5,13 +5,14 @@ import SmallPushLink from "./SmallPushLink.svelte";
 import StaggerTags from "./StaggerTags.svelte";
 import { Images, ArrowUpRight } from "@lucide/astro";
 import { tagColorMap, bgMap, getTagText } from "@/data/tags";
+import { Image } from "astro:assets";
 
 interface Props {
   id: string;
   title?: string;
   images?: {
     title: string;
-    items: Array<{ src: string; alt: string }>;
+    items: Array<{ src: ImageMetadata; alt: string }>;
   };
   tags?: Array<keyof typeof bgMap>;
   extlink?: {
@@ -37,8 +38,35 @@ const tagNames = tags?.map((tag) => getTagText(tag));
               {title}
             </h2>
             {images && images.items.length > 0 && (
-              <PushButton client:load id={id} images={images}>
+              <PushButton client:load id={id}>
                 <Images class="size-5 sm:size-7" />
+                <span slot="dialog">
+                  <dialog id={`model-${id}`} class="modal">
+                    <div class="modal-box">
+                      <div class="flex items-center justify-between">
+                        <h2 class="text-lg" aria-label={"Images carousel"}>
+                          {images?.title}
+                        </h2>
+                        <form method="dialog">
+                          <button class="cursor-pointer bg-black text-white rounded-md px-4 py-2 text-sm">
+                            Close
+                          </button>
+                        </form>
+                      </div>
+                      <div class="carousel carousel-center space-x-2 mt-3 rounded-md p-2 bg-zinc-800">
+                        {images.items.map(({ alt, src }) => (
+                          <div class="carousel-item w-[90%] rounded-md">
+                            <Image
+                              src={src}
+                              alt={alt}
+                              class="w-full aspect-video object-cover rounded-md"
+                            />
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  </dialog>
+                </span>
               </PushButton>
             )}
             {extlink && (

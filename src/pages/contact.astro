@@ -4,45 +4,53 @@ import FadeInText from "@/components/page/FadeInText.svelte";
 import HoverStaggerText from "@/components/page/HoverStaggerText.svelte";
 import EmailForm from "@/components/page/EmailForm.svelte";
 import { ExternalLink, Send } from "@lucide/astro";
+import { Image } from "astro:assets";
+
+import LkdImage from "@/images/linkedin-black.png";
+import GhImage from "@/images/github-black.png";
+import MailImage from "@/images/mail-logo.svg";
+import CfImage from "@/images/cf-logo.png";
+import LcImage from "@/images/lc-logo.png";
+import XImage from "@/images/x-black.png";
 
 const contacts = [
   {
-    img: "/linkedin-black.png",
+    img: LkdImage,
     name: "LinkedIn",
     className: "border-blue-700 text-blue-700 bg-blue-50",
     href: "https://www.linkedin.com/in/manikya-sharma-84615125a/",
     id: "lkd",
   },
   {
-    img: "/github-black.png",
+    img: GhImage,
     name: "GitHub",
     className: "border-slate-700 text-slate-700 bg-slate-50",
     href: "https://github.com/Manikya-Sharma",
     id: "gh",
   },
   {
-    img: "/mail-logo.svg",
+    img: MailImage,
     name: "Email",
     className: "border-cyan-700 text-cyan-700 bg-cyan-50",
     href: "mailto:manikyasharma.ms@gmail.com",
     id: "ml",
   },
   {
-    img: "/cf-logo.png",
+    img: CfImage,
     name: "Codeforces",
     className: "border-rose-700 text-rose-700 bg-rose-50",
     href: "https://codeforces.com/profile/manikya_sharma",
     id: "cf",
   },
   {
-    img: "/lc-logo.png",
+    img: LcImage,
     name: "Leetcode",
     className: "border-yellow-700 text-yellow-700 bg-yellow-50",
     href: "https://leetcode.com/u/ManikyaSharma/",
     id: "lc",
   },
   {
-    img: "/x-black.png",
+    img: XImage,
     name: "Twitter (X)",
     className: "border-zinc-700 text-zinc-700 bg-zinc-50",
     href: "https://x.com/manikya_sharma_",
@@ -80,7 +88,14 @@ const contacts = [
                   className={className}
                   content={name}
                 >
-                  <img slot="pref" class="block size-5" src={img} />
+                  <Image
+                    slot="pref"
+                    loading="eager"
+                    alt=""
+                    role="presentation"
+                    class="block size-5"
+                    src={img}
+                  />
                   <ExternalLink slot="suff" class="size-5" />
                 </HoverStaggerText>
               </li>
