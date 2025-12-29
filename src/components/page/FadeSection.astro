@@ -70,7 +70,12 @@ const tagNames = tags?.map((tag) => getTagText(tag));
               </PushButton>
             )}
             {extlink && (
-              <SmallPushLink client:load id={id} href={extlink.href}>
+              <SmallPushLink
+                client:load
+                id={id}
+                href={extlink.href}
+                title={title}
+              >
                 <span class="flex items-center sm:gap-1.5 text-[0.65rem] sm:text-base">
                   <span class="inline-block">
                     {extlink.text ?? "Learn more"}

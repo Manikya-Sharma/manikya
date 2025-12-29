@@ -7,10 +7,12 @@
   const {
     id,
     children,
+    title,
     href,
   }: {
     id: string;
     children: Snippet;
+    title?: string;
     href: string;
   } = $props();
   const onhover = () => {
@@ -45,6 +47,7 @@
   onmouseout={onleave}
   onmousedown={onleave}
   onmouseup={onhover}
+  aria-label={title}
 >
   <div
     class="absolute -z-10 bg-black inset-0 opacity-0 group-hover:opacity-100 transition-opacity rounded-md"

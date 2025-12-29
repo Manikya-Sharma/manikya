@@ -9,8 +9,12 @@
     close,
     open,
     options,
-  }: { length: number; open: Snippet; close: Snippet; options: Snippet } =
-    $props();
+  }: {
+    length: number;
+    open: Snippet;
+    close: Snippet;
+    options: Snippet;
+  } = $props();
   // 12 is the padding
   const height = $derived(
     () => `${MENU_OPTION_HEIGHT * numOptions + 12 * 2 + 8 * 2 * numOptions}px`,
@@ -55,6 +59,9 @@
   class="cursor-pointer"
   id="dropdown-button"
   onclick={() => toggleState()}
+  aria-controls="dropdown-animation"
+  aria-expanded={isOpen}
+  aria-label="Hamburger to open navigation menu"
 >
   {#if isOpen}
     {@render close()}
@@ -65,7 +72,6 @@
 
 <!-- Options menu -->
 <div
-  aria-expanded={isOpen}
   class={[
     "absolute top-18 right-5 rounded-md bg-black px-10 py-3 opacity-0",
     !isOpen && "pointer-events-none",
