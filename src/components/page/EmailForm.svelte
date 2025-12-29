@@ -4,7 +4,19 @@
   import FadeInText from "./FadeInText.svelte";
   import FlippingButton from "./FlippingButton.svelte";
 
-  const { children }: { children: Snippet } = $props();
+  const {
+    children,
+    service_id,
+    template_id,
+    user_id,
+    accessToken,
+  }: {
+    children: Snippet;
+    service_id: string;
+    template_id: string;
+    user_id: string;
+    accessToken: string;
+  } = $props();
 
   const formSchema = z.object({
     name: z.string().min(1, { message: "Name is required" }),
@@ -38,10 +50,11 @@
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
-            service_id: import.meta.env.EMAILJS_SERVICE_ID!,
-            template_id: import.meta.env.EMAILJS_TEMPLATE_ID!,
-            user_id: import.meta.env.EMAILJS_PUBLIC_KEY!,
-            accessToken: import.meta.env.EMAILJS_PRIVATE_KEY!,
+            service_id,
+            template_id,
+            user_id,
+            accessToken,
+
             template_params: {
               message,
               user_name: name,

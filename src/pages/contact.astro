@@ -57,6 +57,12 @@ const contacts = [
     id: "tw",
   },
 ];
+const vars = {
+  service_id: import.meta.env.EMAILJS_SERVICE_ID!,
+  template_id: import.meta.env.EMAILJS_TEMPLATE_ID!,
+  user_id: import.meta.env.EMAILJS_PUBLIC_KEY!,
+  accessToken: import.meta.env.EMAILJS_PRIVATE_KEY!,
+};
 ---
 
 <BaseLayout>
@@ -103,7 +109,7 @@ const contacts = [
           }
         </ul>
       </div>
-      <EmailForm client:load>
+      <EmailForm {...vars} client:load>
         <span
           class="flex text-[1.125rem] gap-1.5 items-center font-electrolize"
         >
