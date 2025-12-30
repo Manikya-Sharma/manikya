@@ -20,7 +20,7 @@ import DucksImage from "@/images/ducks.jpg";
   <DetailPageLayout>
     <section>
       <div class="uppercase h-screen w-full grid place-items-center">
-        <FadeInText client:only id="h1">
+        <FadeInText client:only="svelte" id="h1">
           <h1
             class="text-6xl sm:text-9xl font-space font-semibold tracking-tighter"
           >
@@ -28,7 +28,7 @@ import DucksImage from "@/images/ducks.jpg";
           </h1>
         </FadeInText>
         <div class="absolute bottom-7 right-5">
-          <ScrollDownIndicator client:only />
+          <ScrollDownIndicator client:load />
         </div>
       </div>
     </section>
@@ -51,7 +51,7 @@ import DucksImage from "@/images/ducks.jpg";
       }}
     >
       I am a student of <StyleLink
-        client:only
+        client:load
         href="https://dtu.ac.in"
         id="dtu-link"
       >
@@ -78,7 +78,7 @@ import DucksImage from "@/images/ducks.jpg";
       }}
     >
       I have participated in various <StyleLink
-        client:only
+        client:load
         href="https://devfolio.co/@Manikya_Sharma"
         id="devfolio-link"
       >

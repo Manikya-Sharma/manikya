@@ -39,7 +39,7 @@ const tagNames = tags?.map((tag) => getTagText(tag));
             </h2>
             {images && images.items.length > 0 && (
               /* @ts-expect-error: We have ensured that slot is passed */
-              <PushButton client:load id={id}>
+              <PushButton client:visible id={id}>
                 <Images class="size-5 sm:size-7" />
                 <span slot="dialog">
                   <dialog id={`model-${id}`} class="modal">
@@ -91,7 +91,7 @@ const tagNames = tags?.map((tag) => getTagText(tag));
             )}
             {extlink && (
               <SmallPushLink
-                client:load
+                client:visible
                 id={id}
                 href={extlink.href}
                 title={title}
@@ -108,7 +108,7 @@ const tagNames = tags?.map((tag) => getTagText(tag));
         </FadeInText>
         <div class="flex gap-2 flex-wrap">
           <StaggerTags
-            client:only
+            client:load
             fgs={fgs}
             bgs={bgs}
             tagNames={tagNames}

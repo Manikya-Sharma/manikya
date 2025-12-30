@@ -127,7 +127,7 @@ if (Object.keys(options).includes(lastPath)) {
         {selectedOptions.map((option) => (
           <li class="py-2">
             <a href={option.href} class="w-full">
-              <FlippingText client:load id={option.text.split(" ").join("-")}>
+              <FlippingText client:idle id={option.text.split(" ").join("-")}>
                 <span class="font-electrolize sm:text-lg flex gap-2 items-center">
                   <option.icon class="size-4" /> {option.text}
                 </span>

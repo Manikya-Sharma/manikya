@@ -26,12 +26,12 @@ const images = projects.map(({ id }) => {
 
 <BaseLayout>
   <DetailPageLayout>
-    <HoverRound client:only="svelte">
+    <HoverRound client:media="(min-width: 48rem)">
       <ArrowRight class="text-white size-7" />
     </HoverRound>
     <section>
       <div class="uppercase h-screen w-full grid place-items-center">
-        <FadeInText client:only id="h1">
+        <FadeInText client:only="svelte" id="h1">
           <h1
             class="text-6xl sm:text-9xl font-space font-semibold tracking-tighter"
           >
@@ -39,7 +39,7 @@ const images = projects.map(({ id }) => {
           </h1>
         </FadeInText>
         <div class="absolute bottom-7 right-5">
-          <ScrollDownIndicator client:only />
+          <ScrollDownIndicator client:load />
         </div>
       </div>
     </section>
