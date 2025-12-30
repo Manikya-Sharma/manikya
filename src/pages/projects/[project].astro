@@ -77,20 +77,43 @@ const tagNames = tags?.map((tag) => getTagText(tag));
       <div
         class="flex-3 carousel carousel-center space-x-2 mt-3 rounded-md p-2 bg-zinc-800"
       >
-        <div class="carousel-item w-[95%] rounded-md">
+        <div id="slide-0" class="relative carousel-item w-full rounded-md">
           <video controls muted>
             <source src={`/project-videos/${project}.mp4`} type="video/mp4" />
           </video>
+          <button
+            onclick={`history.replaceState(null, '', '#slide-1'); location.replace( '#slide-1');`}
+            class="absolute top-0 bottom-10 right-0 px-4 py-1 rounded-md bg-black/30 text-white backdrop-blur-md"
+          >
+            ❯
+          </button>
         </div>
         {
           images.map((image, index) => (
-            <div class="carousel-item w-[95%] rounded-md">
+            <div
+              id={`slide-${index + 1}`}
+              class="relative carousel-item w-full rounded-md"
+            >
               <Image
                 src={image}
                 alt={`${title}-${index + 1}`}
                 class="w-full aspect-video object-contain rounded-md"
                 loading="eager"
               />
+              <button
+                onclick={`history.replaceState(null, '', '#slide-${index}'); location.replace( '#slide-${index}');`}
+                class="absolute top-1/2 -translate-y-1/2 left-3 px-4 py-1 rounded-md bg-black/30 text-white backdrop-blur-md"
+              >
+                ❮
+              </button>
+              {index < images.length - 1 && (
+                <button
+                  onclick={`history.replaceState(null, '', '#slide-${index + 2}'); location.replace( '#slide-${index + 2}');`}
+                  class="absolute top-1/2 -translate-y-1/2 right-3 px-4 py-1 rounded-md bg-black/30 text-white backdrop-blur-md"
+                >
+                  ❯
+                </button>
+              )}
             </div>
           ))
         }

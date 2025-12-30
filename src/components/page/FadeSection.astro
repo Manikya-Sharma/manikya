@@ -33,11 +33,12 @@ const tagNames = tags?.map((tag) => getTagText(tag));
     title && (
       <div>
         <FadeInText onScroll client:only="svelte" id={id}>
-          <div class="flex gap-2.5 mt-28 sm:mt-36 lg:mt-52 items-center">
+          <div class="flex gap-2.5 items-center">
             <h2 class="uppercase text-4xl sm:text-5xl md:text-7xl font-space font-semibold tracking-tighter">
               {title}
             </h2>
             {images && images.items.length > 0 && (
+              /* @ts-expect-error: We have ensured that slot is passed */
               <PushButton client:load id={id}>
                 <Images class="size-5 sm:size-7" />
                 <span slot="dialog">
@@ -54,13 +55,32 @@ const tagNames = tags?.map((tag) => getTagText(tag));
                         </form>
                       </div>
                       <div class="carousel carousel-center space-x-2 mt-3 rounded-md p-2 bg-zinc-800">
-                        {images.items.map(({ alt, src }) => (
-                          <div class="carousel-item w-[90%] rounded-md">
+                        {images.items.map(({ alt, src }, index) => (
+                          <div
+                            id={`slide-${id}-${index}`}
+                            class="relative carousel-item w-full rounded-md"
+                          >
                             <Image
                               src={src}
                               alt={alt}
                               class="w-full aspect-video object-cover rounded-md"
                             />
+                            {index > 0 && (
+                              <button
+                                onclick={`history.replaceState(null, '', '#slide-${id}-${index - 1}'); location.replace( '#slide-${id}-${index - 1}');`}
+                                class="absolute bottom-3 left-3 px-4 py-1 rounded-md bg-black/30 text-white backdrop-blur-md"
+                              >
+                                ❮
+                              </button>
+                            )}
+                            {index < images.items.length - 1 && (
+                              <button
+                                onclick={`history.replaceState(null, '', '#slide-${id}-${index + 1}'); location.replace( '#slide-${id}-${index + 1}');`}
+                                class="absolute bottom-3 right-3 px-4 py-1 rounded-md bg-black/30 text-white backdrop-blur-md"
+                              >
+                                ❯
+                              </button>
+                            )}
                           </div>
                         ))}
                       </div>
@@ -98,7 +118,7 @@ const tagNames = tags?.map((tag) => getTagText(tag));
       </div>
     )
   }
-  <p class="mt-8 sm:mt-10 lg:mt-12 text-pretty">
+  <p class="mt-8 sm:mt-10 lg:mt-12 text-pretty mb-28 sm:mb-36 lg:mb-52 ">
     <slot />
   </p>
 </section>

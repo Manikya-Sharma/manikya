@@ -17,7 +17,7 @@ const { prev, next } = Astro.props;
 ---
 
 <nav
-  class="flex sm:flex-row flex-col w-[80%] sm:w-[70%] mx-auto gap-5 sm:items-center sm:justify-between"
+  class="flex sm:flex-row flex-col w-[80%] sm:w-[70%] mx-auto gap-5 sm:items-center sm:justify-between pb-16"
 >
   <div class="w-[60%] sm:w-auto">
     <PushLink client:load id={prev.name} href={prev.href}>
