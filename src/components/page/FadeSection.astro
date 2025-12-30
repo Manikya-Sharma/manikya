@@ -28,7 +28,7 @@ const fgs = tags?.map((tag) => tagColorMap[tag]);
 const tagNames = tags?.map((tag) => getTagText(tag));
 ---
 
-<section id={id}>
+<section class="scroll-m-28" id={id}>
   {
     title && (
       <div>
@@ -118,7 +118,7 @@ const tagNames = tags?.map((tag) => getTagText(tag));
       </div>
     )
   }
-  <p class="mt-8 sm:mt-10 lg:mt-12 text-pretty mb-28 sm:mb-36 lg:mb-52 ">
+  <p class="mt-8 sm:mt-10 lg:mt-12 text-pretty mb-28 sm:mb-36 lg:mb-52">
     <slot />
   </p>
 </section>
