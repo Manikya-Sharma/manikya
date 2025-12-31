@@ -1,28 +1,10 @@
 <script lang="ts">
-  import { z } from "zod";
   import type { Snippet } from "svelte";
   import FadeInText from "./FadeInText.svelte";
   import FlippingButton from "./FlippingButton.svelte";
+  import { formSchema } from "@/data/forms";
 
-  const {
-    children,
-    service_id,
-    template_id,
-    user_id,
-    accessToken,
-  }: {
-    children: Snippet;
-    service_id: string;
-    template_id: string;
-    user_id: string;
-    accessToken: string;
-  } = $props();
-
-  const formSchema = z.object({
-    name: z.string().min(1, { message: "Name is required" }),
-    email: z.email({ message: "Invalid email address" }),
-    message: z.string().min(1, { message: "Message is required" }),
-  });
+  const { children }: { children: Snippet } = $props();
 
   let formData = $state({
     name: "",
@@ -40,37 +22,20 @@
   ) => {
     e.preventDefault();
     try {
-      const { name, email, message } = formSchema.parse(formData);
       status = "LOADING";
-      const result = await fetch(
-        "https://api.emailjs.com/api/v1.0/email/send",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            service_id,
-            template_id,
-            user_id,
-            accessToken,
-
-            template_params: {
-              message,
-              user_name: name,
-              user_email: email,
-              from_name: name,
-            },
-          }),
-        },
-      );
-      if (result.status === 200) {
+      formSchema.parse(formData);
+      const data = new FormData(e.currentTarget as HTMLFormElement);
+      const response = await fetch("/api/send-mail", {
+        method: "POST",
+        body: data,
+      });
+      if (response.status === 200) {
         status = "SUCCESS";
       } else {
         status = "FAIL";
       }
-    } catch (error) {
-      // browser should have avoided it
+    } catch (e) {
+      status = "FAIL";
       formState = "DIRTY";
     }
   };
