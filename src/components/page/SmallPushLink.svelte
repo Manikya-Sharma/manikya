@@ -41,6 +41,7 @@
   {href}
   id={`model-button-${id}`}
   class="relative group cursor-pointer"
+  data-astro-prefetch="hover"
   onfocus={onhover}
   onblur={onleave}
   onmouseover={onhover}

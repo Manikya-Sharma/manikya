@@ -52,7 +52,12 @@ const images = projects.map(({ id }) => {
           extlink={{ href: `/projects/${id}` }}
         >
           {/* cursor-none works because we have hover-block */}
-          <a aria-label={title} class="md:cursor-none" href={`/projects/${id}`}>
+          <a
+            aria-label={title}
+            data-astro-prefetch="hover"
+            class="md:cursor-none"
+            href={`/projects/${id}`}
+          >
             <Image
               class="hover-block w-full block aspect-video object-contain rounded-md ring-2 ring-offset-1 ring-black/40"
               src={images[index][0]}

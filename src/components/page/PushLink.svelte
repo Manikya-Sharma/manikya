@@ -38,6 +38,7 @@
   onblur={onleave}
   onmouseover={onhover}
   onmouseout={onleave}
+  data-astro-prefetch="viewport"
 >
   <div
     role="presentation"
