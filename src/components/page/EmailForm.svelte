@@ -24,6 +24,7 @@
     try {
       status = "LOADING";
       formSchema.parse(formData);
+      formState = "CLEAN";
       const data = new FormData(e.currentTarget as HTMLFormElement);
       const response = await fetch("/api/send-mail", {
         method: "POST",
@@ -35,7 +36,7 @@
         status = "FAIL";
       }
     } catch (e) {
-      status = "FAIL";
+      status = "IDLE";
       formState = "DIRTY";
     }
   };
@@ -63,7 +64,7 @@
     {/if}
     {#if formState === "DIRTY"}
       <div class="alert alert-error">
-        <span>{formSchema.safeParse(formData).error!.issues[0]}</span>
+        <span>{formSchema.safeParse(formData).error!.issues[0].message}</span>
       </div>
     {/if}
   </div>
