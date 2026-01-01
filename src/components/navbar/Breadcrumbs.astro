@@ -16,7 +16,7 @@ const linkClass =
     options.map((path, idx) => (
       <>
         /
-        <a class={linkClass} href={options.slice(0, idx + 2).join("/")}>
+        <a class={linkClass} href={`/${options.slice(0, idx + 2).join("/")}`}>
           {path}
         </a>
       </>
