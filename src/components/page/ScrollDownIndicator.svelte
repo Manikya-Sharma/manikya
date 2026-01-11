@@ -38,4 +38,4 @@
   });
 </script>
 
-<div id="scroll-down" class="w-12 h-12"></div>
+<div role="presentation" id="scroll-down" class="w-12 h-12"></div>

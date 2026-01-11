@@ -36,7 +36,7 @@ const tagNames = tags?.map((tag) => getTagText(tag));
     class="text-lg sm:text-xl px-5 sm:px-20 mx-auto font-figtree mb-20 md:mb-36 leading-relaxed"
   >
     <div class="flex flex-col xl:flex-row items-center gap-10 mt-32">
-      <div class="flex-2">
+      <section class="flex-2">
         <FadeInText client:only="svelte" id={project}>
           <h1
             class="font-space font-semibold tracking-tight uppercase text-4xl sm:text-7xl"
@@ -73,8 +73,8 @@ const tagNames = tags?.map((tag) => getTagText(tag));
             tags={tags}
           />
         </div>
-      </div>
-      <div
+      </section>
+      <section
         class="flex-3 carousel carousel-center space-x-2 mt-3 rounded-md p-2 bg-zinc-800"
       >
         <div id="slide-0" class="relative carousel-item w-full rounded-md">
@@ -103,6 +103,7 @@ const tagNames = tags?.map((tag) => getTagText(tag));
               <button
                 onclick={`history.replaceState(null, '', '#slide-${index}'); location.replace( '#slide-${index}');`}
                 class="absolute top-1/2 -translate-y-1/2 left-3 px-4 py-1 rounded-md bg-black/30 text-white backdrop-blur-md"
+                aria-label="Previous slide in carousel"
               >
                 ❮
               </button>
@@ -110,6 +111,7 @@ const tagNames = tags?.map((tag) => getTagText(tag));
                 <button
                   onclick={`history.replaceState(null, '', '#slide-${index + 2}'); location.replace( '#slide-${index + 2}');`}
                   class="absolute top-1/2 -translate-y-1/2 right-3 px-4 py-1 rounded-md bg-black/30 text-white backdrop-blur-md"
+                  aria-label="Next slide in carousel"
                 >
                   ❯
                 </button>
@@ -117,7 +119,7 @@ const tagNames = tags?.map((tag) => getTagText(tag));
             </div>
           ))
         }
-      </div>
+      </section>
     </div>
   </main>
 </BaseLayout>

@@ -48,22 +48,22 @@
 >
   <div class="toast toast-end font-figtree">
     {#if status === "SUCCESS"}
-      <div class="alert alert-success">
+      <div class="alert alert-success" role="alert" aria-live="polite">
         <span>Message sent successfully</span>
       </div>
     {/if}
     {#if status === "FAIL"}
-      <div class="alert alert-error">
+      <div class="alert alert-error" role="alert" aria-live="assertive">
         <span>Could not send the message, please try again later</span>
       </div>
     {/if}
     {#if status === "LOADING"}
-      <div class="alert alert-info">
+      <div class="alert alert-info" role="alert">
         <span>Sending message</span>
       </div>
     {/if}
     {#if formState === "DIRTY"}
-      <div class="alert alert-error">
+      <div class="alert alert-error" role="alert" aria-live="assertive">
         <span>{formSchema.safeParse(formData).error!.issues[0].message}</span>
       </div>
     {/if}

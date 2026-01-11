@@ -69,6 +69,7 @@ const tagNames = tags?.map((tag) => getTagText(tag));
                               <button
                                 onclick={`history.replaceState(null, '', '#slide-${id}-${index - 1}'); location.replace( '#slide-${id}-${index - 1}');`}
                                 class="absolute bottom-3 left-3 px-4 py-1 rounded-md bg-black/30 text-white backdrop-blur-md"
+                                aria-label={`Image number ${index - 1}`}
                               >
                                 ❮
                               </button>
@@ -77,6 +78,7 @@ const tagNames = tags?.map((tag) => getTagText(tag));
                               <button
                                 onclick={`history.replaceState(null, '', '#slide-${id}-${index + 1}'); location.replace( '#slide-${id}-${index + 1}');`}
                                 class="absolute bottom-3 right-3 px-4 py-1 rounded-md bg-black/30 text-white backdrop-blur-md"
+                                aria-label={`Image number ${index + 1}`}
                               >
                                 ❯
                               </button>
