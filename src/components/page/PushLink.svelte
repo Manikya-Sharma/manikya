@@ -1,5 +1,6 @@
 <script lang="ts">
-  import { animate, spring } from "animejs";
+  import { safeAnimate } from "@/utils/safeAnimate";
+  import { spring } from "animejs";
   import type { Snippet } from "svelte";
   const TRANSLATE = 15;
 
@@ -10,7 +11,7 @@
   }: { children: Snippet; href: string; id: string } = $props();
 
   const onhover = () => {
-    animate(`#push-link-${id}`, {
+    safeAnimate(`#push-link-${id}`, {
       translateX: TRANSLATE,
       translateY: -TRANSLATE,
       ease: spring({
@@ -20,7 +21,7 @@
     });
   };
   const onleave = () => {
-    animate(`#push-link-${id}`, {
+    safeAnimate(`#push-link-${id}`, {
       translateX: 0,
       translateY: 0,
       ease: spring({
@@ -42,7 +43,7 @@
 >
   <div
     role="presentation"
-    class="block absolute bg-black text-black inset-0 opacity-0 group-hover:opacity-100 transition-opacity rounded-md"
+    class="motion-reduce:hidden block absolute bg-black text-black inset-0 opacity-0 group-hover:opacity-100 transition-opacity rounded-md"
   ></div>
   <div
     id={`push-link-${id}`}

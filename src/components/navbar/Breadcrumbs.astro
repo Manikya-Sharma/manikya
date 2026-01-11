@@ -5,7 +5,7 @@ interface Props {
 const { pathname } = Astro.props;
 const options = pathname.split("/").filter((elem) => elem.trim().length !== 0);
 const linkClass =
-  "inline-block hover:text-teal-400 transition-colors font-semibold";
+  "inline-block hover:text-teal-400 motion-safe:transition-colors font-semibold";
 ---
 
 <span class="flex gap-2 tracking-tight text-sm sm:text-base">

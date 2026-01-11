@@ -1,5 +1,6 @@
 <script lang="ts">
-  import { animate, spring } from "animejs";
+  import { safeAnimate } from "@/utils/safeAnimate";
+  import { spring } from "animejs";
   import type { Snippet } from "svelte";
 
   const TRANSLATE = 5;
@@ -14,7 +15,7 @@
     dialog: Snippet;
   } = $props();
   const onhover = () => {
-    animate(`#push-button-${id}`, {
+    safeAnimate(`#push-button-${id}`, {
       translateX: TRANSLATE,
       translateY: -TRANSLATE,
       ease: spring({
@@ -24,7 +25,7 @@
     });
   };
   const onleave = () => {
-    animate(`#push-button-${id}`, {
+    safeAnimate(`#push-button-${id}`, {
       translateX: 0,
       translateY: 0,
       ease: spring({

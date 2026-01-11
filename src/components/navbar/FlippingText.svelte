@@ -1,7 +1,8 @@
 <script lang="ts">
-  import { animate, spring } from "animejs";
+  import { spring } from "animejs";
   import { MENU_OPTION_HEIGHT } from "@/data/constants";
   import type { Snippet } from "svelte";
+  import { safeAnimate } from "@/utils/safeAnimate";
 
   const {
     children,
@@ -19,14 +20,14 @@
   const DURATION = 250;
 
   const onhover = () => {
-    animate(`#flipping-text-${id}-original`, {
+    safeAnimate(`#flipping-text-${id}-original`, {
       translateY: ["0%", "-100%"],
       ease: spring({
         bounce: BOUNCE,
         duration: DURATION,
       }),
     });
-    animate(`#flipping-text-${id}-copy`, {
+    safeAnimate(`#flipping-text-${id}-copy`, {
       translateY: ["100%", "0%"],
       ease: spring({
         bounce: BOUNCE,
@@ -35,14 +36,14 @@
     });
   };
   const onleave = () => {
-    animate(`#flipping-text-${id}-original`, {
+    safeAnimate(`#flipping-text-${id}-original`, {
       translateY: ["-100%", "0%"],
       ease: spring({
         bounce: BOUNCE,
         duration: DURATION,
       }),
     });
-    animate(`#flipping-text-${id}-copy`, {
+    safeAnimate(`#flipping-text-${id}-copy`, {
       translateY: ["0%", "100%"],
       ease: spring({
         bounce: BOUNCE,

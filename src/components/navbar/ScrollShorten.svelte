@@ -1,5 +1,6 @@
 <script lang="ts">
   import { animate, cubicBezier } from "animejs";
+  import { checkReducedMotion } from "@/utils/safeAnimate";
   import { onMount } from "svelte";
 
   const { children } = $props();
@@ -27,8 +28,10 @@
         });
       }
     };
-    window.addEventListener("scroll", onScroll);
-    return () => window.removeEventListener("scroll", onScroll);
+    if (!checkReducedMotion()) {
+      window.addEventListener("scroll", onScroll);
+      return () => window.removeEventListener("scroll", onScroll);
+    }
   });
 </script>
 

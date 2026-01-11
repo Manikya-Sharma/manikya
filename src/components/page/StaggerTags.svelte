@@ -1,6 +1,7 @@
 <script lang="ts">
-  import { animate, cubicBezier, JSAnimation, stagger } from "animejs";
+  import { cubicBezier, JSAnimation, stagger } from "animejs";
   import TagDiv from "./TagDiv.svelte";
+  import { safeAnimate } from "@/utils/safeAnimate";
 
   const {
     tags,
@@ -22,13 +23,13 @@
 
   let animationPlayed = $state(false);
 
-  const observeOnScroll = (animation: JSAnimation) => {
+  const observeOnScroll = (animation: JSAnimation | undefined) => {
     // display animation only when element is in viewport
     const observer = new IntersectionObserver(
       (entries) => {
         const entry = entries[0];
         if (entry.isIntersecting) {
-          if (!animationPlayed) animation.restart();
+          if (!animationPlayed) animation?.restart();
           animationPlayed = true;
         }
       },
@@ -45,7 +46,7 @@
 
   $effect(() => {
     if (tags) {
-      const animation = animate(`.${tags[0]}-tag`, animationOptions);
+      const animation = safeAnimate(`.${tags[0]}-tag`, animationOptions);
       return observeOnScroll(animation);
     }
   });

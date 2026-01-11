@@ -38,4 +38,5 @@
   });
 </script>
 
-<div role="presentation" id="scroll-down" class="w-12 h-12"></div>
+<div role="presentation" id="scroll-down" class="motion-reduce:hidden w-12 h-12"></div>
+<div class="motion-safe:hidden">Scroll Down</div>

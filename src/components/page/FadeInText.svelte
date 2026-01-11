@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { safeAnimate } from "@/utils/safeAnimate";
   import { animate, type JSAnimation } from "animejs";
 
   const animationOptions = {
@@ -12,13 +13,13 @@
   const { children, id, onScroll = false } = $props();
   let animationPlayed = $state(false);
 
-  const observeOnScroll = (animation: JSAnimation) => {
+  const observeOnScroll = (animation: JSAnimation | undefined) => {
     // display animation only when element is in viewport
     const observer = new IntersectionObserver(
       (entries) => {
         const entry = entries[0];
         if (entry.isIntersecting) {
-          if (!animationPlayed) animation.restart();
+          if (!animationPlayed) animation?.restart();
           animationPlayed = true;
         }
       },
@@ -34,11 +35,11 @@
   };
 
   $effect(() => {
-    const animation = animate(`#fade-in-${id}`, animationOptions);
+    const animation = safeAnimate(`#fade-in-${id}`, animationOptions);
     if (onScroll) {
       return observeOnScroll(animation);
     } else {
-      animation.restart();
+      animation?.restart();
     }
   });
 </script>

@@ -66,7 +66,7 @@ const contacts = [
     <div
       class="flex flex-col md:flex-row items-center gap-14 xl:gap-28 2xl:gap-32"
     >
-      <section class="flex-3">
+      <section class="flex-3 flex flex-col gap-5">
         <FadeInText client:only="svelte" id="touch">
           <h1
             class="font-semibold tracking-tight uppercase text-5xl text-center md:text-left 2xl:text-7xl"
@@ -103,16 +103,14 @@ const contacts = [
           }
         </ul>
       </section>
-      <section>
-        <EmailForm client:load>
-          <span
-            class="flex text-[1.125rem] gap-1.5 items-center font-electrolize"
-          >
-            Send
-            <Send class="size-5" />
-          </span>
-        </EmailForm>
-      </section>
+      <EmailForm client:load>
+        <span
+          class="flex text-[1.125rem] gap-1.5 items-center font-electrolize"
+        >
+          Send
+          <Send class="size-5" />
+        </span>
+      </EmailForm>
     </div>
   </main>
 </BaseLayout>

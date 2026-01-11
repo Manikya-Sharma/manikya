@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { checkReducedMotion } from "@/utils/safeAnimate";
   import { animate, cubicBezier, JSAnimation, spring } from "animejs";
   import throttle from "lodash/throttle";
   import type { Snippet } from "svelte";
@@ -11,6 +12,7 @@
   let insideTransAnimation: JSAnimation | null = null;
   // change the position of the hover block
   $effect(() => {
+    if (checkReducedMotion()) return;
     const manageHover = throttle((event: MouseEvent) => {
       x = event.x;
       y = event.y;
@@ -30,6 +32,7 @@
   });
   // create animation and attach it to the target
   $effect(() => {
+    if (checkReducedMotion()) return;
     insideSpinAnimation = animate("#in-content", {
       rotate: [-90, 0],
       autoplay: false,
@@ -46,6 +49,7 @@
     insideTransAnimation?.play();
   };
   $effect(() => {
+    if (checkReducedMotion()) return;
     if (isHover) {
       animate("#hover-round", {
         opacity: [0, 1],
@@ -74,7 +78,7 @@
 <div
   role="presentation"
   class={[
-    "pointer-events-none bg-black size-28 rounded-full absolute z-10 -translate-x-1/2 -translate-y-1/2 left-20 top-20 hidden md:flex items-center justify-center border-2 border-white/80",
+    "motion-reduce:hidden md:motion-reduce:hidden pointer-events-none bg-black size-28 rounded-full absolute z-10 -translate-x-1/2 -translate-y-1/2 left-20 top-20 hidden md:flex items-center justify-center border-2 border-white/80",
   ]}
   id="hover-round"
   style:left="{x}px"

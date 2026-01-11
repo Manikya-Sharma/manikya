@@ -1,6 +1,7 @@
 <script lang="ts">
   import type { Snippet } from "svelte";
   import { animate, splitText, spring, stagger } from "animejs";
+  import { checkReducedMotion } from "@/utils/safeAnimate";
 
   const DURATION = 250;
 
@@ -103,11 +104,13 @@
   };
 
   const onhover = () => {
+    if (checkReducedMotion()) return;
     prefixAnim.play();
     suffixAnim.play();
     contentAnim.play();
   };
   const onleave = () => {
+    if (checkReducedMotion()) return;
     prefixAnim.reverse();
     suffixAnim.reverse();
     contentAnim.reverse();
@@ -115,6 +118,7 @@
 
   // setup animations
   $effect(() => {
+    if (checkReducedMotion()) return;
     splitText(`#content-${id}`, {
       chars: `<span class="char-${id}">{value}</span>`,
     });

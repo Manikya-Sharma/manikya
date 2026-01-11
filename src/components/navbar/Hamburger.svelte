@@ -1,6 +1,6 @@
 <script lang="ts">
   import { MENU_OPTION_HEIGHT } from "@/data/constants";
-  import { animate } from "animejs";
+  import { safeAnimate } from "@/utils/safeAnimate";
   import type { Snippet } from "svelte";
 
   let isOpen = $state(false);
@@ -36,7 +36,7 @@
     isOpen = !isOpen;
     if (isOpen) {
       // enter animation
-      animate("#dropdown-animation", {
+      safeAnimate("#dropdown-animation", {
         opacity: [0, 1],
         duration: 300,
         height: ["0px", height],
@@ -44,7 +44,7 @@
       document.addEventListener("click", on_menu_blur);
     } else {
       // leave animation
-      animate("#dropdown-animation", {
+      safeAnimate("#dropdown-animation", {
         opacity: [1, 0],
         duration: 300,
         height: [height, "0px"],
@@ -73,8 +73,8 @@
 <!-- Options menu -->
 <div
   class={[
-    "absolute top-18 right-5 rounded-md bg-black px-10 py-3 opacity-0",
-    !isOpen && "pointer-events-none",
+    "absolute top-18 right-5 rounded-md bg-black px-10 py-3 motion-safe:opacity-0",
+    isOpen ? "motion-reduce:opacity-100" : "opacity-0 pointer-events-none",
   ]}
   id="dropdown-animation"
 >

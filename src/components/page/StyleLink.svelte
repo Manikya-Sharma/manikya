@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { animate } from "animejs";
+  import { safeAnimate } from "@/utils/safeAnimate";
   import type { Snippet } from "svelte";
 
   const {
@@ -9,14 +9,14 @@
   }: { href: string; children: Snippet; id: string } = $props();
 
   const onhover = () => {
-    animate(`#underline-${id}`, {
+    safeAnimate(`#underline-${id}`, {
       scaleX: 0,
       duration: 300,
     });
   };
 
   const onleave = () => {
-    animate(`#underline-${id}`, {
+    safeAnimate(`#underline-${id}`, {
       scaleX: 1,
       duration: 300,
     });

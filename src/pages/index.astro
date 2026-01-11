@@ -29,7 +29,7 @@ const options = [
               client:only="svelte"
               id={option.text}
             >
-              <option.icon class="size-5 sm:size-8 md:size-10 group-hover:rotate-12 transition-transform" />
+              <option.icon class="size-5 sm:size-8 md:size-10 motion-safe:group-hover:rotate-12 transition-transform" />
             </DelayOpacity>
             <StaggeredText client:only="svelte" text={option.text} />
             <DelayOpacity
@@ -37,7 +37,7 @@ const options = [
               id={`${option.text}-arrow`}
               startTime={300}
             >
-              <ArrowRight class="size-5 sm:size-8 md:size-10 group-hover:translate-x-3 transition-transform" />
+              <ArrowRight class="size-5 sm:size-8 md:size-10 motion-safe:group-hover:translate-x-3 transition-transform" />
             </DelayOpacity>
           </div>
         </a>

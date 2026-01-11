@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { safeAnimate } from "@/utils/safeAnimate";
   import { animate, spring } from "animejs";
 
   const TRANSLATE = 3;
@@ -10,7 +11,7 @@
     bg,
   }: { tag: string; tagName: string; fg: string; bg: string } = $props();
   const onhover = () => {
-    animate(`#push-div-${tag}`, {
+    safeAnimate(`#push-div-${tag}`, {
       translateX: TRANSLATE,
       translateY: -TRANSLATE,
       ease: spring({
@@ -20,7 +21,7 @@
     });
   };
   const onleave = () => {
-    animate(`#push-div-${tag}`, {
+    safeAnimate(`#push-div-${tag}`, {
       translateX: 0,
       translateY: 0,
       ease: spring({

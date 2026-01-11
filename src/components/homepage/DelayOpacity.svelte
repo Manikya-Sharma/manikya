@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { animate } from "animejs";
+  import { safeAnimate } from "@/utils/safeAnimate";
   import type { Snippet } from "svelte";
   const {
     children,
@@ -13,7 +13,7 @@
     }
   })();
   $effect(() => {
-    animate(`#delay-opacity-${id}`, {
+    safeAnimate(`#delay-opacity-${id}`, {
       opacity: [0, 1],
       delay: startTime ?? 0,
       duration: 1500,
