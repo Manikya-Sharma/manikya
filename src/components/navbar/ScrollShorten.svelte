@@ -1,9 +1,10 @@
 <script lang="ts">
   import { animate, cubicBezier } from "animejs";
+  import { onMount } from "svelte";
 
   const { children } = $props();
 
-  $effect(() => {
+  onMount(() => {
     const onScroll = () => {
       const position = window.scrollY;
       if (position === 0) {
