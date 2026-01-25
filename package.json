@@ -9,28 +9,28 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/netlify": "^6.6.3",
-    "@astrojs/svelte": "^7.2.3",
+    "@astrojs/netlify": "^6.6.4",
+    "@astrojs/svelte": "^7.2.5",
     "@fontsource-variable/figtree": "^5.2.10",
     "@fontsource-variable/fira-code": "^5.2.7",
     "@fontsource-variable/space-grotesk": "^5.2.10",
     "@fontsource/electrolize": "^5.2.8",
-    "@lucide/astro": "^0.561.0",
+    "@lucide/astro": "^0.563.0",
     "@tailwindcss/vite": "^4.1.18",
-    "animejs": "^4.2.2",
-    "astro": "^5.16.5",
+    "animejs": "^4.3.5",
+    "astro": "^5.16.15",
     "daisyui": "^5.5.14",
-    "lodash": "^4.17.21",
+    "lodash": "^4.17.23",
     "lottie-web": "^5.13.0",
     "sharp": "^0.34.5",
-    "svelte": "^5.46.0",
+    "svelte": "^5.48.2",
     "tailwindcss": "^4.1.18",
     "typescript": "^5.9.3",
-    "zod": "^4.2.1"
+    "zod": "^4.3.6"
   },
   "devDependencies": {
-    "@types/lodash": "^4.17.21",
-    "prettier": "^3.7.4",
+    "@types/lodash": "^4.17.23",
+    "prettier": "^3.8.1",
     "prettier-plugin-astro": "^0.14.1"
   }
 }
