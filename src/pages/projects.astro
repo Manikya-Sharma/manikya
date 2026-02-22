@@ -6,7 +6,7 @@ import FadeSection from "@/components/page/FadeSection.astro";
 import HoverRound from "@/components/page/HoverRound.svelte";
 import ScrollDownIndicator from "@/components/page/ScrollDownIndicator.svelte";
 import BottomNav from "@/components/navbar/BottomNav.astro";
-import  ArrowRight  from "@lucide/astro/icons/arrow-right";
+import ArrowRight from "@lucide/astro/icons/arrow-right";
 import { projects } from "@/data/projects";
 import { Image } from "astro:assets";
 
@@ -31,13 +31,11 @@ const images = projects.map(({ id }) => {
     </HoverRound>
     <section>
       <div class="uppercase h-screen w-full grid place-items-center">
-        <FadeInText client:only="svelte" id="h1">
-          <h1
-            class="text-6xl sm:text-9xl font-space font-semibold tracking-tighter"
-          >
-            Projects
-          </h1>
-        </FadeInText>
+        <h1
+          class="text-6xl sm:text-9xl font-space font-semibold tracking-tighter"
+        >
+          Projects
+        </h1>
         <div class="absolute bottom-7 right-5">
           <ScrollDownIndicator client:load />
         </div>

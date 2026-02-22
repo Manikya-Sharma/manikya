@@ -69,7 +69,7 @@ const tagNames = tags?.map((tag) => getTagText(tag));
                             {index > 0 && (
                               <button
                                 onclick={`history.replaceState(null, '', '#slide-${id}-${index - 1}'); location.replace( '#slide-${id}-${index - 1}');`}
-                                class="absolute bottom-3 left-3 px-4 py-1 rounded-md bg-black/30 text-white backdrop-blur-md"
+                                class="absolute bottom-3 left-3 px-4 py-1 rounded-md bg-black/30 text-white backdrop-blur-md hover:bg-black ring-2 ring-neutral-700"
                                 aria-label={`Image number ${index - 1}`}
                               >
                                 ❮
@@ -78,7 +78,7 @@ const tagNames = tags?.map((tag) => getTagText(tag));
                             {index < images.items.length - 1 && (
                               <button
                                 onclick={`history.replaceState(null, '', '#slide-${id}-${index + 1}'); location.replace( '#slide-${id}-${index + 1}');`}
-                                class="absolute bottom-3 right-3 px-4 py-1 rounded-md bg-black/30 text-white backdrop-blur-md"
+                                class="absolute bottom-3 right-3 px-4 py-1 rounded-md bg-black/30 text-white backdrop-blur-md hover:bg-black ring-2 ring-neutral-700"
                                 aria-label={`Image number ${index + 1}`}
                               >
                                 ❯

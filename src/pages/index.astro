@@ -4,8 +4,6 @@ import Hash from "@lucide/astro/icons/hash";
 import NotebookText from "@lucide/astro/icons/notebook-text";
 import Swords from "@lucide/astro/icons/swords";
 import ArrowRight from "@lucide/astro/icons/arrow-right";
-import StaggeredText from "@/components/homepage/StaggeredText.svelte";
-import DelayOpacity from "@/components/homepage/DelayOpacity.svelte";
 import BaseLayout from "../layouts/BaseLayout.astro";
 const options = [
   { icon: NotebookText, text: "About", href: "/about" },
@@ -28,21 +26,9 @@ const options = [
           data-astro-prefetch="load"
         >
           <div class="flex items-center gap-3 sm:gap-4">
-            <DelayOpacity
-              startTime={undefined}
-              client:only="svelte"
-              id={option.text}
-            >
-              <option.icon class="size-5 sm:size-8 md:size-10 motion-safe:group-hover:rotate-12 transition-transform" />
-            </DelayOpacity>
-            <StaggeredText client:only="svelte" text={option.text} />
-            <DelayOpacity
-              client:only="svelte"
-              id={`${option.text}-arrow`}
-              startTime={300}
-            >
-              <ArrowRight class="size-5 sm:size-8 md:size-10 motion-safe:group-hover:translate-x-3 transition-transform" />
-            </DelayOpacity>
+            <option.icon class="size-5 sm:size-8 md:size-10 motion-safe:group-hover:rotate-12 transition-transform" />
+            {option.text}
+            <ArrowRight class="size-5 sm:size-8 md:size-10 motion-safe:group-hover:translate-x-3 transition-transform" />
           </div>
         </a>
       ))

@@ -37,13 +37,11 @@ const tagNames = tags?.map((tag) => getTagText(tag));
   >
     <div class="flex flex-col xl:flex-row items-center gap-10 mt-32">
       <section class="flex-2">
-        <FadeInText client:only="svelte" id={project}>
-          <h1
-            class="font-space font-semibold tracking-tight uppercase text-4xl sm:text-7xl"
-          >
-            {title}
-          </h1>
-        </FadeInText>
+        <h1
+          class="font-space font-semibold tracking-tight uppercase text-4xl sm:text-7xl"
+        >
+          {title}
+        </h1>
         <div class="-mt-2 mb-3 flex gap-2 text-[1.1rem] text-blue-600">
           <a
             class="flex items-center gap-0.5 underline underline-offset-4 hover:no-underline"
@@ -83,7 +81,7 @@ const tagNames = tags?.map((tag) => getTagText(tag));
           </video>
           <button
             onclick={`history.replaceState(null, '', '#slide-1'); location.replace( '#slide-1');`}
-            class="absolute top-0 bottom-10 right-0 px-4 py-1 rounded-md bg-black/30 text-white backdrop-blur-md"
+            class="absolute top-1/2 -translate-y-1/2 right-3 px-4 py-1 rounded-md bg-black/30 text-white backdrop-blur-md hover:bg-black motion-safe:transition-colors"
           >
             ❯
           </button>
@@ -102,7 +100,7 @@ const tagNames = tags?.map((tag) => getTagText(tag));
               />
               <button
                 onclick={`history.replaceState(null, '', '#slide-${index}'); location.replace( '#slide-${index}');`}
-                class="absolute top-1/2 -translate-y-1/2 left-3 px-4 py-1 rounded-md bg-black/30 text-white backdrop-blur-md"
+                class="absolute top-1/2 -translate-y-1/2 left-3 px-4 py-1 rounded-md bg-black/30 text-white backdrop-blur-md hover:bg-black motion-safe:transition-colors"
                 aria-label="Previous slide in carousel"
               >
                 ❮
@@ -110,7 +108,7 @@ const tagNames = tags?.map((tag) => getTagText(tag));
               {index < images.length - 1 && (
                 <button
                   onclick={`history.replaceState(null, '', '#slide-${index + 2}'); location.replace( '#slide-${index + 2}');`}
-                  class="absolute top-1/2 -translate-y-1/2 right-3 px-4 py-1 rounded-md bg-black/30 text-white backdrop-blur-md"
+                  class="absolute top-1/2 -translate-y-1/2 right-3 px-4 py-1 rounded-md bg-black/30 text-white backdrop-blur-md hover:bg-black motion-safe:transition-colors"
                   aria-label="Next slide in carousel"
                 >
                   ❯

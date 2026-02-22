@@ -68,10 +68,8 @@
       </div>
     {/if}
   </div>
-  <FadeInText id="convo"
-    ><span class="font-semibold uppercase tracking-tight text-2xl xl:text-3xl"
-      >Start a Conversation</span
-    ></FadeInText
+  <span class="font-semibold uppercase tracking-tight text-2xl xl:text-3xl"
+    >Start a Conversation</span
   >
   <div class="flex flex-col gap-1.5 w-full mb-5">
     <label for="name" class="text-lg">Name</label>
