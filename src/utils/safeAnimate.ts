@@ -4,6 +4,9 @@
 
 import { type TargetsParam, type AnimationParams, animate } from "animejs";
 
+/**
+ * returns true if user prefers reduced motion
+ */
 export function checkReducedMotion() {
 	if (window) {
 		return window.matchMedia("(prefers-reduced-motion: reduce)").matches;

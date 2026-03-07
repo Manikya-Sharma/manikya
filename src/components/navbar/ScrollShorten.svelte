@@ -1,40 +1,46 @@
 <script lang="ts">
-  import { animate, cubicBezier } from "animejs";
   import { checkReducedMotion } from "@/utils/safeAnimate";
-  import { onMount } from "svelte";
+  import { Spring } from "svelte/motion";
 
   const { children } = $props();
 
-  onMount(() => {
-    const onScroll = () => {
-      const position = window.scrollY;
-      if (position === 0) {
-        animate("#scroll-shorten", {
-          left: "0px",
-          right: "0px",
-          top: "0px",
-          borderRadius: "0%",
-          duration: 300,
-          ease: cubicBezier(0.1, 0.7, 0.5, 1),
-        });
-      } else {
-        animate("#scroll-shorten", {
-          left: "10%",
-          right: "10%",
-          top: "20px",
-          borderRadius: "19px",
-          duration: 500,
-          ease: "outElastic(1.20,0.80)",
-        });
-      }
-    };
-    if (!checkReducedMotion()) {
-      window.addEventListener("scroll", onScroll);
-      return () => window.removeEventListener("scroll", onScroll);
+  let navState = new Spring(
+    { left: 0, right: 0, top: 0, borderRadius: 0 },
+    {
+      damping: 0.5,
+      stiffness: 0.1,
+    },
+  );
+  let scrollTop = $state(0);
+
+  $effect(() => {
+    if (scrollTop > 0 && !checkReducedMotion()) {
+      navState.target = {
+        top: 20,
+        left: 10,
+        right: 10,
+        borderRadius: 19,
+      };
+    } else {
+      navState.target = {
+        top: 0,
+        left: 0,
+        right: 0,
+        borderRadius: 0,
+      };
     }
   });
 </script>
 
-<div class="fixed z-50 top-0 inset-x-0 bg-black" id="scroll-shorten">
+<svelte:window bind:scrollY={scrollTop} />
+
+<div
+  class="fixed z-50 top-0 inset-x-0 bg-black"
+  id="scroll-shorten"
+  style:transform="translateY({navState.current.top}px)"
+  style:left="{navState.current.left}%"
+  style:right="{navState.current.right}%"
+  style:border-radius="{navState.current.borderRadius}px"
+>
   {@render children()}
 </div>
