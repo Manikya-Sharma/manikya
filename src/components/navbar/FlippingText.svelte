@@ -1,8 +1,26 @@
 <script lang="ts">
-  import { spring } from "animejs";
   import { MENU_OPTION_HEIGHT } from "@/data/constants";
+  import { checkReducedMotion } from "@/utils/safeAnimate";
   import type { Snippet } from "svelte";
-  import { safeAnimate } from "@/utils/safeAnimate";
+  import { Spring } from "svelte/motion";
+
+  const springOptions = {
+    damping: 0.8,
+    stiffness: 0.2,
+  };
+
+  const originalTextY = new Spring(
+    {
+      y: 0,
+    },
+    springOptions,
+  );
+  const copyTextY = new Spring(
+    {
+      y: 100,
+    },
+    springOptions,
+  );
 
   const {
     children,
@@ -16,40 +34,24 @@
     height?: number;
   } = $props();
 
-  const BOUNCE = 0.3;
-  const DURATION = 250;
-
   const onhover = () => {
-    safeAnimate(`#flipping-text-${id}-original`, {
-      translateY: ["0%", "-100%"],
-      ease: spring({
-        bounce: BOUNCE,
-        duration: DURATION,
-      }),
-    });
-    safeAnimate(`#flipping-text-${id}-copy`, {
-      translateY: ["100%", "0%"],
-      ease: spring({
-        bounce: BOUNCE,
-        duration: DURATION,
-      }),
-    });
+    if (checkReducedMotion()) {
+      return;
+    }
+    originalTextY.target = {
+      y: -100,
+    };
+    copyTextY.target = {
+      y: 0,
+    };
   };
   const onleave = () => {
-    safeAnimate(`#flipping-text-${id}-original`, {
-      translateY: ["-100%", "0%"],
-      ease: spring({
-        bounce: BOUNCE,
-        duration: DURATION,
-      }),
-    });
-    safeAnimate(`#flipping-text-${id}-copy`, {
-      translateY: ["0%", "100%"],
-      ease: spring({
-        bounce: BOUNCE,
-        duration: DURATION,
-      }),
-    });
+    originalTextY.target = {
+      y: 0,
+    };
+    copyTextY.target = {
+      y: 100,
+    };
   };
 </script>
 
@@ -62,7 +64,11 @@
   style:height={`${height}px`}
   class="block relative overflow-hidden"
 >
-  <div id={`flipping-text-${id}-original`} style:height={`${height}px`}>
+  <div
+    id={`flipping-text-${id}-original`}
+    style:height={`${height}px`}
+    style:transform="translateY({originalTextY.current.y}%)"
+  >
     {@render children()}
   </div>
   <div
@@ -71,6 +77,7 @@
     id={`flipping-text-${id}-copy`}
     class="absolute inset-0"
     style:height={`${height}px`}
+    style:transform="translateY({copyTextY.current.y}%)"
     tabindex="-1"
   >
     {@render children()}
