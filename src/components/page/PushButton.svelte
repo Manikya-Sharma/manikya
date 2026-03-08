@@ -1,9 +1,20 @@
 <script lang="ts">
-  import { safeAnimate } from "@/utils/safeAnimate";
-  import { spring } from "animejs";
+  import { checkReducedMotion } from "@/utils/safeAnimate";
   import type { Snippet } from "svelte";
+  import { Spring } from "svelte/motion";
 
   const TRANSLATE = 5;
+
+  const animationState = new Spring(
+    {
+      x: 0,
+      y: 0,
+    },
+    {
+      damping: 0.6,
+      stiffness: 0.35,
+    },
+  );
 
   const {
     id,
@@ -15,24 +26,18 @@
     dialog: Snippet;
   } = $props();
   const onhover = () => {
-    safeAnimate(`#push-button-${id}`, {
-      translateX: TRANSLATE,
-      translateY: -TRANSLATE,
-      ease: spring({
-        bounce: 0.15,
-        duration: 100,
-      }),
-    });
+    if (checkReducedMotion()) return;
+    animationState.target = {
+      x: TRANSLATE,
+      y: -TRANSLATE,
+    };
   };
   const onleave = () => {
-    safeAnimate(`#push-button-${id}`, {
-      translateX: 0,
-      translateY: 0,
-      ease: spring({
-        bounce: 0.15,
-        duration: 100,
-      }),
-    });
+    if (checkReducedMotion()) return;
+    animationState.target = {
+      x: 0,
+      y: 0,
+    };
   };
 
   const openmodal = () => {
@@ -68,6 +73,8 @@
   <div
     id={`push-button-${id}`}
     class="bg-white rounded-md border border-[#b2b2b2] p-1.5"
+    style="transform: translate({animationState.current.x}px, {animationState
+      .current.y}px)"
   >
     {@render children()}
   </div>
