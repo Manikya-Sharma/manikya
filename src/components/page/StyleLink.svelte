@@ -1,6 +1,18 @@
 <script lang="ts">
-  import { safeAnimate } from "@/utils/safeAnimate";
+  import { checkReducedMotion } from "@/utils/safeAnimate";
   import type { Snippet } from "svelte";
+  import { cubicOut } from "svelte/easing";
+  import { Tween } from "svelte/motion";
+
+  const animationState = new Tween(
+    {
+      scaleX: 1,
+    },
+    {
+      duration: 200,
+      easing: cubicOut,
+    },
+  );
 
   const {
     children,
@@ -9,17 +21,17 @@
   }: { href: string; children: Snippet; id: string } = $props();
 
   const onhover = () => {
-    safeAnimate(`#underline-${id}`, {
+    if (checkReducedMotion()) return;
+    animationState.target = {
       scaleX: 0,
-      duration: 300,
-    });
+    };
   };
 
   const onleave = () => {
-    safeAnimate(`#underline-${id}`, {
+    if (checkReducedMotion()) return;
+    animationState.target = {
       scaleX: 1,
-      duration: 300,
-    });
+    };
   };
 </script>
 
@@ -34,6 +46,7 @@
   </a>
   <span
     id={`underline-${id}`}
+    style="transform:scaleX({animationState.current.scaleX})"
     class="absolute block -bottom-0.5 h-0.5 left-0 right-2 bg-gradient rounded-sm"
   ></span>
 </span>
