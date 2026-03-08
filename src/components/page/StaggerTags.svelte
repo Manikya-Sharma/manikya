@@ -1,7 +1,8 @@
 <script lang="ts">
-  import { cubicBezier, JSAnimation, stagger } from "animejs";
   import TagDiv from "./TagDiv.svelte";
-  import { safeAnimate } from "@/utils/safeAnimate";
+  import { Tween } from "svelte/motion";
+  import { cubicIn } from "svelte/easing";
+  import { checkReducedMotion } from "@/utils/safeAnimate";
 
   const {
     tags,
@@ -15,27 +16,44 @@
     tagNames: string[] | undefined;
   } = $props();
 
-  const animationOptions = {
-    opacity: [0, 1],
-    delay: stagger(100),
-    ease: cubicBezier(0.1, 0.7, 0.5, 1),
-  };
+  const tagsAnimationStates = $derived(
+    tags?.map(
+      (_, idx) =>
+        new Tween(
+          {
+            opacity: 0.0,
+          },
+          {
+            delay: idx * 50,
+            duration: 200,
+            easing: cubicIn,
+          },
+        ),
+    ),
+  );
 
   let animationPlayed = $state(false);
 
-  const observeOnScroll = (animation: JSAnimation | undefined) => {
+  const observeOnScroll = () => {
     // display animation only when element is in viewport
     const observer = new IntersectionObserver(
       (entries) => {
         const entry = entries[0];
         if (entry.isIntersecting) {
-          if (!animationPlayed) animation?.restart();
+          if (!animationPlayed) {
+            for (const tagsAnimationState of tagsAnimationStates ?? []) {
+              if (checkReducedMotion()) return;
+              tagsAnimationState.target = {
+                opacity: 1.0,
+              };
+            }
+          }
           animationPlayed = true;
         }
       },
       {
         root: null,
-        rootMargin: "0px",
+        rootMargin: "0px 0px -15% 0px",
         threshold: 0.5,
       },
     );
@@ -46,8 +64,7 @@
 
   $effect(() => {
     if (tags) {
-      const animation = safeAnimate(`.${tags[0]}-tag`, animationOptions);
-      return observeOnScroll(animation);
+      return observeOnScroll();
     }
   });
 </script>
@@ -55,7 +72,10 @@
 <div class="flex gap-2 flex-wrap" id={`${tags?.[0]}-tag`}>
   {#if tags && bgs && fgs && tagNames}
     {#each tags as tag, idx}
-      <span class={`${tags[0]}-tag`}>
+      <span
+        style:opacity={tagsAnimationStates?.[idx].current.opacity}
+        class={`${tags[0]}-tag`}
+      >
         <TagDiv {tag} bg={bgs[idx]} fg={fgs[idx]} tagName={tagNames[idx]} />
       </span>
     {/each}
