@@ -51,6 +51,7 @@
 <svelte:window onclick={isOpen ? on_menu_blur : () => {}} />
 {#if isOpen}
   <div
+    id="dropdown-button"
     transition:fade={{
       duration: checkReducedMotion() ? 50 : 200,
       easing: cubicOut,
