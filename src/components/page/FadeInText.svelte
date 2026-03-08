@@ -1,31 +1,39 @@
 <script lang="ts">
-  import { safeAnimate } from "@/utils/safeAnimate";
-  import { animate, type JSAnimation } from "animejs";
-
-  const animationOptions = {
-    opacity: [0, 1],
-    translateY: ["0px", "-25px"],
-    duration: 400,
-    loop: false,
-    autoplay: false,
-  };
+  import { checkReducedMotion } from "@/utils/safeAnimate";
+  import { cubicOut } from "svelte/easing";
+  import { Tween } from "svelte/motion";
 
   const { children, id, onScroll = false } = $props();
   let animationPlayed = $state(false);
 
-  const observeOnScroll = (animation: JSAnimation | undefined) => {
+  const animationState = new Tween(
+    {
+      opacity: 0.0,
+      y: 0,
+    },
+    {
+      duration: 300,
+      easing: cubicOut,
+    },
+  );
+
+  const observeOnScroll = () => {
     // display animation only when element is in viewport
     const observer = new IntersectionObserver(
       (entries) => {
         const entry = entries[0];
         if (entry.isIntersecting) {
-          if (!animationPlayed) animation?.restart();
+          if (!animationPlayed)
+            animationState.target = {
+              opacity: 1.0,
+              y: -25,
+            };
           animationPlayed = true;
         }
       },
       {
         root: null,
-        rootMargin: "0px",
+        rootMargin: "0px 0px -20% 0px",
         threshold: 0.5,
       },
     );
@@ -35,15 +43,16 @@
   };
 
   $effect(() => {
-    const animation = safeAnimate(`#fade-in-${id}`, animationOptions);
-    if (onScroll) {
-      return observeOnScroll(animation);
-    } else {
-      animation?.restart();
+    if (onScroll && !checkReducedMotion()) {
+      return observeOnScroll();
     }
   });
 </script>
 
-<div id={`fade-in-${id}`}>
+<div
+  id={`fade-in-${id}`}
+  style="opacity:{animationState.current
+    .opacity}; transform: translateY({animationState.current.y}px)"
+>
   {@render children()}
 </div>
