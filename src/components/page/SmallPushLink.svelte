@@ -1,7 +1,7 @@
 <script lang="ts">
-  import { safeAnimate } from "@/utils/safeAnimate";
-  import { spring } from "animejs";
+  import { checkReducedMotion } from "@/utils/safeAnimate";
   import type { Snippet } from "svelte";
+  import { Spring } from "svelte/motion";
 
   const TRANSLATE = 5;
 
@@ -16,25 +16,32 @@
     title?: string;
     href: string;
   } = $props();
+
+  const animationState = new Spring(
+    {
+      x: 0,
+      y: 0,
+    },
+    {
+      damping: 0.75,
+      stiffness: 0.4,
+      precision: 0.6,
+    },
+  );
+
   const onhover = () => {
-    safeAnimate(`#small-push-link-${id}`, {
-      translateX: TRANSLATE,
-      translateY: -TRANSLATE,
-      ease: spring({
-        bounce: 0.15,
-        duration: 100,
-      }),
-    });
+    if (checkReducedMotion()) return;
+    animationState.target = {
+      x: TRANSLATE,
+      y: -TRANSLATE,
+    };
   };
   const onleave = () => {
-    safeAnimate(`#small-push-link-${id}`, {
-      translateX: 0,
-      translateY: 0,
-      ease: spring({
-        bounce: 0.15,
-        duration: 100,
-      }),
-    });
+    if (checkReducedMotion()) return;
+    animationState.target = {
+      x: 0,
+      y: 0,
+    };
   };
 </script>
 
@@ -57,6 +64,8 @@
   ></div>
   <div
     id={`small-push-link-${id}`}
+    style="transform: translate({animationState.current.x}px, {animationState
+      .current.y}px)"
     class="bg-white rounded-md border border-[#b2b2b2] py-1 px-0.5 sm:py-2 sm:px-1.5"
   >
     {@render children()}
