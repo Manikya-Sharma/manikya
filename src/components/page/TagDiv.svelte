@@ -1,8 +1,19 @@
 <script lang="ts">
-  import { safeAnimate } from "@/utils/safeAnimate";
-  import { animate, spring } from "animejs";
+  import { checkReducedMotion } from "@/utils/safeAnimate";
+  import { Spring } from "svelte/motion";
 
   const TRANSLATE = 3;
+
+  const animationState = new Spring(
+    {
+      x: 0,
+      y: 0,
+    },
+    {
+      damping: 0.8,
+      stiffness: 0.4,
+    },
+  );
 
   const {
     tag,
@@ -10,25 +21,20 @@
     fg,
     bg,
   }: { tag: string; tagName: string; fg: string; bg: string } = $props();
+
   const onhover = () => {
-    safeAnimate(`#push-div-${tag}`, {
-      translateX: TRANSLATE,
-      translateY: -TRANSLATE,
-      ease: spring({
-        bounce: 0.15,
-        duration: 100,
-      }),
-    });
+    if (checkReducedMotion()) return;
+    animationState.target = {
+      x: TRANSLATE,
+      y: -TRANSLATE,
+    };
   };
   const onleave = () => {
-    safeAnimate(`#push-div-${tag}`, {
-      translateX: 0,
-      translateY: 0,
-      ease: spring({
-        bounce: 0.15,
-        duration: 100,
-      }),
-    });
+    if (checkReducedMotion()) return;
+    animationState.target = {
+      x: 0,
+      y: 0,
+    };
   };
 </script>
 
@@ -45,7 +51,12 @@
   onmousedown={onleave}
   onmouseup={onhover}
 >
-  <div id={`push-div-${tag}`} class={["rounded-md border px-2 py-1", fg]}>
+  <div
+    style="transform: translate({animationState.current.x}px, {animationState
+      .current.y}px)"
+    id={`push-div-${tag}`}
+    class={["rounded-md border px-2 py-1", fg]}
+  >
     <span class="flex gap-0.5 items-center">
       <img src={`/logos/${tag}-logo.svg`} class="block size-5" alt={tagName} />
       <span class="block">{tagName}</span>
