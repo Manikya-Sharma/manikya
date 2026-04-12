@@ -9,28 +9,28 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/netlify": "^7.0.2",
-    "@astrojs/svelte": "^8.0.0",
+    "@astrojs/netlify": "^7.0.6",
+    "@astrojs/svelte": "^8.0.4",
     "@fontsource-variable/figtree": "^5.2.10",
     "@fontsource-variable/fira-code": "^5.2.7",
     "@fontsource-variable/space-grotesk": "^5.2.10",
     "@fontsource/electrolize": "^5.2.8",
-    "@lucide/astro": "^0.563.0",
-    "@tailwindcss/vite": "^4.1.18",
-    "animejs": "^4.3.5",
-    "astro": "^6.0.4",
-    "daisyui": "^5.5.14",
-    "lodash": "^4.17.23",
+    "@lucide/astro": "^1.8.0",
+    "@tailwindcss/vite": "^4.2.2",
+    "animejs": "^4.3.6",
+    "astro": "^6.1.5",
+    "daisyui": "^5.5.19",
+    "lodash": "^4.18.1",
     "lottie-web": "^5.13.0",
     "sharp": "^0.34.5",
-    "svelte": "^5.48.2",
-    "tailwindcss": "^4.1.18",
-    "typescript": "^5.9.3",
+    "svelte": "^5.55.3",
+    "tailwindcss": "^4.2.2",
+    "typescript": "^6.0.2",
     "zod": "^4.3.6"
   },
   "devDependencies": {
-    "@types/lodash": "^4.17.23",
-    "prettier": "^3.8.1",
+    "@types/lodash": "^4.17.24",
+    "prettier": "^3.8.2",
     "prettier-plugin-astro": "^0.14.1"
   }
 }
