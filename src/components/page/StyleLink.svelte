@@ -1,8 +1,7 @@
 <script lang="ts">
-  import { checkReducedMotion } from "@/utils/safeAnimate";
   import type { Snippet } from "svelte";
   import { cubicOut } from "svelte/easing";
-  import { Tween } from "svelte/motion";
+  import { prefersReducedMotion, Tween } from "svelte/motion";
 
   const animationState = new Tween(
     {
@@ -21,14 +20,14 @@
   }: { href: string; children: Snippet; id: string } = $props();
 
   const onhover = () => {
-    if (checkReducedMotion()) return;
+    if (prefersReducedMotion.current) return;
     animationState.target = {
       scaleX: 0,
     };
   };
 
   const onleave = () => {
-    if (checkReducedMotion()) return;
+    if (prefersReducedMotion.current) return;
     animationState.target = {
       scaleX: 1,
     };

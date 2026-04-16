@@ -1,14 +1,13 @@
 <script lang="ts">
-  import { checkReducedMotion } from "@/utils/safeAnimate";
   import { cubicOut } from "svelte/easing";
-  import { Tween } from "svelte/motion";
+  import { prefersReducedMotion, Tween } from "svelte/motion";
 
   const { children, id, onScroll = false } = $props();
   let animationPlayed = $state(false);
 
   const animationState = new Tween(
     {
-      opacity: 0.0,
+      opacity: prefersReducedMotion.current ? 1.0 : 0.0,
       y: 0,
     },
     {
@@ -43,7 +42,7 @@
   };
 
   $effect(() => {
-    if (onScroll && !checkReducedMotion()) {
+    if (onScroll && !prefersReducedMotion.current) {
       return observeOnScroll();
     }
   });

@@ -1,8 +1,7 @@
 <script lang="ts">
   import TagDiv from "./TagDiv.svelte";
-  import { Tween } from "svelte/motion";
+  import { prefersReducedMotion, Tween } from "svelte/motion";
   import { cubicIn } from "svelte/easing";
-  import { checkReducedMotion } from "@/utils/safeAnimate";
 
   const {
     tags,
@@ -21,7 +20,7 @@
       (_, idx) =>
         new Tween(
           {
-            opacity: 0.0,
+            opacity: prefersReducedMotion.current ? 1.0 : 0.0,
           },
           {
             delay: idx * 50,
@@ -42,7 +41,7 @@
         if (entry.isIntersecting) {
           if (!animationPlayed) {
             for (const tagsAnimationState of tagsAnimationStates ?? []) {
-              if (checkReducedMotion()) return;
+              if (prefersReducedMotion.current) return;
               tagsAnimationState.target = {
                 opacity: 1.0,
               };
@@ -63,7 +62,7 @@
   };
 
   $effect(() => {
-    if (tags) {
+    if (tags && !prefersReducedMotion.current) {
       return observeOnScroll();
     }
   });

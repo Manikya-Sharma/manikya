@@ -1,6 +1,5 @@
 <script lang="ts">
-  import { checkReducedMotion } from "@/utils/safeAnimate";
-  import { Spring } from "svelte/motion";
+  import { prefersReducedMotion, Spring } from "svelte/motion";
 
   const TRANSLATE = 3;
 
@@ -23,14 +22,14 @@
   }: { tag: string; tagName: string; fg: string; bg: string } = $props();
 
   const onhover = () => {
-    if (checkReducedMotion()) return;
+    if (prefersReducedMotion.current) return;
     animationState.target = {
       x: TRANSLATE,
       y: -TRANSLATE,
     };
   };
   const onleave = () => {
-    if (checkReducedMotion()) return;
+    if (prefersReducedMotion.current) return;
     animationState.target = {
       x: 0,
       y: 0,

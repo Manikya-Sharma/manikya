@@ -1,7 +1,6 @@
 <script lang="ts">
-  import { checkReducedMotion } from "@/utils/safeAnimate";
   import type { Snippet } from "svelte";
-  import { Spring } from "svelte/motion";
+  import { prefersReducedMotion, Spring } from "svelte/motion";
   const { children }: { children: Snippet } = $props();
 
   let position = $state({
@@ -25,7 +24,7 @@
   );
 
   $effect(() => {
-    if (checkReducedMotion()) return;
+    if (prefersReducedMotion.current) return;
     if (isHover) {
       animationState.target = {
         rotation: 0,
@@ -44,7 +43,7 @@
 
 <svelte:document
   onmousemove={(e) => {
-    if (checkReducedMotion()) return;
+    if (prefersReducedMotion.current) return;
     const target = e.target as HTMLElement;
     isHover = !!target.closest(".hover-block");
 

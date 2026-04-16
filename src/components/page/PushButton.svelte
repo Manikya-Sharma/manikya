@@ -1,7 +1,6 @@
 <script lang="ts">
-  import { checkReducedMotion } from "@/utils/safeAnimate";
   import type { Snippet } from "svelte";
-  import { Spring } from "svelte/motion";
+  import { prefersReducedMotion, Spring } from "svelte/motion";
 
   const TRANSLATE = 5;
 
@@ -26,14 +25,14 @@
     dialog: Snippet;
   } = $props();
   const onhover = () => {
-    if (checkReducedMotion()) return;
+    if (prefersReducedMotion.current) return;
     animationState.target = {
       x: TRANSLATE,
       y: -TRANSLATE,
     };
   };
   const onleave = () => {
-    if (checkReducedMotion()) return;
+    if (prefersReducedMotion.current) return;
     animationState.target = {
       x: 0,
       y: 0,

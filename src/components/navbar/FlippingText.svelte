@@ -1,8 +1,7 @@
 <script lang="ts">
   import { MENU_OPTION_HEIGHT } from "@/data/constants";
-  import { checkReducedMotion } from "@/utils/safeAnimate";
   import type { Snippet } from "svelte";
-  import { Spring } from "svelte/motion";
+  import { prefersReducedMotion, Spring } from "svelte/motion";
 
   const springOptions = {
     damping: 0.8,
@@ -35,7 +34,7 @@
   } = $props();
 
   const onhover = () => {
-    if (checkReducedMotion()) {
+    if (prefersReducedMotion.current) {
       return;
     }
     originalTextY.target = {

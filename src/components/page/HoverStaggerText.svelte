@@ -1,7 +1,7 @@
 <script lang="ts">
   import type { Snippet } from "svelte";
   import { sineInOut } from "svelte/easing";
-  import { Spring, Tween } from "svelte/motion";
+  import { prefersReducedMotion, Spring, Tween } from "svelte/motion";
 
   const DURATION = 150;
 
@@ -65,6 +65,9 @@
   );
 
   const onleave = () => {
+    if (prefersReducedMotion.current) {
+      return;
+    }
     prefAnimation.target = {
       x: 0,
       opacity: 1,
@@ -79,7 +82,11 @@
       animation.target = { x: 0 };
     });
   };
+
   const onhover = () => {
+    if (prefersReducedMotion.current) {
+      return;
+    }
     prefAnimation.target = {
       x: -20,
       opacity: 0,

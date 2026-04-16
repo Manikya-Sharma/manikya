@@ -1,7 +1,7 @@
 <script lang="ts">
-  import { checkReducedMotion } from "@/utils/safeAnimate";
   import type { Snippet } from "svelte";
   import { cubicOut } from "svelte/easing";
+  import { prefersReducedMotion } from "svelte/motion";
   import { fade } from "svelte/transition";
 
   let isOpen = $state(false);
@@ -53,7 +53,7 @@
   <div
     id="dropdown-button"
     transition:fade={{
-      duration: checkReducedMotion() ? 50 : 200,
+      duration: prefersReducedMotion.current ? 50 : 200,
       easing: cubicOut,
     }}
     class={["absolute top-18 right-5 rounded-md bg-black px-10 py-3"]}

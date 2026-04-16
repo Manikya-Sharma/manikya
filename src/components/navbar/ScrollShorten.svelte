@@ -1,6 +1,5 @@
 <script lang="ts">
-  import { checkReducedMotion } from "@/utils/safeAnimate";
-  import { Spring } from "svelte/motion";
+  import { prefersReducedMotion, Spring } from "svelte/motion";
 
   const { children } = $props();
 
@@ -14,7 +13,7 @@
   let scrollTop = $state(0);
 
   $effect(() => {
-    if (scrollTop > 0 && !checkReducedMotion()) {
+    if (scrollTop > 0 && !prefersReducedMotion.current) {
       navState.target = {
         top: 20,
         left: 10,
