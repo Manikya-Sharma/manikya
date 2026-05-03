@@ -1,6 +1,6 @@
 <script lang="ts">
-  import { CIRC, INTERVAL_DURATION, MAX_SPEED } from "@/data/constants";
-  import { prefersReducedMotion, Tween } from "svelte/motion";
+  import { CIRC, MAX_SPEED } from "@/data/constants";
+  import { prefersReducedMotion } from "svelte/motion";
   import { fade } from "svelte/transition";
 
   const getRandomRange = (min: number, max: number) => {
@@ -12,7 +12,7 @@
     const l = getRandomRange(0.3, 0.8);
     const c = getRandomRange(0, 0.4);
     const h = getRandomRange(0, 360);
-    return `oklch(${l} ${c} ${h}deg)`;
+    return `oklch(${l} ${c} ${h}deg / 0.8)`;
   };
 
   let max_radius = $state(40);
@@ -22,16 +22,20 @@
   let dimensions = $state({ width: 0, height: 0 });
 
   let bubbles_properties: {
-    x: Tween<number>;
-    y: Tween<number>;
+    x: number;
+    y: number;
     radius: number;
-    theta: number;
+    dx: number;
+    dy: number;
     speed: number;
     color: string;
   }[] = $state([]);
 
   $effect(() => {
     const { width, height } = document.documentElement.getBoundingClientRect();
+
+    previousTime = document.timeline.currentTime as number | null;
+
     dimensions = { width, height };
 
     let bubbleCount = 20;
@@ -47,13 +51,14 @@
       const radius = getRandomRange(min_radius, max_radius);
       const speed =
         MAX_SPEED * Math.max(0.2, Math.cos(90 * (radius / max_radius)));
+      const dx = Math.random();
+      const abs_norm_y = Math.sqrt(1 - Math.pow(dx, 2));
       return {
-        x: new Tween(getRandomRange(max_radius + 1, width - max_radius - 1)),
-        y: new Tween(getRandomRange(max_radius + 1, height - max_radius - 1), {
-          duration: INTERVAL_DURATION,
-        }),
+        x: getRandomRange(max_radius + 1, width - max_radius - 1),
+        y: getRandomRange(max_radius + 1, height - max_radius - 1),
         radius,
-        theta: getRandomRange(0, 360),
+        dx,
+        dy: Math.random() < 0.5 ? -abs_norm_y : abs_norm_y,
         speed,
         color: getRandomColor(),
       };
@@ -62,33 +67,36 @@
 
   const updateBubbles = $derived((dt: number) => {
     bubbles_properties.forEach((bubble) => {
-      const dx = Math.cos(bubble.theta);
-      const dy = Math.sin(bubble.theta);
-      // add some circular motion :)
-      if (Math.random() > 0.3) {
-        bubble.theta = (bubble.theta + CIRC * dt) % 360;
-      } else if (Math.random() > 0.6) {
-        bubble.theta = (bubble.theta - CIRC * dt + 360) % 360;
+      const new_x = bubble.x + bubble.speed * bubble.dx * dt;
+      const new_y = bubble.y + bubble.speed * bubble.dy * dt;
+      if (new_x < bubble.radius) {
+        bubble.x = bubble.radius + 1;
+        bubble.dx = -bubble.dx;
+      } else if (new_x > dimensions.width - bubble.radius) {
+        bubble.x = dimensions.width - bubble.radius - 1;
+        bubble.dx = -bubble.dx;
+      } else {
+        bubble.x = new_x;
       }
-      bubble.x.target += bubble.speed * dx * dt;
-      bubble.y.target += bubble.speed * dy * dt;
-      if (
-        bubble.x.current < 0 ||
-        bubble.y.current < 0 ||
-        bubble.x.current > dimensions.width ||
-        bubble.y.current > dimensions.height
-      ) {
-        bubble.theta = (bubble.theta + 180) % 360;
-        bubble.x.target = Math.max(max_radius, bubble.x.current);
-        bubble.y.target = Math.max(max_radius, bubble.y.current);
-        bubble.x.target = Math.min(
-          dimensions.width - max_radius,
-          bubble.x.current,
-        );
-        bubble.y.target = Math.min(
-          dimensions.height - max_radius,
-          bubble.y.current,
-        );
+
+      if (new_y < bubble.radius) {
+        bubble.y = bubble.radius + 1;
+        bubble.dy = -bubble.dy;
+      } else if (new_y > dimensions.height - bubble.radius) {
+        bubble.y = dimensions.height - bubble.radius - 1;
+        bubble.dy = -bubble.dy;
+      } else {
+        bubble.y = new_y;
+      }
+      // add some circular movements in between, just to make it look like
+      // bubbles not balls
+      if (Math.random() < 0.1) {
+        const angle = Math.acos(bubble.dx);
+        const new_angle = Math.random() < 0.5 ? angle + CIRC : angle - CIRC;
+        const new_dx = Math.sign(bubble.dx) * Math.abs(Math.cos(new_angle));
+        const new_dy = Math.sign(bubble.dy) * Math.abs(Math.sin(new_angle));
+        bubble.dx = new_dx;
+        bubble.dy = new_dy;
       }
     });
   });
@@ -97,7 +105,7 @@
     bubbles_properties.forEach(({ x, y, color, radius }) => {
       ctx.beginPath();
       ctx.fillStyle = color;
-      ctx.arc(x.current, y.current, radius, 0, 2 * Math.PI);
+      ctx.arc(x, y, radius, 0, 2 * Math.PI);
       ctx.fill();
     });
   });
