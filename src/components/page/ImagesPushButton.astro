@@ -48,7 +48,7 @@ const { images, id } = Astro.props;
                 {index > 0 && (
                   <button
                     onclick={`history.replaceState(null, '', '#slide-${id}-${index - 1}'); location.replace( '#slide-${id}-${index - 1}');`}
-                    class="absolute bottom-3 left-3 px-4 py-1 rounded-md bg-neutral text-neutral-content backdrop-blur-md hover:bg-neutral ring-2 ring-base-content"
+                    class="absolute bottom-3 left-3 px-4 py-1 rounded-field glass"
                     aria-label={`Image number ${index - 1}`}
                   >
                     ❮
@@ -57,7 +57,7 @@ const { images, id } = Astro.props;
                 {index < images.items.length - 1 && (
                   <button
                     onclick={`history.replaceState(null, '', '#slide-${id}-${index + 1}'); location.replace( '#slide-${id}-${index + 1}');`}
-                    class="absolute bottom-3 right-3 px-4 py-1 rounded-md bg-neutral text-neutral-content backdrop-blur-md hover:bg-neutral ring-2 ring-base-content"
+                    class="absolute bottom-3 right-3 px-4 py-1 rounded-field glass"
                     aria-label={`Image number ${index + 1}`}
                   >
                     ❯
