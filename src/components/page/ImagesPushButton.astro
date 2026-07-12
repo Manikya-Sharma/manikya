@@ -11,13 +11,13 @@ interface Props {
   };
 }
 
-const { id, images } = Astro.props;
+const { images, id } = Astro.props;
 ---
 
-<PushButton client:visible id={id}>
+<PushButton client:visible>
   <Images class="size-5 sm:size-7" />
   <span slot="dialog">
-    <dialog id={`model-${id}`} class="modal">
+    <dialog class="modal">
       <div class="modal-box">
         <div class="flex items-center justify-between">
           <h2 class="text-lg" aria-label={"Images carousel"}>

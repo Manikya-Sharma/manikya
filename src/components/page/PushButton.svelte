@@ -16,14 +16,15 @@
   );
 
   const {
-    id,
     children,
     dialog,
   }: {
-    id: string;
     children: Snippet;
     dialog: Snippet;
   } = $props();
+
+  const id = $props.id();
+
   const onhover = () => {
     if (prefersReducedMotion.current) return;
     animationState.target = {

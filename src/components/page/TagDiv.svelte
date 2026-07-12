@@ -53,7 +53,6 @@
   <div
     style="transform: translate({animationState.current.x}px, {animationState
       .current.y}px)"
-    id={`push-div-${tag}`}
     class={["rounded-md border px-2 py-1", fg]}
   >
     <span class="flex gap-0.5 items-center">

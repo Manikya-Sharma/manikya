@@ -5,16 +5,16 @@
   const TRANSLATE = 5;
 
   const {
-    id,
     children,
     title,
     href,
   }: {
-    id: string;
     children: Snippet;
     title?: string;
     href: string;
   } = $props();
+
+  const id = $props.id();
 
   const animationState = new Spring(
     {

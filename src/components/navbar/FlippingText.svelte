@@ -23,11 +23,9 @@
 
   const {
     children,
-    id,
     height = MENU_OPTION_HEIGHT,
   }: {
     children: Snippet;
-    id: string;
     href?: string;
     isLink?: boolean;
     height?: number;
@@ -64,7 +62,6 @@
   class="block relative overflow-hidden"
 >
   <div
-    id={`flipping-text-${id}-original`}
     style:height={`${height}px`}
     style:transform="translateY({originalTextY.current.y}%)"
   >
@@ -73,7 +70,6 @@
   <div
     role="presentation"
     aria-hidden="true"
-    id={`flipping-text-${id}-copy`}
     class="absolute inset-0"
     style:height={`${height}px`}
     style:transform="translateY({copyTextY.current.y}%)"

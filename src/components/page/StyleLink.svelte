@@ -13,11 +13,7 @@
     },
   );
 
-  const {
-    children,
-    href,
-    id,
-  }: { href: string; children: Snippet; id: string } = $props();
+  const { children, href }: { href: string; children: Snippet } = $props();
 
   const onhover = () => {
     if (prefersReducedMotion.current) return;
@@ -44,7 +40,6 @@
     {@render children()}
   </a>
   <span
-    id={`underline-${id}`}
     style="transform:scaleX({animationState.current.scaleX})"
     class="absolute block -bottom-0.5 h-0.5 left-0 right-2 bg-gradient rounded-sm"
   ></span>

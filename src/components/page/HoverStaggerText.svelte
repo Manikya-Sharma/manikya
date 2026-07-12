@@ -11,14 +11,12 @@
     suff,
     href,
     className,
-    id,
   }: {
     pref: Snippet;
     content: string;
     suff: Snippet;
     href: string;
     className?: string;
-    id: string;
   } = $props();
 
   let prefAnimation = new Spring(
@@ -118,11 +116,10 @@
     style:opacity={prefAnimation.current.opacity}
     style:transform="translateX({prefAnimation.current.x}px) scale({prefAnimation
       .current.scale})"
-    id={`pref-${id}`}
   >
     {@render pref()}
   </span>
-  <span aria-label={content} id={`content-${id}`} class="block min-w-fit">
+  <span aria-label={content} class="block min-w-fit">
     {#each chars as ch, index}
       <span
         class="inline-block"
@@ -137,7 +134,6 @@
     style:opacity={suffAnimation.current.opacity}
     style:transform="translateX({suffAnimation.current.x}px) scale({suffAnimation
       .current.scale})"
-    id={`suff-${id}`}
     class="ml-auto"
   >
     {@render suff()}

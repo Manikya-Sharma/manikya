@@ -15,6 +15,8 @@
     tagNames: string[] | undefined;
   } = $props();
 
+  const id = $props.id();
+
   const tagsAnimationStates = $derived(
     tags?.map(
       (_, idx) =>
@@ -57,7 +59,7 @@
       },
     );
     // element always exists, so type assertion is valid
-    observer.observe(document.getElementById(`${tags?.[0]}-tag`) as Element);
+    observer.observe(document.getElementById(id) as Element);
     return () => observer.disconnect();
   };
 
@@ -68,13 +70,10 @@
   });
 </script>
 
-<div class="flex gap-2 flex-wrap" id={`${tags?.[0]}-tag`}>
+<div class="flex gap-2 flex-wrap" {id}>
   {#if tags && bgs && fgs && tagNames}
     {#each tags as tag, idx}
-      <span
-        style:opacity={tagsAnimationStates?.[idx].current.opacity}
-        class={`${tags[0]}-tag`}
-      >
+      <span style:opacity={tagsAnimationStates?.[idx].current.opacity}>
         <TagDiv {tag} bg={bgs[idx]} fg={fgs[idx]} tagName={tagNames[idx]} />
       </span>
     {/each}
