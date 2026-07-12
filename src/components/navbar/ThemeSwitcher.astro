@@ -1,0 +1,91 @@
+---
+import Palette from "@lucide/astro/icons/palette";
+
+const themes = [
+  {
+    value: "lofi",
+    label: "Lofi",
+  },
+  {
+    value: "dark",
+    label: "Dark",
+  },
+  {
+    value: "cupcake",
+    label: "Cupcake",
+  },
+  {
+    value: "forest",
+    label: "Forest",
+  },
+  {
+    value: "nord",
+    label: "Nord",
+  },
+  {
+    value: "coffee",
+    label: "Coffee",
+  },
+] as const;
+---
+
+<div class="dropdown dropdown-end" id="theme-selector-button">
+  <div
+    class="sm:px-2 tooltip tooltip-bottom cursor-pointer font-figtree flex items-center"
+    data-tip="Change theme"
+    tabindex="0"
+    role="button"
+  >
+    <Palette class="size-4 sm:size-5" />
+  </div>
+  <ul
+    tabindex="-1"
+    class="dropdown-content bg-neutral border border-neutral-content rounded-box z-1 w-52 p-2 shadow-2xl"
+  >
+    {
+      themes.map((theme) => (
+        <li>
+          <input
+            type="radio"
+            name="theme-dropdown"
+            class="theme-controller w-full btn btn-sm btn-block btn-neutral hover:bg-neutral-content hover:text-neutral justify-start"
+            aria-label={theme.label}
+            value={theme.value}
+          />
+        </li>
+      ))
+    }
+  </ul>
+</div>
+
+<!-- script tag suffices here, as we are interfacing with browser and svelte will be overkill -->
+<script>
+  // set existing theme
+  const existingTheme = localStorage.getItem("theme");
+  if (existingTheme) {
+    document.body.dataset.theme = existingTheme;
+  }
+
+  // add event listener when dropdown is opened
+  const dropdownButtonElement = document.getElementById(
+    "theme-selector-button",
+  );
+
+  const themeElementEventSelectorCallback = (val) => {
+    const selectedTheme = val.target?.value;
+    if (selectedTheme) {
+      localStorage.setItem("theme", selectedTheme);
+      document.body.dataset.theme = selectedTheme;
+    }
+  };
+
+  dropdownButtonElement?.addEventListener("click", (e) => {
+    const themeInputElements = document.querySelectorAll(".theme-controller");
+    themeInputElements?.forEach((el) =>
+      el.removeEventListener("click", themeElementEventSelectorCallback),
+    );
+    themeInputElements?.forEach((el) =>
+      el.addEventListener("click", themeElementEventSelectorCallback),
+    );
+  });
+</script>

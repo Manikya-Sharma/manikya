@@ -1,14 +1,20 @@
 ---
 import Breadcrumbs from "./Breadcrumbs.astro";
 import ContactsBar from "./ContactsBar.astro";
+import ThemeSwitcher from "./ThemeSwitcher.astro";
 import Hamburger from "./Hamburger.astro";
 import ScrollShorten from "./ScrollShorten.svelte";
 const pathname = Astro.url.pathname;
 ---
 
 <ScrollShorten client:load>
-  <nav class="font-fira px-7 py-5 text-neutral-content flex items-center justify-between">
+  <nav
+    class="font-fira px-7 py-5 text-neutral-content flex items-center justify-between"
+  >
     <Breadcrumbs pathname={pathname} />
-    {pathname == "/" ? <ContactsBar /> : <Hamburger pathname={pathname} />}
+    <div class="flex items-center gap-8">
+      <ThemeSwitcher />
+      {pathname == "/" ? <ContactsBar /> : <Hamburger pathname={pathname} />}
+    </div>
   </nav>
 </ScrollShorten>
