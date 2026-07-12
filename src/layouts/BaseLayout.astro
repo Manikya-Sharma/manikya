@@ -1,5 +1,6 @@
 ---
 import "@/globals.css";
+import VercelAnalytics from "@vercel/analytics/astro";
 import Navbar from "@/components/navbar/Navbar.astro";
 import { Font } from "astro:assets";
 ---
@@ -21,6 +22,7 @@ import { Font } from "astro:assets";
     <Font cssVariable="--font-figtree" />
   </head>
   <body class="min-h-screen flex flex-col bg-white text-black">
+    <VercelAnalytics />
     <!-- top element to capture is scroll is at top -->
     <div id="top-element" role="presentation" class="absolute top-0 left-0">
     </div>
