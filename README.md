@@ -7,7 +7,7 @@ This is the source code of my portfolio website.
 1. [Astro](https://astro.build/) with [Svelte](https://svelte.dev/)
 2. CSS styling using [tailwindCSS](https://tailwindcss.com/) and [daisyui](https://daisyui.com/)
 3. Email notifications using [EmailJS](https://www.emailjs.com/)
-4. Deployment and remote functions using [Netlify](https://www.netlify.com/)
+4. Deployment and remote functions using [Vercel](https://vercel.com/)
 
 ## Aim
 
@@ -22,7 +22,7 @@ Significant effort has been put to ensure maximum ease of use with screen reader
 
 ## Scope for improvement
 
-- [ ] Projects page and Contacts page should be made more accessible if JS doesn't load on client device.
+- [ ] use progressive enhancement for contacts form
 - [ ] Should create different sections for varying domains such as frontend, backend or research.
 - [ ] Describe more about yourself.
 - [ ] Maybe start writing blogs?
