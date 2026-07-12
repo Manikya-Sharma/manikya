@@ -44,7 +44,7 @@
 
 <form
   onsubmit={onSubmit}
-  class="flex-2 xl:flex-4 w-full md:max-w-160 xl:aspect-video border border-black/20 rounded-md shadow grid grid-cols-1 place-items-center py-12 px-6"
+  class="flex-2 xl:flex-4 w-full md:max-w-160 xl:aspect-video border border-base-content bg-base-200 rounded-field shadow grid grid-cols-1 place-items-center py-12 px-6"
 >
   <div class="toast toast-end font-figtree">
     {#if status === "SUCCESS"}

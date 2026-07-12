@@ -54,8 +54,9 @@ const images = projects.map(({ id }) => {
             href={`/projects/${id}`}
           >
             <Image
-              class="hover-block w-full block aspect-video object-contain rounded-md ring-2 ring-offset-1 ring-black/40"
+              class="hover-block w-full aspect-video border border-base-content rounded-selector"
               src={images[index][0]}
+              layout="full-width"
               alt={`${title}`}
             />
           </a>

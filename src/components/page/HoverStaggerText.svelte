@@ -104,7 +104,7 @@
 <a
   {href}
   class={[
-    "flex w-full h-full px-2 sm:px-3 py-1 sm:py-2 rounded-md border items-center justify-start gap-1.5",
+    "flex w-full h-full px-2 sm:px-3 py-1 sm:py-2 rounded-field border items-center justify-start gap-1.5",
     className,
   ]}
   onmouseover={onhover}

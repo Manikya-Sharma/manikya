@@ -72,7 +72,7 @@
   </div>
   <div
     id={`push-button-${id}`}
-    class="bg-base-200 rounded-md border border-neutral text-neutral p-1.5"
+    class="bg-base-200 rounded-md border border-base-content text-base-content p-1.5"
     style="transform: translate({animationState.current.x}px, {animationState
       .current.y}px)"
   >
