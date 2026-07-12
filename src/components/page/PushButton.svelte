@@ -18,12 +18,12 @@
   const {
     children,
     dialog,
+    id,
   }: {
     children: Snippet;
     dialog: Snippet;
+    id: string;
   } = $props();
-
-  const id = $props.id();
 
   const onhover = () => {
     if (prefersReducedMotion.current) return;
@@ -65,14 +65,14 @@
   onclick={openmodal}
 >
   <div
-    class="absolute -z-10 bg-black inset-0 opacity-0 group-hover:opacity-100 transition-opacity rounded-md"
+    class="absolute -z-10 bg-neutral text-neutral inset-0 opacity-0 group-hover:opacity-100 transition-opacity rounded-md"
     role="presentation"
   >
     {@render children()}
   </div>
   <div
     id={`push-button-${id}`}
-    class="bg-white rounded-md border border-[#b2b2b2] p-1.5"
+    class="bg-base-200 rounded-md border border-neutral text-neutral p-1.5"
     style="transform: translate({animationState.current.x}px, {animationState
       .current.y}px)"
   >

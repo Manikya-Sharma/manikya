@@ -5,7 +5,7 @@
   const { children }: { children: Snippet } = $props();
 </script>
 
-<button class="cursor-pointer px-7 py-3 bg-black text-white rounded-lg">
+<button class="cursor-pointer px-7 py-3 bg-neutral rounded-lg">
   <FlippingText height={30}>
     {@render children()}
   </FlippingText>

@@ -105,7 +105,7 @@
     ></textarea>
   </div>
   <div class="w-full flex items-center justify-end">
-    <FlippingButton id="send-button">
+    <FlippingButton>
       {@render children()}
     </FlippingButton>
   </div>

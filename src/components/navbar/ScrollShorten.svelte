@@ -34,7 +34,7 @@
 <svelte:window bind:scrollY={scrollTop} />
 
 <div
-  class="fixed z-50 top-0 inset-x-0 bg-black"
+  class="fixed z-50 top-0 inset-x-0 bg-neutral"
   id="scroll-shorten"
   style:transform="translateY({navState.current.top}px)"
   style:left="{navState.current.left}%"

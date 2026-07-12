@@ -60,7 +60,7 @@
 <div
   role="presentation"
   class={[
-    "motion-reduce:hidden md:motion-reduce:hidden pointer-events-none bg-black size-28 rounded-full absolute z-10 -translate-x-1/2 -translate-y-1/2 left-20 top-20 hidden md:flex items-center justify-center border-2 border-white/80",
+    "motion-reduce:hidden md:motion-reduce:hidden pointer-events-none bg-neutral size-28 rounded-full absolute z-10 -translate-x-1/2 -translate-y-1/2 left-20 top-20 hidden md:flex items-center justify-center border-2 border-white/80",
   ]}
   id="hover-round"
   style:left="{position.x}px"

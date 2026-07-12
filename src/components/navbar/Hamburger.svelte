@@ -56,7 +56,7 @@
       duration: prefersReducedMotion.current ? 50 : 200,
       easing: cubicOut,
     }}
-    class={["absolute top-18 right-5 rounded-md bg-black px-10 py-3"]}
+    class={["absolute top-18 right-5 rounded-md bg-neutral px-10 py-3"]}
   >
     {@render options()}
   </div>

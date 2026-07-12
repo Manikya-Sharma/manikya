@@ -58,14 +58,14 @@
   aria-label={title}
 >
   <div
-    class="motion-reduce:hidden absolute -z-10 bg-black inset-0 opacity-0 group-hover:opacity-100 transition-opacity rounded-md"
+    class="motion-reduce:hidden absolute -z-10 bg-neutral inset-0 opacity-0 group-hover:opacity-100 transition-opacity rounded-md"
     role="presentation"
   ></div>
   <div
     id={`small-push-link-${id}`}
     style="transform: translate({animationState.current.x}px, {animationState
       .current.y}px)"
-    class="bg-white rounded-md border border-[#b2b2b2] py-1 px-0.5 sm:py-2 sm:px-1.5"
+    class="bg-neutral-content rounded-md border border-neutral text-neutral py-1 px-0.5 sm:py-2 sm:px-1.5"
   >
     {@render children()}
   </div>
