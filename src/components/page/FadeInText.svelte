@@ -2,13 +2,16 @@
   import { cubicOut } from "svelte/easing";
   import { prefersReducedMotion, Tween } from "svelte/motion";
 
-  const { children, id, onScroll = false } = $props();
+  const { children, onScroll = false } = $props();
+
+  const id = $props.id();
+
   let animationPlayed = $state(false);
 
   const animationState = new Tween(
     {
       opacity: prefersReducedMotion.current ? 1.0 : 0.0,
-      y: 0,
+      y: 25,
     },
     {
       duration: 300,
@@ -25,7 +28,7 @@
           if (!animationPlayed)
             animationState.target = {
               opacity: 1.0,
-              y: -25,
+              y: 0,
             };
           animationPlayed = true;
         }
@@ -37,7 +40,7 @@
       },
     );
     // element always exists, so type assertion is valid
-    observer.observe(document.getElementById(`fade-in-${id}`) as Element);
+    observer.observe(document.getElementById(id) as Element);
     return () => observer.disconnect();
   };
 
@@ -49,9 +52,10 @@
 </script>
 
 <div
-  id={`fade-in-${id}`}
+  {id}
   style="opacity:{animationState.current
     .opacity}; transform: translateY({animationState.current.y}px)"
+  class="flex items-center"
 >
   {@render children()}
 </div>

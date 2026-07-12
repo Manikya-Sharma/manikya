@@ -1,12 +1,8 @@
 ---
-import FadeInText from "@/components/page/FadeInText.svelte";
-import PushButton from "./PushButton.svelte";
-import SmallPushLink from "./SmallPushLink.svelte";
+import SectionHeader from "./SectionHeader.astro";
 import StaggerTags from "./StaggerTags.svelte";
-import Images from "@lucide/astro/icons/images";
-import ArrowUpRight from "@lucide/astro/icons/arrow-up-right";
 import { tagColorMap, bgMap, getTagText } from "@/data/tags";
-import { Image } from "astro:assets";
+import StaggerTagsFallback from "./StaggerTagsFallback.astro";
 
 interface Props {
   id: string;
@@ -30,97 +26,24 @@ const tagNames = tags?.map((tag) => getTagText(tag));
 ---
 
 <section class="scroll-m-28" id={id}>
-  {
-    title && (
-      <div>
-        <FadeInText onScroll client:only="svelte" id={id}>
-          <div class="flex gap-2.5 items-center">
-            <h2 class="uppercase text-4xl sm:text-5xl md:text-7xl font-space font-semibold tracking-tighter">
-              {title}
-            </h2>
-            {images && images.items.length > 0 && (
-              /* @ts-expect-error: We have ensured that slot is passed */
-              <PushButton client:visible id={id}>
-                <Images class="size-5 sm:size-7" />
-                <span slot="dialog">
-                  <dialog id={`model-${id}`} class="modal">
-                    <div class="modal-box">
-                      <div class="flex items-center justify-between">
-                        <h2 class="text-lg" aria-label={"Images carousel"}>
-                          {images?.title}
-                        </h2>
-                        <form method="dialog">
-                          <button class="cursor-pointer bg-black text-white rounded-md px-4 py-2 text-sm">
-                            Close
-                          </button>
-                        </form>
-                      </div>
-                      <div class="carousel carousel-center space-x-2 mt-3 rounded-md p-2 bg-zinc-800">
-                        {images.items.map(({ alt, src }, index) => (
-                          <div
-                            id={`slide-${id}-${index}`}
-                            class="relative carousel-item w-full rounded-md"
-                          >
-                            <Image
-                              src={src}
-                              alt={alt}
-                              class="w-full aspect-video object-cover rounded-md"
-                            />
-                            {index > 0 && (
-                              <button
-                                onclick={`history.replaceState(null, '', '#slide-${id}-${index - 1}'); location.replace( '#slide-${id}-${index - 1}');`}
-                                class="absolute bottom-3 left-3 px-4 py-1 rounded-md bg-black/30 text-white backdrop-blur-md hover:bg-black ring-2 ring-neutral-700"
-                                aria-label={`Image number ${index - 1}`}
-                              >
-                                ❮
-                              </button>
-                            )}
-                            {index < images.items.length - 1 && (
-                              <button
-                                onclick={`history.replaceState(null, '', '#slide-${id}-${index + 1}'); location.replace( '#slide-${id}-${index + 1}');`}
-                                class="absolute bottom-3 right-3 px-4 py-1 rounded-md bg-black/30 text-white backdrop-blur-md hover:bg-black ring-2 ring-neutral-700"
-                                aria-label={`Image number ${index + 1}`}
-                              >
-                                ❯
-                              </button>
-                            )}
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                  </dialog>
-                </span>
-              </PushButton>
-            )}
-            {extlink && (
-              <SmallPushLink
-                client:visible
-                id={id}
-                href={extlink.href}
-                title={title}
-              >
-                <span class="flex items-center sm:gap-1.5 text-[0.65rem] sm:text-base">
-                  <span class="inline-block">
-                    {extlink.text ?? "Learn more"}
-                  </span>
-                  <ArrowUpRight class="size-4 sm:size-5" />
-                </span>
-              </SmallPushLink>
-            )}
-          </div>
-        </FadeInText>
-        <div class="flex gap-2 flex-wrap">
-          <StaggerTags
-            client:load
-            fgs={fgs}
-            bgs={bgs}
-            tagNames={tagNames}
-            tags={tags}
-          />
-        </div>
-      </div>
-    )
-  }
+  <SectionHeader title={title} images={images} extlink={extlink} id={id} />
+  <StaggerTags
+    client:only="svelte"
+    fgs={fgs}
+    bgs={bgs}
+    tagNames={tagNames}
+    tags={tags}
+    server:defer
+  >
+    <div slot="fallback">
+      <StaggerTagsFallback
+        fgs={fgs}
+        bgs={bgs}
+        tags={tags}
+        tagNames={tagNames}
+      />
+    </div>
+  </StaggerTags>
   <p class="mt-8 sm:mt-10 lg:mt-12 text-pretty mb-28 sm:mb-36 lg:mb-52">
     <slot />
   </p>

@@ -4,6 +4,7 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
 import { projectDetails, projects } from "@/data/projects";
 import ExternalLink from "@lucide/astro/icons/external-link";
 import StaggerTags from "@/components/page/StaggerTags.svelte";
+import StaggerTagsFallback from "@/components/page/StaggerTagsFallback.astro";
 import { bgMap, getTagText, tagColorMap } from "@/data/tags";
 import { Image } from "astro:assets";
 
@@ -64,11 +65,21 @@ const tagNames = tags?.map((tag) => getTagText(tag));
         <div class="mt-5">
           <StaggerTags
             client:only="svelte"
+            server:defer
             fgs={fgs}
             bgs={bgs}
             tagNames={tagNames}
             tags={tags}
-          />
+          >
+            <div slot="fallback">
+              <StaggerTagsFallback
+                tags={tags}
+                bgs={bgs}
+                fgs={fgs}
+                tagNames={tagNames}
+              />
+            </div>
+          </StaggerTags>
         </div>
       </section>
       <section

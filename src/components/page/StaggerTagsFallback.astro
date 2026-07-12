@@ -1,0 +1,39 @@
+---
+interface Props {
+  tags: string[] | undefined;
+  fgs: string[] | undefined;
+  bgs: string[] | undefined;
+  tagNames: string[] | undefined;
+}
+
+const { tags, tagNames, bgs, fgs } = Astro.props;
+---
+
+<div class="flex gap-2 flex-wrap">
+  {
+    tags?.map((tag, index) => (
+      <span class={`${tags[0]}-tag`}>
+        <div
+          class:list={[
+            "relative inline-block text-sm sm:text-base font-semibold rounded-md",
+            bgs?.[index],
+          ]}
+        >
+          <div
+            id={`push-div-${tag}`}
+            class:list={["rounded-md border px-2 py-1", fgs?.[index]]}
+          >
+            <span class="flex gap-0.5 items-center">
+              <img
+                src={`/logos/${tag}-logo.svg`}
+                class="block size-5"
+                alt={tagNames?.[index]}
+              />
+              <span class="block">{tagNames?.[index]}</span>
+            </span>
+          </div>
+        </div>
+      </span>
+    ))
+  }
+</div>

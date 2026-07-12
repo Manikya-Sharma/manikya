@@ -1,0 +1,55 @@
+---
+import SmallPushLink from "./SmallPushLink.svelte";
+import FadeInText from "@/components/page/FadeInText.svelte";
+import ImagesPushButton from "./ImagesPushButton.astro";
+import ArrowUpRight from "@lucide/astro/icons/arrow-up-right";
+import type { bgMap } from "@/data/tags";
+
+interface Props {
+  id: string;
+  title?: string;
+  images?: {
+    title: string;
+    items: Array<{ src: ImageMetadata; alt: string }>;
+  };
+  tags?: Array<keyof typeof bgMap>;
+  extlink?: {
+    text?: string;
+    href: string;
+  };
+}
+
+const { title, images, extlink, id } = Astro.props;
+---
+
+<div class="flex gap-2.5 items-center">
+  <FadeInText onScroll server:defer client:only="svelte">
+    <div slot="fallback">
+      <h2
+        class="uppercase text-4xl sm:text-5xl md:text-7xl font-space font-semibold tracking-tighter"
+      >
+        {title}
+      </h2>
+    </div>
+    <h2
+      class="uppercase text-4xl sm:text-5xl md:text-7xl font-space font-semibold tracking-tighter"
+    >
+      {title}
+    </h2>
+  </FadeInText>
+  <FadeInText onScroll client:only="svelte">
+    {images?.items?.length && <ImagesPushButton id={id} images={images} />}
+  </FadeInText>
+  <FadeInText onScroll client:only="svelte">
+    {
+      extlink && (
+        <SmallPushLink client:visible id={id} href={extlink.href} title={title}>
+          <span class="flex items-center sm:gap-1.5 text-[0.65rem] sm:text-base">
+            <span class="inline-block">{extlink.text ?? "Learn more"}</span>
+            <ArrowUpRight class="size-4 sm:size-5" />
+          </span>
+        </SmallPushLink>
+      )
+    }
+  </FadeInText>
+</div>
