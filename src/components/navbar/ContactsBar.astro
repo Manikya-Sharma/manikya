@@ -23,7 +23,10 @@ const options = [
 <ul class="flex gap-8">
   {
     options.map((option) => (
-      <li class="sm:px-2 tooltip tooltip-bottom" data-tip={option.tooltip}>
+      <li
+        class="sm:px-2 tooltip tooltip-bottom font-figtree"
+        data-tip={option.tooltip}
+      >
         <a aria-label={option.tooltip} href={option.href}>
           {typeof option.icon === "string" ? (
             <img
