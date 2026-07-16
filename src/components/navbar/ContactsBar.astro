@@ -20,11 +20,11 @@ const options = [
 ];
 ---
 
-<ul class="flex gap-8">
+<ul class="flex gap-6 sm:gap-8">
   {
     options.map((option) => (
       <li
-        class="sm:px-2 tooltip tooltip-bottom font-figtree tooltip-secondary"
+        class="sm:px-2 tooltip tooltip-bottom font-figtree tooltip-secondary shrink-0"
         data-tip={option.tooltip}
       >
         <a aria-label={option.tooltip} href={option.href}>

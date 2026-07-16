@@ -5,6 +5,8 @@ import ThemeSwitcher from "./ThemeSwitcher.astro";
 import Hamburger from "./Hamburger.astro";
 import ScrollShorten from "./ScrollShorten.svelte";
 const pathname = Astro.url.pathname;
+
+const level = pathname.split("/").length;
 ---
 
 <ScrollShorten client:load>
@@ -12,8 +14,8 @@ const pathname = Astro.url.pathname;
     class="font-fira px-7 py-5 text-neutral-content flex items-center justify-between"
   >
     <Breadcrumbs pathname={pathname} />
-    <div class="flex items-center gap-8">
-      <ThemeSwitcher />
+    <div class="flex items-center gap-6 sm:gap-8">
+      <ThemeSwitcher class:list={[level >= 3 && "hidden"]} />
       {pathname == "/" ? <ContactsBar /> : <Hamburger pathname={pathname} />}
     </div>
   </nav>

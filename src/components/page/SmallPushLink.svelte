@@ -65,7 +65,7 @@
     id={`small-push-link-${id}`}
     style="transform: translate({animationState.current.x}px, {animationState
       .current.y}px)"
-    class="bg-neutral-content rounded-md border border-neutral text-neutral py-1 px-0.5 sm:py-2 sm:px-1.5"
+    class="bg-neutral-content rounded-md border border-neutral text-neutral py-1 px-0.5 sm:py-2 sm:px-1.5 line-clamp-1 truncate"
   >
     {@render children()}
   </div>

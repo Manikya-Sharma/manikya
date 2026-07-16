@@ -27,9 +27,14 @@ const themes = [
     label: "Coffee",
   },
 ] as const;
+
+const { class: className } = Astro.props;
 ---
 
-<div class="dropdown dropdown-end" id="theme-selector-button">
+<div
+  class:list={["dropdown dropdown-end", className]}
+  id="theme-selector-button"
+>
   <div
     class="sm:px-2 tooltip tooltip-bottom tooltip-secondary cursor-pointer font-figtree flex items-center"
     data-tip="Change theme"
