@@ -40,7 +40,7 @@
 <div
   role="presentation"
   class={[
-    "relative group motion-safe:cursor-pointer inline-block text-sm sm:text-base font-semibold rounded-md",
+    "relative group motion-safe:cursor-pointer inline-block text-sm sm:text-base font-semibold rounded-box",
     bg,
   ]}
   onmouseover={onhover}
@@ -53,7 +53,7 @@
   <div
     style="transform: translate({animationState.current.x}px, {animationState
       .current.y}px)"
-    class={["rounded-md border px-2 py-1", fg]}
+    class={["rounded-box border px-2 py-1", fg]}
   >
     <span class="flex gap-0.5 items-center">
       <img src={`/logos/${tag}-logo.svg`} class="block size-5" alt={tagName} />

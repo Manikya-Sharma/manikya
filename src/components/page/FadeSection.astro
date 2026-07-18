@@ -27,23 +27,25 @@ const tagNames = tags?.map((tag) => getTagText(tag));
 
 <section id={id} class="scroll-m-28">
   <SectionHeader title={title} images={images} extlink={extlink} id={id} />
-  <StaggerTags
-    client:only="svelte"
-    fgs={fgs}
-    bgs={bgs}
-    tagNames={tagNames}
-    tags={tags}
-    server:defer
-  >
-    <div slot="fallback">
-      <StaggerTagsFallback
-        fgs={fgs}
-        bgs={bgs}
-        tags={tags}
-        tagNames={tagNames}
-      />
-    </div>
-  </StaggerTags>
+  <div class="mt-8">
+    <StaggerTags
+      client:only="svelte"
+      fgs={fgs}
+      bgs={bgs}
+      tagNames={tagNames}
+      tags={tags}
+      server:defer
+    >
+      <div slot="fallback">
+        <StaggerTagsFallback
+          fgs={fgs}
+          bgs={bgs}
+          tags={tags}
+          tagNames={tagNames}
+        />
+      </div>
+    </StaggerTags>
+  </div>
   <p class="mt-6 sm:mt-10 lg:mt-12 text-pretty mb-28 sm:mb-36 lg:mb-44">
     <slot />
   </p>
