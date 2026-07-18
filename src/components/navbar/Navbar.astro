@@ -15,7 +15,7 @@ const level = pathname.split("/").length;
   >
     <Breadcrumbs pathname={pathname} />
     <div class="flex items-center gap-6 sm:gap-8">
-      <ThemeSwitcher class:list={[level >= 3 && "hidden"]} />
+      <ThemeSwitcher class:list={[level >= 4 && "hidden"]} />
       {pathname == "/" ? <ContactsBar /> : <Hamburger pathname={pathname} />}
     </div>
   </nav>
