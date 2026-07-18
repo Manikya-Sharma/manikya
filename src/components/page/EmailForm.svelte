@@ -101,7 +101,7 @@
       name="message"
       required
       bind:value={formData.message}
-      class="textarea font-figtree text-lg w-full"
+      class="textarea font-figtree text-lg w-full max-h-32"
     ></textarea>
   </div>
   <div class="w-full flex items-center justify-end">

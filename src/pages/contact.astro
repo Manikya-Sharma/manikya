@@ -13,48 +13,43 @@ import CfImage from "@/images/cf-logo.png";
 import LcImage from "@/images/lc-logo.png";
 import XImage from "@/images/x-black.png";
 
+import { foregroundColors } from "@/data/tags";
+
 const contacts = [
   {
     img: LkdImage,
     name: "LinkedIn",
-    className: "border-blue-700 text-blue-700 bg-blue-50",
+    className: foregroundColors.blue,
     href: "https://www.linkedin.com/in/manikya-sharma-84615125a/",
     id: "lkd",
   },
   {
     img: GhImage,
     name: "GitHub",
-    className: "border-slate-700 text-slate-700 bg-slate-50",
+    className: foregroundColors.black,
     href: "https://github.com/Manikya-Sharma",
     id: "gh",
   },
   {
     img: MailImage,
     name: "Email",
-    className: "border-cyan-700 text-cyan-700 bg-cyan-50",
+    className: foregroundColors.green,
     href: "mailto:manikyasharma.ms@gmail.com",
     id: "ml",
   },
   {
     img: CfImage,
     name: "Codeforces",
-    className: "border-rose-700 text-rose-700 bg-rose-50",
+    className: foregroundColors.red,
     href: "https://codeforces.com/profile/manikya_sharma",
     id: "cf",
   },
   {
     img: LcImage,
     name: "Leetcode",
-    className: "border-yellow-700 text-yellow-700 bg-yellow-50",
+    className: foregroundColors.yellow,
     href: "https://leetcode.com/u/ManikyaSharma/",
     id: "lc",
-  },
-  {
-    img: XImage,
-    name: "Twitter (X)",
-    className: "border-zinc-700 text-zinc-700 bg-zinc-50",
-    href: "https://x.com/manikya_sharma_",
-    id: "tw",
   },
 ];
 ---

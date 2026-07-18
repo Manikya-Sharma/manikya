@@ -1,8 +1,8 @@
-const foregroundColors = {
+export const foregroundColors = {
   red: "bg-base-100 border-error text-error hover:bg-error hover:text-base-100 transition-colors duration-200",
   blue: "bg-base-100 border-info text-info hover:bg-info hover:text-base-100 transition-colors duration-200",
   black:
-    "bg-base-100 border-neutral text-neutral hover:bg-neutral hover:text-base-100 transition-colors duration-200",
+    "bg-base-100 border-base-content text-base-content hover:bg-base-content hover:text-base-100 transition-colors duration-200",
   green:
     "bg-base-100 border-success text-success hover:bg-success hover:text-base-100 transition-colors duration-200",
   accent:
@@ -15,7 +15,7 @@ const foregroundColors = {
     "bg-base-100 border-secondary text-secondary hover:bg-secondary hover:text-base-100 transition-colors duration-200",
 };
 
-const backgroundColors = {
+export const backgroundColors = {
   red: "bg-error/40",
   blue: "bg-info/40",
   black: "bg-neutral/40",
