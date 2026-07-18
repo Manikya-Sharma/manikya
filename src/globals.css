@@ -1,9 +1,12 @@
 @import "tailwindcss";
 
 @plugin "daisyui" {
-	themes: cupcake, forest, nord, coffee, lofi --default;
+	themes: cupcake, forest, nord, lofi --default;
 	logs: false;
 }
+
+@plugin "./themes/catpuccin.latte.ts";
+@plugin "./themes/catpuccin.mocha.ts";
 
 @theme inline {
 	--font-fira: var(--font-fira), monospace;
