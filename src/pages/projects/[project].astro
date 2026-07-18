@@ -70,6 +70,7 @@ const tagNames = tags?.map((tag) => getTagText(tag));
             bgs={bgs}
             tagNames={tagNames}
             tags={tags}
+            loading="eager"
           >
             <div slot="fallback">
               <StaggerTagsFallback
@@ -77,6 +78,7 @@ const tagNames = tags?.map((tag) => getTagText(tag));
                 bgs={bgs}
                 fgs={fgs}
                 tagNames={tagNames}
+                loading="eager"
               />
             </div>
           </StaggerTags>
@@ -106,7 +108,7 @@ const tagNames = tags?.map((tag) => getTagText(tag));
                 src={image}
                 alt={`${title}-${index + 1}`}
                 class="rounded-selector aspect-video"
-				layout="full-width"
+                layout="full-width"
                 loading="eager"
               />
               <button

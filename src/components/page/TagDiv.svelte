@@ -19,7 +19,14 @@
     tagName,
     fg,
     bg,
-  }: { tag: string; tagName: string; fg: string; bg: string } = $props();
+    loading,
+  }: {
+    tag: string;
+    tagName: string;
+    fg: string;
+    bg: string;
+    loading?: "eager" | "lazy";
+  } = $props();
 
   const onhover = () => {
     if (prefersReducedMotion.current) return;
@@ -56,7 +63,12 @@
     class={["rounded-box border px-2 py-1", fg]}
   >
     <span class="flex gap-0.5 items-center">
-      <img src={`/logos/${tag}-logo.svg`} class="block size-5" alt={tagName} />
+      <img
+        {loading}
+        src={`/logos/${tag}-logo.svg`}
+        class="block size-5"
+        alt={tagName}
+      />
       <span class="block">{tagName}</span>
     </span>
   </div>

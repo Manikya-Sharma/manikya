@@ -4,9 +4,10 @@ interface Props {
   fgs: string[] | undefined;
   bgs: string[] | undefined;
   tagNames: string[] | undefined;
+  loading?: "lazy" | "eager";
 }
 
-const { tags, tagNames, bgs, fgs } = Astro.props;
+const { tags, tagNames, bgs, fgs, loading } = Astro.props;
 ---
 
 <div class="flex gap-2 flex-wrap">
@@ -28,6 +29,7 @@ const { tags, tagNames, bgs, fgs } = Astro.props;
                 src={`/logos/${tag}-logo.svg`}
                 class="block size-5"
                 alt={tagNames?.[index]}
+                loading={loading}
               />
               <span class="block">{tagNames?.[index]}</span>
             </span>

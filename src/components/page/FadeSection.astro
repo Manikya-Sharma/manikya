@@ -26,7 +26,11 @@ const tagNames = tags?.map((tag) => getTagText(tag));
 ---
 
 <section id={id} class="scroll-m-28">
-  <SectionHeader title={title} images={images} extlink={extlink} id={id} />
+  {
+    title && (
+      <SectionHeader title={title} images={images} extlink={extlink} id={id} />
+    )
+  }
   <div class="mt-8">
     <StaggerTags
       client:only="svelte"
@@ -35,6 +39,7 @@ const tagNames = tags?.map((tag) => getTagText(tag));
       tagNames={tagNames}
       tags={tags}
       server:defer
+      loading="lazy"
     >
       <div slot="fallback">
         <StaggerTagsFallback
@@ -42,6 +47,7 @@ const tagNames = tags?.map((tag) => getTagText(tag));
           bgs={bgs}
           tags={tags}
           tagNames={tagNames}
+          loading="lazy"
         />
       </div>
     </StaggerTags>

@@ -8,11 +8,13 @@
     fgs,
     bgs,
     tagNames,
+    loading,
   }: {
     tags: string[] | undefined;
     fgs: string[] | undefined;
     bgs: string[] | undefined;
     tagNames: string[] | undefined;
+    loading?: "eager" | "lazy";
   } = $props();
 
   const id = $props.id();
@@ -74,7 +76,13 @@
   {#if tags && bgs && fgs && tagNames}
     {#each tags as tag, idx}
       <span style:opacity={tagsAnimationStates?.[idx].current.opacity}>
-        <TagDiv {tag} bg={bgs[idx]} fg={fgs[idx]} tagName={tagNames[idx]} />
+        <TagDiv
+          {tag}
+          bg={bgs[idx]}
+          fg={fgs[idx]}
+          tagName={tagNames[idx]}
+          {loading}
+        />
       </span>
     {/each}
   {/if}
