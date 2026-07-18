@@ -65,14 +65,14 @@
   onclick={openmodal}
 >
   <div
-    class="absolute -z-10 bg-accent/30 text-transparent inset-0 opacity-0 group-hover:opacity-100 transition-opacity rounded-md"
+    class="absolute -z-10 bg-accent/30 text-transparent inset-0 opacity-0 group-hover:opacity-100 transition-opacity rounded-box"
     role="presentation"
   >
     {@render children()}
   </div>
   <div
     id={`push-button-${id}`}
-    class="bg-accent rounded-md text-accent-content p-1.5"
+    class="bg-accent rounded-box text-accent-content p-1.5"
     style="transform: translate({animationState.current.x}px, {animationState
       .current.y}px)"
   >
