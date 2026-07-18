@@ -3,24 +3,34 @@ import Palette from "@lucide/astro/icons/palette";
 
 const themes = [
   {
-    value: "lofi",
-    label: "Lofi",
+    label: "Light",
+    items: [
+      {
+        value: "lofi",
+        label: "Lofi",
+      },
+      {
+        value: "cupcake",
+        label: "Cupcake",
+      },
+      {
+        value: "nord",
+        label: "Nord",
+      },
+    ],
   },
   {
-    value: "cupcake",
-    label: "Cupcake",
-  },
-  {
-    value: "forest",
-    label: "Forest",
-  },
-  {
-    value: "nord",
-    label: "Nord",
-  },
-  {
-    value: "coffee",
-    label: "Coffee",
+    label: "Dark",
+    items: [
+      {
+        value: "forest",
+        label: "Forest",
+      },
+      {
+        value: "coffee",
+        label: "Coffee",
+      },
+    ],
   },
 ] as const;
 
@@ -41,18 +51,26 @@ const { class: className } = Astro.props;
   </div>
   <ul
     tabindex="-1"
-    class="dropdown-content bg-neutral border border-neutral-content rounded-box z-1 w-52 p-2 shadow-2xl"
+    class="dropdown-content bg-neutral menu border border-neutral-content rounded-box z-1 w-52 p-2 shadow-2xl"
   >
     {
-      themes.map((theme) => (
+      themes.map(({ label, items }) => (
         <li>
-          <input
-            type="radio"
-            name="theme-dropdown"
-            class="theme-controller w-full btn btn-sm btn-block btn-neutral hover:bg-neutral-content hover:text-neutral justify-start"
-            aria-label={theme.label}
-            value={theme.value}
-          />
+          <h2 class="menu-title text-neutral-content">{label}</h2>
+          <ul>
+            {items.map((theme) => (
+              <li>
+                <button
+                  name="theme-dropdown"
+                  class="theme-controller w-full justify-start"
+                  aria-label={theme.label}
+                  id={theme.value}
+                >
+                  {theme.label}
+                </button>
+              </li>
+            ))}
+          </ul>
         </li>
       ))
     }
@@ -72,15 +90,15 @@ const { class: className } = Astro.props;
     "theme-selector-button",
   );
 
-  const themeElementEventSelectorCallback = (val) => {
-    const selectedTheme = val.target?.value;
+  const themeElementEventSelectorCallback = (val: Event) => {
+    const selectedTheme = (val.target as HTMLButtonElement)?.id;
     if (selectedTheme) {
       localStorage.setItem("theme", selectedTheme);
       document.body.dataset.theme = selectedTheme;
     }
   };
 
-  dropdownButtonElement?.addEventListener("click", (e) => {
+  dropdownButtonElement?.addEventListener("click", () => {
     const themeInputElements = document.querySelectorAll(".theme-controller");
     themeInputElements?.forEach((el) =>
       el.removeEventListener("click", themeElementEventSelectorCallback),
