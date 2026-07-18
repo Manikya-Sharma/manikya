@@ -41,6 +41,6 @@
   </a>
   <span
     style="transform:scaleX({animationState.current.scaleX})"
-    class="absolute block -bottom-0.5 h-0.5 left-0 right-2 bg-gradient rounded-sm"
+    class="absolute origin-bottom-left hover:origin-bottom-right block -bottom-0.5 h-0.5 left-0 right-2 bg-gradient rounded-sm"
   ></span>
 </span>

@@ -22,7 +22,7 @@ const { prev, next } = Astro.props;
   aria-label="Footer Navigation"
 >
   <div class="w-[60%] sm:w-auto">
-    <PushLink client:visible id={prev.name} href={prev.href}>
+    <PushLink client:visible href={prev.href}>
       <span class="flex gap-1.5 items-center">
         <ArrowLeft class="inline-block size-7 sm:size-8 lg:size-10" />
         {prev.name}

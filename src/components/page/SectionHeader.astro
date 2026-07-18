@@ -20,22 +20,23 @@ interface Props {
 }
 
 const { title, images, extlink, id } = Astro.props;
+
+const titleDecoratorClassName =
+  "relative before:-z-10 before:absolute before:-inset-2 before:block before:-skew-y-3 before:bg-secondary before:rounded-box";
+const titleClassName =
+  "text-secondary-content uppercase text-4xl sm:text-5xl md:text-7xl font-space font-semibold tracking-tighter";
 ---
 
-<div class="flex gap-2.5 items-center">
+<div class="flex gap-3.5 items-center w-fit">
   <FadeInText onScroll server:defer client:only="svelte">
     <div slot="fallback">
-      <h2
-        class="uppercase text-4xl sm:text-5xl md:text-7xl font-space font-semibold tracking-tighter"
-      >
-        {title}
-      </h2>
+      <div class:list={[title && titleDecoratorClassName]}>
+        <h2 class={titleClassName}>{title}</h2>
+      </div>
     </div>
-    <h2
-      class="uppercase text-3xl sm:text-5xl md:text-7xl font-space font-semibold tracking-tighter"
-    >
-      {title}
-    </h2>
+    <div class:list={[title && titleDecoratorClassName]}>
+      <h2 class={titleClassName}>{title}</h2>
+    </div>
   </FadeInText>
   <FadeInText onScroll client:only="svelte">
     {images?.items?.length && <ImagesPushButton id={id} images={images} />}

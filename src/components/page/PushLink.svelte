@@ -43,12 +43,12 @@
 >
   <div
     role="presentation"
-    class="motion-reduce:hidden block absolute bg-neutral text-neutral inset-0 opacity-0 group-hover:opacity-100 transition-opacity rounded-md"
+    class="motion-reduce:hidden block absolute bg-neutral text-neutral inset-0 opacity-0 group-hover:opacity-100 transition-opacity rounded-box"
   ></div>
   <div
     style="transform: translate({animationState.current.x}px, {animationState
       .current.y}px)"
-    class="block bg-base-300 p-4 text-3xl sm:text-4xl lg:text-5xl font-space outline-dashed group-hover:outline-solid outline-base-content rounded-md"
+    class="block bg-base-100 p-4 text-3xl sm:text-4xl lg:text-5xl font-space outline-dashed group-hover:outline-solid outline-base-content rounded-box"
   >
     {@render children()}
   </div>

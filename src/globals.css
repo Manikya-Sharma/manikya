@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 @plugin "daisyui" {
-	themes: dark, cupcake, forest, nord, coffee, lofi --default;
+	themes: cupcake, forest, nord, coffee, lofi --default;
 	logs: false;
 }
 
@@ -13,11 +13,11 @@
 }
 
 .bg-gradient {
-	@apply bg-linear-to-r from-blue-600 to-green-500;
+	@apply bg-linear-to-r from-accent-content to-base-content;
 }
 
 .text-gradient {
-	@apply bg-linear-to-r from-blue-600 to-green-500 inline text-transparent bg-clip-text;
+	@apply bg-linear-to-r from-accent to-base-content inline text-transparent bg-clip-text;
 }
 
 /* FIX: Is this the best way to implement smooth scroll?  */
