@@ -1,5 +1,11 @@
 ---
 import Palette from "@lucide/astro/icons/palette";
+import Cat from "@lucide/astro/icons/cat";
+import Snowflake from "@lucide/astro/icons/snowflake";
+import CakeSlice from "@lucide/astro/icons/cake-slice";
+import MountainSnow from "@lucide/astro/icons/mountain-snow";
+import Shell from "@lucide/astro/icons/shell";
+import Building2 from "@lucide/astro/icons/building";
 
 const themes = [
   {
@@ -8,18 +14,22 @@ const themes = [
       {
         value: "latte",
         label: "Cattpuccin latte",
+        icon: Cat,
       },
       {
         value: "lofi",
         label: "Lofi",
+        icon: Snowflake,
       },
       {
         value: "cupcake",
         label: "Cupcake",
+        icon: CakeSlice,
       },
       {
         value: "nord",
         label: "Nord",
+        icon: MountainSnow,
       },
     ],
   },
@@ -29,14 +39,17 @@ const themes = [
       {
         value: "mocha",
         label: "Cattpuccin mocha",
+        icon: Cat,
       },
       {
         value: "kanagawa",
         label: "Kanagawa",
+        icon: Shell,
       },
       {
         value: "tokyonight",
         label: "Tokyo Night",
+        icon: Building2,
       },
     ],
   },
@@ -59,7 +72,7 @@ const { class: className } = Astro.props;
   </div>
   <ul
     tabindex="-1"
-    class="dropdown-content bg-neutral menu border border-neutral-content rounded-box z-1 w-52 p-2 shadow-2xl"
+    class="dropdown-content font-figtree bg-neutral menu border border-neutral-content rounded-box z-1 w-52 p-2 shadow-2xl"
   >
     {
       themes.map(({ label, items }) => (
@@ -70,11 +83,11 @@ const { class: className } = Astro.props;
               <li>
                 <button
                   name="theme-dropdown"
-                  class="theme-controller w-full justify-start"
+                  class="theme-controller w-full justify-start -ml-4"
                   aria-label={theme.label}
                   id={theme.value}
                 >
-                  {theme.label}
+                  {theme.icon && <theme.icon class="size-4" />} {theme.label}
                 </button>
               </li>
             ))}
