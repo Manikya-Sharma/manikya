@@ -9,26 +9,26 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/netlify": "^8.2.1",
-    "@astrojs/svelte": "^9.0.1",
-    "@astrojs/vercel": "^11.0.5",
-    "@lucide/astro": "^1.31.0",
+    "@astrojs/netlify": "^8.2.10",
+    "@astrojs/svelte": "^9.1.0",
+    "@astrojs/vercel": "^11.0.15",
+    "@lucide/astro": "^1.59.0",
     "@tailwindcss/vite": "^4.3.3",
     "@vercel/analytics": "^2.0.1",
     "@vercel/speed-insights": "^2.0.0",
-    "astro": "^7.2.2",
+    "astro": "^7.4.0",
     "lodash": "^4.18.1",
-    "sharp": "^0.35.3",
-    "svelte": "^5.56.9",
+    "sharp": "^0.35.5",
+    "svelte": "^5.57.2",
     "tailwindcss": "^4.3.3",
     "typescript": "^7.0.2",
-    "zod": "^4.4.3"
+    "zod": "^4.6.7"
   },
   "devDependencies": {
     "@catppuccin/daisyui": "^2.1.1",
-    "@types/lodash": "^4.17.25",
-    "daisyui": "^5.7.17",
-    "prettier": "^3.9.6",
-    "prettier-plugin-astro": "^0.14.1"
+    "@types/lodash": "^4.17.26",
+    "daisyui": "^5.7.50",
+    "prettier": "^3.9.10",
+    "prettier-plugin-astro": "^1.1.1"
   }
 }
