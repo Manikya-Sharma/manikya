@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 @plugin "daisyui" {
-	themes: cupcake, nord, lofi;
+	themes: cupcake, nord, lofi --default;
 	logs: false;
 }
 
@@ -38,8 +38,8 @@ html {
 
 @plugin "daisyui/theme" {
 	name: "kanagawa";
-	default: true;
-	prefersdark: false;
+	default: false;
+	prefersdark: true;
 	color-scheme: "dark";
 	--color-base-100: #191823;
 	--color-base-200: #22212f;
