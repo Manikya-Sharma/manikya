@@ -9,8 +9,6 @@ import BottomNav from "@/components/navbar/BottomNav.astro";
 
 import DtuImage from "@/images/dtu.jpeg";
 import RSHallImage from "@/images/hall.jpg";
-import IITRImage from "@/images/iitr.jpg";
-import IITR2Image from "@/images/iitr2.jpg";
 import PeacockImage from "@/images/peacock.jpg";
 import DucksImage from "@/images/ducks.jpg";
 ---
@@ -19,9 +17,7 @@ import DucksImage from "@/images/ducks.jpg";
   <DetailPageLayout>
     <section>
       <div class="uppercase h-screen w-full grid place-items-center">
-        <h1
-          class="text-6xl sm:text-9xl font-space font-semibold tracking-tighter"
-        >
+        <h1 class="text-6xl sm:text-9xl font-space font-semibold tracking-tighter">
           About Me
         </h1>
         <div class="absolute bottom-7 right-5">
@@ -31,10 +27,12 @@ import DucksImage from "@/images/ducks.jpg";
     </section>
 
     <FadeSection id="intro">
-      Hi, I am a <span class="text-gradient">full stack developer</span> with a passion
-      for building web applications that are both <span class="italic"
-        >functional and beautiful</span
-      >. I love solving problems and learning about new technologies.
+      I am a software developer, currently working as a{" "}
+      <span class="text-gradient">Platform Engineer</span> at{" "}
+      <StyleLink client:load href="https://www.unifyapps.com/">
+        UnifyApps
+      </StyleLink>
+      .
     </FadeSection>
     <FadeSection
       id="education"
@@ -47,43 +45,16 @@ import DucksImage from "@/images/ducks.jpg";
         ],
       }}
     >
-      I am a student of <StyleLink client:load href="https://dtu.ac.in">
-        <span>
-          Delhi Technological University<ExternalLink
-            class="inline-block ml-1.5 text-base-content size-4"
-          />
+      I have completed my bachelor's degree in{" "}
+      <span class="text-gradient">Information Technology</span> from{" "}
+      <StyleLink client:load href="https://dtu.ac.in">
+        <span class="inline-block">
+          Delhi Technological University
+          <ExternalLink class="inline-block ml-1.5 text-base-content size-4" />
         </span>
       </StyleLink>
-      pursuing a bachelor's degree in <span class="text-gradient"
-        >Information Technology</span
-      >. I have also completed various online courses in artificial
-      intelligence, web development and software engineering.
-    </FadeSection>
-    <FadeSection
-      id="experience"
-      title="Experience"
-      images={{
-        title: "Some hackathons",
-        items: [
-          { src: IITRImage, alt: "IITR" },
-          { src: IITR2Image, alt: "IITR" },
-        ],
-      }}
-    >
-      I have participated in various <StyleLink
-        client:load
-        href="https://devfolio.co/@Manikya_Sharma"
-      >
-        <span>
-          hacakthons<ExternalLink
-            class="inline-block ml-1.5 text-base-content size-4"
-          />
-        </span>
-      </StyleLink> and have worked on a variety of projects. I have experience with
-      several <span class="text-gradient"
-        >programming languages and frameworks{" "}
-      </span>including Python, JavaScript, TypeScript, ReactJS, NextJs Node.js
-      etc.
+      . I have also completed various online courses in artificial intelligence,
+      web development and software engineering.
     </FadeSection>
     <FadeSection
       id="interests"
@@ -97,10 +68,10 @@ import DucksImage from "@/images/ducks.jpg";
       }}
     >
       In my free time, I <span class="text-gradient">enjoy reading</span>, and
-      learning about new technologies and <span class="text-gradient"
-        >programming languages</span
-      >. I also enjoy traveling and exploring new places. I am always looking
-      for new opportunities to learn and grow as a developer.
+      learning about new technologies and{" "}
+      <span class="text-gradient">programming languages</span>. I also enjoy
+      traveling and exploring new places. I am always looking for new
+      opportunities to learn and grow as a developer.
     </FadeSection>
   </DetailPageLayout>
   <BottomNav

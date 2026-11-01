@@ -38,12 +38,12 @@ const { images, id } = Astro.props;
             images?.items.map(({ alt, src }, index) => (
               <div
                 id={`slide-${id}-${index}`}
-                class="relative carousel-item w-full rounded-md"
+                class="aspect-video relative carousel-item w-full rounded-md"
               >
                 <Image
                   src={src}
                   alt={alt}
-                  class="w-full aspect-video object-cover rounded-md"
+                  class="w-full h-full object-cover rounded-md"
                 />
                 {index > 0 && (
                   <button
