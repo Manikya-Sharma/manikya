@@ -7,10 +7,6 @@ import StaggerTagsFallback from "./StaggerTagsFallback.astro";
 interface Props {
   id: string;
   title?: string;
-  images?: {
-    title: string;
-    items: Array<{ src: ImageMetadata; alt: string }>;
-  };
   tags?: Array<keyof typeof bgMap>;
   extlink?: {
     text?: string;
@@ -18,7 +14,7 @@ interface Props {
   };
 }
 
-const { title, id, images, tags, extlink } = Astro.props;
+const { title, id, tags, extlink } = Astro.props;
 
 const bgs = tags?.map((tag) => bgMap[tag]);
 const fgs = tags?.map((tag) => tagColorMap[tag]);
@@ -26,11 +22,7 @@ const tagNames = tags?.map((tag) => getTagText(tag));
 ---
 
 <section id={id} class="scroll-m-28">
-  {
-    title && (
-      <SectionHeader title={title} images={images} extlink={extlink} id={id} />
-    )
-  }
+  {title && <SectionHeader title={title} extlink={extlink} id={id} />}
   <div class="mt-8">
     <StaggerTags
       client:only="svelte"
