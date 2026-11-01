@@ -15,6 +15,32 @@
 	--font-figtree: var(--font-figtree), sans-serif;
 }
 
+@theme {
+	--animate-shake: tilt-shaking 3000ms ease-in-out infinite;
+
+	@keyframes tilt-shaking {
+		80% {
+			transform: rotate(0deg);
+		}
+
+		82.5% {
+			transform: rotate(5deg);
+		}
+
+		85% {
+			transform: rotate(0deg);
+		}
+
+		87.5% {
+			transform: rotate(-5deg);
+		}
+
+		90% {
+			transform: rotate(0deg);
+		}
+	}
+}
+
 .bg-gradient {
 	@apply bg-linear-to-r from-accent-content to-base-content;
 }

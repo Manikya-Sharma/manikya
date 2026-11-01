@@ -1,40 +1,44 @@
 ---
 import Hammer from "@lucide/astro/icons/hammer";
 import Hash from "@lucide/astro/icons/hash";
-import NotebookText from "@lucide/astro/icons/notebook-text";
 import Swords from "@lucide/astro/icons/swords";
-import ArrowRight from "@lucide/astro/icons/arrow-right";
 import BaseLayout from "../layouts/BaseLayout.astro";
-import Decorations from "../components/page/Decorations.svelte";
+import AboutMe from "../components/page/AboutMe.astro";
 
 const options = [
-  { icon: NotebookText, text: "About", href: "/about" },
   { icon: Swords, text: "Skills", href: "/skills" },
   { icon: Hammer, text: "Projects", href: "/projects" },
   { icon: Hash, text: "Socials", href: "/contact" },
 ];
+
+const BG_SLIDE =
+  "before:content-[''] before:-skew-x-8 before:absolute before:inset-y-0 before:translate-x-full hover:before:translate-x-0 before:left-0 before:-right-2 motion-safe:before:transition-transform before:bg-base-300 before:rounded-box";
 ---
 
-<Decorations client:only="svelte" />
 <BaseLayout>
-  <main
-    class="h-screen grid grid-cols-2 grid-rows-2 gap-2 font-electrolize text-xl sm:text-3xl md:text-5xl"
-  >
-    {
-      options.map((option) => (
+  <main class="h-screen pt-16 flex">
+    <div class="flex-1 py-10 px-10 bg-linear-90 from-primary/20 to-transparent to-40%">
+      <AboutMe />
+    </div>
+    <div class="flex py-10 flex-col overflow-hidden pl-2">
+      {options.map((option, idx) => (
         <a
           href={option.href}
-          class="h-full w-full grid place-items-center bg-accent/10 backdrop-blur-md border border-neutral/40 rounded-box group"
-          style={{ boxShadow: "0 4px 30px rgba(0, 0, 0, 0.1)" }}
+          class:list={[
+            "block relative group font-electrolize pl-6 pr-16 py-6",
+            BG_SLIDE,
+          ]}
           data-astro-prefetch="load"
         >
-          <div class="flex items-center gap-3 sm:gap-4">
-            <option.icon class="size-5 sm:size-8 md:size-10 motion-safe:group-hover:rotate-12 transition-transform" />
+          <div class="relative z-10 flex items-center gap-4 text-4xl">
+            <option.icon
+              class="size-7 motion-safe:animate-shake"
+              style={{ animationDelay: `${2 * (idx + 1)}s` }}
+            />
             {option.text}
-            <ArrowRight class="size-5 sm:size-8 md:size-10 motion-safe:group-hover:translate-x-3 transition-transform" />
           </div>
         </a>
-      ))
-    }
+      ))}
+    </div>
   </main>
 </BaseLayout>
