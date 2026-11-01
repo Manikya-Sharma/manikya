@@ -12,27 +12,27 @@ const options = [
 ];
 
 const BG_SLIDE =
-  "before:content-[''] before:-skew-x-8 before:absolute before:inset-y-0 before:translate-x-full hover:before:translate-x-0 before:left-0 before:-right-2 motion-safe:before:transition-transform before:bg-base-300 before:rounded-box";
+  "before:content-[''] lg:before:-skew-x-8 before:absolute before:inset-y-0 lg:before:translate-x-full hover:before:translate-x-0 before:left-1 lg:before:left-0 before:right-1 lg:before:-right-2 motion-safe:before:transition-transform before:bg-base-300 before:rounded-box";
 ---
 
 <BaseLayout>
-  <main class="h-screen pt-16 flex">
-    <div class="flex-1 py-10 px-10 bg-linear-90 from-primary/20 to-transparent to-40%">
+  <main class="h-screen pt-15 lg:pt-16 flex flex-col-reverse lg:flex-row">
+    <div class="flex-1 py-4 lg:py-10 px-8 lg:px-10 bg-linear-0 lg:bg-linear-90 from-primary/20 to-transparent to-40%">
       <AboutMe />
     </div>
-    <div class="flex py-10 flex-col overflow-hidden pl-2">
+    <div class="flex py-2 lg:py-10 gap-2 md:gap-none flex-col md:flex-row lg:flex-col overflow-hidden lg:pl-2">
       {options.map((option, idx) => (
         <a
           href={option.href}
           class:list={[
-            "block relative group font-electrolize pl-6 pr-16 py-6",
+            "block relative group font-electrolize px-2 py-2 lg:pl-6 lg:pr-16 lg:py-6 flex-1 lg:grow-0",
             BG_SLIDE,
           ]}
           data-astro-prefetch="load"
         >
-          <div class="relative z-10 flex items-center gap-4 text-4xl">
+          <div class="relative z-10 flex items-center justify-center gap-2 lg:gap-4 text-lg md:text-xl lg:text-4xl">
             <option.icon
-              class="size-7 motion-safe:animate-shake"
+              class="size-4 md:size-5 lg:size-7 motion-safe:animate-shake"
               style={{ animationDelay: `${2 * (idx + 1)}s` }}
             />
             {option.text}
